@@ -10,17 +10,18 @@ Server(kong håkon):
 Requests {
     HostGame {
         center: {
-            long: number,
+            lon: number,
             lat: number,
         },
 
         raduis: number,
-        password: string
     }
 
     UpdatePosition {
-        long: number,
-        lat: number,
+        positon: {
+            lon: number,
+            lat: number,
+        }
 
         userid: string
     }
@@ -34,10 +35,16 @@ Response {
     UpdatePosition {
         damage: boolean,
         timeleft: number,
+        center: {
+            lon: number,
+            lat: number,
+        },
+
+        radius: number
 
         players [
         {
-            long: number,
+            lon: number,
             lat: number,
 
             userid: string
