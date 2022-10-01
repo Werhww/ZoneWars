@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid'
+
 export function GlobalDistanceMeters(
     lat1:number, 
     lon1:number, 
@@ -21,6 +23,7 @@ export function GlobalDistanceMeters(
     return d
 }
 
-export function UUID(simple:boolean = false):string {
-    return "h"
+export function UUID(simple:boolean):string {
+    if (simple) return Math.floor(Math.random() * 100000000).toString()
+    else return uuidv4()
 }

@@ -21,7 +21,7 @@ const MaxTimeout = 10000
 
 const GameTickRate = 1000
 
-export class Connection {
+export class GameConnection {
     GID: string|undefined
     PUUID: string|undefined
 
@@ -38,15 +38,15 @@ export class Connection {
         }, GameTickRate)
 
         // Endpoints
-        socket.on("HostGame", this.HostGame)
-        socket.on("StartGame", this.StartGame)
+        socket.on("HostGame", this.HostGame.bind(this))
+        socket.on("StartGame", this.StartGame.bind(this))
         
         socket.on("JoinGame", (GID:GID, username:string) => {
             this.JoinGame(GID, username)
         })
-        socket.on("LeaveGame", this.LeaveGame)
+        socket.on("LeaveGame", this.LeaveGame.bind(this))
 
-        socket.on("UpdatePosition", this.UpdatePlayerPosition)
+        socket.on("UpdatePosition", this.UpdatePlayerPosition.bind(this))
     }
 
 
@@ -58,7 +58,7 @@ export class Connection {
 
     GetPlayer():PlayerType|undefined{
         if (!this.IsInGame()) return
-        return games[this.GID as GID][this.PUUID as PUUID]
+        return games[this.GID as GID].players[this.PUUID as PUUID]
     }
 
 
@@ -132,7 +132,9 @@ export class Connection {
     EmitJoinGame(){
         if (!this.IsInGame()) return
 
-        this.socket.emit("JoinGame", {
+        console.log("Joind game")
+
+        this.socket.emit("GameJoin", {
             GID: this.GID,
             PUUID: this.PUUID,
 
@@ -143,26 +145,34 @@ export class Connection {
     EmitAllGameData(){
         if (!this.IsInGame()) return
         const game = this.GetGame() as GameType
+        const player = this.GetPlayer() as PlayerType
 
         const HiddenPlayers = Object.values(game.players).map(v => {
-            return {
+        
+            const HiddenPlayer = {
                 username: v.username,
                 inZone: v.inZone,
+                inZoneTime: v.inZoneTime,
                 position: v.position,
                 eliminated: v.eliminated,
+                self: v.PUUID === this.PUUID
             }
-        })
 
+            if (HiddenPlayer.self) return
+            else return HiddenPlayer
+        }).filter((v) => {if (v) return true})
 
         this.socket.emit("GameData", {
             GID: game.GID,
+            time: new Date().getTime(),
 
             started: game.started,
 
             radius: game.current.radius,
             center: game.current.center,
 
-            players: HiddenPlayers
+            players: HiddenPlayers,
+            self: player 
         })
     }
 
@@ -176,6 +186,8 @@ export class Connection {
 
         player.position = position
         player.positionUpdateTime = new Date().getTime()
+
+        console.log("New player position", position)
     }
 
 
@@ -189,6 +201,8 @@ export class Connection {
         } {
             player.inZone = true
         }
+
+        console.log("New ZoneState ", player.inZone)
     }
 
     UpdatePlayerEliminationState(){
@@ -196,6 +210,8 @@ export class Connection {
         const player = this.GetPlayer() as PlayerType
 
         player.eliminated = this.IsEliminated()
+
+        console.log("New EliminationState ", player.eliminated)
     }
 
 
@@ -203,7 +219,7 @@ export class Connection {
 
     HostGame(username:string, center:POSITION, radius:number) {
         const GID = UUID(true)
-        const PUUID = UUID()
+        const PUUID = UUID(false)
 
         games[GID] = {
             GID: GID,
@@ -221,6 +237,9 @@ export class Connection {
             players: {}
         }
 
+        console.log("Game Hosting", games[GID])
+
+
         this.JoinGame(GID, username, PUUID)
     }
 
@@ -229,10 +248,13 @@ export class Connection {
         const game = this.GetGame() as GameType
 
         game.started = true
+
+        console.log("Game Started", game)
     }
 
-    JoinGame(GID:GID, username:string, PUUID = UUID()){
+    JoinGame(GID:GID, username:string, PUUID = UUID(false)){
         if (this.IsInGame()) this.LeaveGame()
+        if(!games[GID]) return
 
         games[GID].players[PUUID] = {
             PUUID,
@@ -252,11 +274,18 @@ export class Connection {
 
         this.GID = GID
         this.PUUID = PUUID
+
+        this.EmitJoinGame()
+
+        console.log("User Joined Game", games[GID])
+
     }
 
     LeaveGame(){
         if (!this.IsInGame()) return
         delete games[this.GID as GID].players[this.PUUID as PUUID]
+
+        console.log("User Joined Game", games[this.GID as GID])
 
         this.GID = undefined
         this.PUUID = undefined
