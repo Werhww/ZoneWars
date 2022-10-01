@@ -1,6 +1,6 @@
 import {GID, PUUID, POSITION} from "./types"
 import {PlayerType} from "./player"
-import { Socket } from "engine.io"
+import { Socket } from "socket.io"
 
 export interface GameType {
     GID: GID,
