@@ -1,5 +1,10 @@
-const socket = io()
-
+const socket = wio()
+socket.start()
+console.log(socket)
+socket.on('connect', () => {
+    console.log('connected!')
+})
+/*
 socket.on("GameJoin", (data) => {
     console.log("GameJoin", data)
 })
@@ -46,3 +51,4 @@ document.getElementById("leave").onclick = () => {
 document.getElementById("end").onclick = () => {
     socket.emit("EndGame")
 }
+*/
