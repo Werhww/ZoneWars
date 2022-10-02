@@ -13,6 +13,7 @@ const io = new socket.Server(server);
 app.use(express.static(join(__dirname, "client-test")))
 
 io.on('connection', (socket) => {
+  console.log("hello")
   const player = new Player(socket)
 })
 

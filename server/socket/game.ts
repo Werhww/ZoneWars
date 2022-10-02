@@ -1,4 +1,4 @@
-import { Vector2, GID } from "./types"
+import { Vector2, GID, GameSettings } from "./types"
 import { Time, UUID } from "./utils"
 import config from "./config"
 
@@ -10,37 +10,47 @@ export const games:{
 
 export class Game {
     started:boolean = false
+    hiding:boolean = false
+
     players:Player[] = []
-    hostedTime:number = Time()
+    HostedTime:number = Time()
 
     GameLoop: NodeJS.Timer
     ZoneLoop: NodeJS.Timer
 
+    InitRadius: number
+    InitCenter: Vector2
+
     constructor(
         public host:Player, 
-        public hostUsername:string,
+        public HostUsername:string,
+
+        public GameSettings:GameSettings,
 
         public center:Vector2,
         public radius:number, 
         public GID = UUID(true))
     {
+        this.InitCenter = center
+        this.InitRadius = radius
+        
         this.GameLoop = setInterval(() => {
             this.RemoveIdlePlayers()
             this.CheckRemoveSelf()
         }, config.GameTickRate)
 
         this.ZoneLoop = setInterval(() => {
-            if (this.started){
+            if (this.started && this.GameSettings.ZoneShrink){
                 this.ShrinkRadius(config.ZoneShrinkAmount)
             }
 
-        }, config.ZoneShrinkInterval)
+        }, config.ZoneShrinkInterval[GameSettings.ShrinkSpeed])
 
         if(!games[GID]) games[GID] = this
 
 
         // Needs to be last
-        host.JoinGame(hostUsername, this.GID)
+        host.JoinGame(HostUsername, this.GID)
     }
 
     EmitGlobal(event:string, ...args:any){
@@ -56,9 +66,12 @@ export class Game {
     }
 
     StartGame(){
-        this.EmitGlobal("GameStart")
-
         this.started = true
+        this.hiding = true
+        setTimeout(() => {
+            this.hiding = false
+            this.EmitGlobal("GameStart")
+        }, this.GameSettings.HideTime)
     }
 
     EndGame(){
@@ -76,6 +89,18 @@ export class Game {
         delete games[this.GID]
     }
 
+    ResetGame(){
+        this.started = false    
+        this.radius = this.InitRadius
+        this.center = this.InitCenter
+
+        this.EmitGlobal("GameReset")
+        for (var player of this.players){
+            player.ResetPlayer()
+            player.EmitPopup(config.messages.GameEnded)
+        }
+    }
+
     CheckRemoveSelf(){
         for (var GID in games){
             const game = games[GID]
@@ -84,12 +109,12 @@ export class Game {
                 game.EndGame()
             }
     
-            if (new Date().getTime() - game.hostedTime > config.MaxGameDuration){
-                game.EndGame()
+            if (new Date().getTime() - game.HostedTime > config.MaxGameDuration){
+                game.ResetGame()
             }
     
             if (game.radius < config.MinZoneRadius){
-                game.EndGame()
+                game.ResetGame()
             } 
         }
     }

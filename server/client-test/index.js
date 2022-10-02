@@ -1,5 +1,9 @@
 const socket = io()
 
+socket.on('connect', () => {
+    console.log('connected!')
+})
+
 socket.on("GameJoin", (data) => {
     console.log("GameJoin", data)
 })
@@ -14,7 +18,15 @@ socket.on("GameData", (data) => {
 
 
 document.getElementById("host").onclick = () => {
-    socket.emit("HostGame", "powerkuu", {
+    socket.emit("HostGame", "powerkuu",
+    {
+        HideTime: 10000,
+        ZoneShrink: true,
+        ShrinkSpeed: 1,
+        HeartBeatSensor: false
+    },
+    
+    {
         lon: 10,
         lat: 10
     }, 20)
