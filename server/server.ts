@@ -14,9 +14,6 @@ app.use(express.static(join(__dirname, "client-test")))
 
 io.on('connection', (socket) => {
   const player = new Player(socket)
-  socket.on("disconnect", () => {
-    player.RemovePlayer()
-  })
 })
 
 server.listen(3000, () => {

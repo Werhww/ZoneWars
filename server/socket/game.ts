@@ -27,9 +27,7 @@ export class Game {
         this.GameLoop = setInterval(() => {
             this.RemoveIdlePlayers()
             this.CheckRemoveSelf()
-
-            console.log(this.players.length)
-        }, 1000)
+        }, config.GameTickRate)
 
         this.ZoneLoop = setInterval(() => {
             if (this.started){
@@ -51,6 +49,12 @@ export class Game {
         }
     }
 
+    GetPlayerByUsername(username:string){
+        for (var player of this.players){
+            if (player.username === username) return player
+        }
+    }
+
     StartGame(){
         this.EmitGlobal("GameStart")
 
@@ -61,13 +65,15 @@ export class Game {
         this.started = false
 
         this.EmitGlobal("GameEnd")
+        for (var player of this.players){
+            player.EmitPopup(config.messages.GameEnded)
+        }
         
-        delete games[this.GID]
-
         clearInterval(this.GameLoop)
         clearInterval(this.ZoneLoop)
 
         this.RemoveAllPlayers()
+        delete games[this.GID]
     }
 
     CheckRemoveSelf(){
@@ -92,15 +98,21 @@ export class Game {
         for (var player of this.players){
             
             if (Time() - player.positionUpdateLastTime > config.PositionTimeout){
-                this.RemovePlayer(player)
-                player.game = undefined
+                this.RemovePlayer(player, config.messages.KickTimeout)
             }
         }
     }
 
-    RemovePlayer(player:Player){
+    RemovePlayer(player:Player, message?:string){
         this.players = this.players.filter((v) => {
-            return v != player
+            if (v == player){
+                if (message) v.EmitPopup(message)
+
+                v.game = undefined
+                return false
+            }
+
+            return true
         })
     }
 

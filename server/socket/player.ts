@@ -22,7 +22,6 @@ export class Player {
     PlayerLoop: NodeJS.Timer
 
     constructor(public socket:Socket){
-        console.log("New Player")
         this.PlayerLoop = setInterval(() => {
             const game = this.GetGame()
             if (!game) return
@@ -33,7 +32,11 @@ export class Player {
                 this.UpdateOutsideZoneState()
                 this.UpdateEliminatedState()
             }
-        }, 1000)
+        }, config.PlayerTickRate)
+
+        socket.on("disconnect", () => {
+            this.ClearPlayer()
+        })
 
         socket.on("HostGame", this.HostGame.bind(this))
         socket.on("StartGame", this.StartGame.bind(this))
@@ -150,13 +153,17 @@ export class Player {
 
 
     HostGame(username:string, center:Vector2, radius:number){
+        if (radius > config.MaxZoneRadius) {
+            this.EmitPopup(config.messages.GameZoneToLarge)
+            return
+        }
+
         new Game(this, username, center, radius)
     }
 
     StartGame(){
         const game = this.GetGame()
         if (!game || !this.IsGameHost()) return
-        console.log("Game Starting")
 
         game.StartGame()
     }
@@ -170,7 +177,14 @@ export class Player {
 
     JoinGame(username:string, GID:GID){
         const game = games[GID]
-        if (!game) return
+        if (!game) {
+            this.EmitPopup(config.messages.GameNotFoud)
+            return
+        }
+        if (game.GetPlayerByUsername(username)) {
+            this.EmitPopup(config.messages.UsernameTaken)
+            return
+        }
         
         this.username = username
         this.game = game
@@ -188,7 +202,15 @@ export class Player {
         if (!game) return
 
         game.RemovePlayer(this)
-        this.game = undefined
+    }
+
+    KickPlayer(username:string){
+        const game = this.GetGame()
+        if (!game || !this.IsGameHost()) return
+        const player = game.GetPlayerByUsername(username)
+        if (!player || username !== this.username) return
+
+        game.RemovePlayer(player, config.messages.KickByHost)
     }
 
 
@@ -199,7 +221,7 @@ export class Player {
     }
 
 
-    RemovePlayer(){
+    ClearPlayer(){
         this.LeaveGame()
         clearInterval(this.PlayerLoop)
     }
