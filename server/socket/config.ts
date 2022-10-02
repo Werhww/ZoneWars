@@ -2,9 +2,11 @@ export default {
     ZoneEliminationTime: 20000,
     PositionTimeout: 10000,
     
-    ZoneShrinkInterval1: 2000,
-    ZoneShrinkInterval2: 2000,
-    ZoneShrinkInterval3: 2000,
+    ZoneShrinkInterval: [
+        4000,
+        2000,
+        500
+    ],
 
     ZoneShrinkAmount: 0.1,
     MinZoneRadius: 10,

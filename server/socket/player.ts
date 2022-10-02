@@ -1,5 +1,5 @@
 import { GlobalDistanceMeters, Time } from "./utils";
-import { GID, Vector2 } from "./types";
+import { GameSettings, GID, Vector2 } from "./types";
 import config from "./config"
 
 import { Game, games } from "./game";
@@ -19,6 +19,8 @@ export class Player {
     outsideZone: boolean = false
     eliminated:boolean = false
 
+    seeker: boolean = false
+
     PlayerLoop: NodeJS.Timer
 
     constructor(public socket:Socket){
@@ -28,7 +30,8 @@ export class Player {
 
             this.EmitGameData()
 
-            if (game.started){
+            // Dont eliminate seeker
+            if (game.started && !this.seeker){
                 this.UpdateOutsideZoneState()
                 this.UpdateEliminatedState()
             }
@@ -41,6 +44,8 @@ export class Player {
         socket.on("HostGame", this.HostGame.bind(this))
         socket.on("StartGame", this.StartGame.bind(this))
         socket.on("EndGame", this.EndGame.bind(this))
+        socket.on("KickPlayer", this.KickPlayer.bind(this))
+        socket.on("SetSeeker", this.SetSeeker.bind(this))
         
         socket.on("JoinGame", (GID:GID, username:string) => {
             this.JoinGame(GID, username)
@@ -58,10 +63,46 @@ export class Player {
     GetSafeVersion(){
         return {
             username: this.username,
+            seeker: this.seeker,
+
             outsideZone: this.outsideZone,
             outsideZoneStartTime: this.outsideZoneStartTime,
             position: this.position ?? {lon: 0, lat:0},
             eliminated: this.eliminated,
+        }
+    }
+
+    GetClosestPlayer(){
+        const game = this.GetGame()
+        if (!game) return false
+        if (!this.position) return 
+
+        var closest:Player|undefined = undefined
+        var distance:number|undefined = undefined
+
+
+        for (var player of game.players){
+            if (player.seeker || !player.position) continue
+
+            const dis = GlobalDistanceMeters(
+                this.position.lat,
+                this.position.lon,
+                player.position.lat,
+                player.position.lon
+            )
+
+            if (!distance ||  dis < distance) {
+                closest = player
+                distance = dis
+                continue
+            }
+        }
+
+        if (!closest || !distance) return
+
+        return {
+            closest,
+            distance
         }
     }
 
@@ -82,6 +123,7 @@ export class Player {
 
         const HiddenPlayers = Object.values(game.players).map(v => {
             if (v === this) return
+            if (this.seeker != v.seeker) return
             return v.GetSafeVersion()
 
         }).filter((v) => {if (v) return true})
@@ -95,8 +137,14 @@ export class Player {
             radius: game.radius,
             center: game.center,
 
-            players: HiddenPlayers,
+            settings: game.GameSettings,
 
+            closest: this.GetClosestPlayer(),
+
+            hiding: game.hiding,
+
+            players: HiddenPlayers,
+            host: game.HostUsername,
             self: this.GetSafeVersion()
         })
     }
@@ -149,16 +197,22 @@ export class Player {
         this.eliminated = state
     }
 
+    ResetPlayer(){
+        this.eliminated = false
+        this.outsideZone = false
+
+        this.positionUpdateLastTime = Time()
+    }
 
 
 
-    HostGame(username:string, center:Vector2, radius:number){
+    HostGame(username:string, settings:GameSettings, center:Vector2, radius:number){
         if (radius > config.MaxZoneRadius) {
             this.EmitPopup(config.messages.GameZoneToLarge)
             return
         }
 
-        new Game(this, username, center, radius)
+        new Game(this, username, settings, center, radius)
     }
 
     StartGame(){
@@ -189,10 +243,7 @@ export class Player {
         this.username = username
         this.game = game
 
-        this.eliminated = false
-        this.outsideZone = false
-
-        this.positionUpdateLastTime = Time()
+        this.ResetPlayer()
 
         game.players.push(this)
     }
@@ -211,6 +262,15 @@ export class Player {
         if (!player || username !== this.username) return
 
         game.RemovePlayer(player, config.messages.KickByHost)
+    }
+    
+    SetSeeker(username:string, state:boolean){
+        const game = this.GetGame()
+        if (!game || !this.IsGameHost()) return
+        const player = game.GetPlayerByUsername(username)
+        if (!player || username !== this.username) return
+
+        player.seeker = state
     }
 
 
