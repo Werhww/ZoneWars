@@ -27,3 +27,7 @@ export function UUID(simple:boolean):string {
     if (simple) return Math.floor(Math.random() * 100000000).toString()
     else return uuidv4()
 }
+
+export function Time(){
+    return new Date().getTime()
+}
