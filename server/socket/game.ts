@@ -4,6 +4,13 @@ import config from "./config"
 
 import {Player} from "./player"
 
+interface GameSettings {
+    HideTime: number,
+    zoneShrink: boolean,
+    ShrinkSpeed: 1|2|3,
+    HeartBeatSensor: boolean
+}
+
 export const games:{
     [GID:GID]: Game
 } = {}
