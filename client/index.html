@@ -4,9 +4,80 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"
+     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"
+     integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
+     crossorigin=""></script>
+
+     <link rel="stylesheet" href="style.css">
+     <script src="index.js" defer></script>
+    <title>Zone Warz</title>
 </head>
 <body>
-    
+    <div class="mainScreen">
+        <P>Zone Warz</P>
+        <div class="cjMenu">
+            <div> <p>Creat Game</p> </div>
+            <div> <p>Join Game</p> </div>
+        </div>
+        <div class="sMenu">
+            <div> <p>Settings</p> </div>
+        </div>
+    </div>
+
+    <div class="creatGame">
+        <p>New Game</p>
+        <div class="nameMenu">
+            <div>
+                <form action="">
+                    <input type="text" class="userName">
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="creatGameMapPlacement">
+        <p>New Game</p>
+        <div>
+            <div>
+                <div id="map"></div>
+                <div class="mapslider">
+                    <input type="range" class="mapsize" id="mapsize" min="10" max="1000" value="200">
+                </div>
+            </div>
+            <div>
+                <p>Next</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="creatGameSettings">
+        <p>New Game</p>
+        <div>
+            <div>
+                <p>Hide Time</p>
+                <input type="range">
+                <p>0:20</p>
+            </div>
+            <form action="">
+                <p>Zone Shrink</p>
+                <input type="checkbox">
+                <p>Shrink Speed</p>
+                <input type="radio" name="shrinkSpeed">
+                <input type="radio" name="shrinkSpeed">
+                <input type="radio" name="shrinkSpeed">
+            </form>
+            <form action="">
+                <p>Heartbeat</p>
+                <input type="checkbox">
+                <p>Frequency</p>
+                <input type="range">
+                <p>2:26</p>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
