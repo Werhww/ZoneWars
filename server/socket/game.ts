@@ -21,6 +21,8 @@ export class Game {
     InitRadius: number
     InitCenter: Vector2
 
+    StartTime: number = 0
+
     constructor(
         public host:Player, 
         public HostUsername:string,
@@ -66,6 +68,8 @@ export class Game {
     }
 
     StartGame(){
+        this.StartTime = Time()
+
         this.started = true
         this.hiding = true
 
@@ -90,7 +94,9 @@ export class Game {
     }
 
     ResetGame(){
-        this.started = false    
+        this.started = false   
+        this.hiding = false 
+        this.StartTime = 0
         this.radius = this.InitRadius
         this.center = this.InitCenter
 
