@@ -18,34 +18,37 @@ const sessions:{
 } = {}
 
 io.on('connection', (socket) => {
-  socket.on("session", (session) => {
-    console.log(session)
+  socket.on("session", (session?:string) => {
     var player:Player
 
-    const listener = () => {
-      player.once("end", () => {
-        player.ClearPlayer()
-        delete session[session]
-      })
-    }
-
+    //! Retrive session from client
     if (!session || !sessions[session]) {
       session = UUID(false)
-
       player = new Player(socket)
 
       sessions[session] = player
     } else {
       player = sessions[session]
+
       player.ReplaceSocket(socket)
-      
       player.removeAllListeners("end")
       socket.emit("GameJoin")
     }
+    //!
 
-    
-    socket.on("disconnect", listener)  
+    //! If player leaves window and game
+    socket.on("disconnect", () => {
+      player.once("end", () => {
+        player.ClearPlayer()
+
+        if (session) delete sessions[session]
+      })
+    }) 
+    //! 
+
+    //! Callback to client
     socket.emit("session", session)
+    //!
   })
 })
 
