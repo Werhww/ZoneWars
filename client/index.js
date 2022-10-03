@@ -56,13 +56,15 @@ function getLocation() {
 
 
 async function init(){
-   await GetPerms().catch(()=>{})
+    await GetPerms().catch(()=>{})
+    var postions = getLocation()
 
-    const mapPlacement = L.map('mapPlacement').setView([55, 55], 13)
+    const mapPlacement = L.map('mapPlacement').setView([postions.longitude, postions.latitude], 13)
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png', {
         maxZoom: 19,
     }).addTo(mapPlacement)
+    document.getElementsByClassName( 'leaflet-control-attribution' )[0].style.display = 'none';
 
     var circle = L.circle([60.4, 5.3], {
         color: 'red',
@@ -96,8 +98,6 @@ async function init(){
             radius: 100
         }).addTo(gameMap);
     }
-
-    document.getElementsByClassName( 'leaflet-control-attribution' )[0].style.display = 'none';
 }
 
 init()
