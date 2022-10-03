@@ -217,8 +217,6 @@ export class Player extends EventEmitter {
 
 
     HostGame(username:string, settings:GameSettings, center:Vector2, radius:number){
-
-        console.log("hist")
         if (radius > config.MaxZoneRadius) {
             this.EmitPopup(config.messages.GameZoneToLarge)
             return

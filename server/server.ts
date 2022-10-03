@@ -23,11 +23,8 @@ io.on('connection', (socket) => {
     var player:Player
 
     const listener = () => {
-      console.log("aha")
       player.once("end", () => {
         player.ClearPlayer()
-        console.log("asasaasasasaha")
-
         delete session[session]
       })
     }
