@@ -1,1 +1,183 @@
-#map { height: 400px; width: 400px;}
+#gameMap {height: 50rem; width: 100%;}
+
+.mainScreen{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cjMenu{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: #1D1D1D;
+    border-radius: 6rem;
+    padding: 3.5rem;
+}
+
+.cjMenu div{
+    background-color: #00E0FF;
+    width: 20rem;
+    border-radius: 5rem;
+    padding: 3rem;
+}
+
+.cjMenu div p{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.sMenu{
+    gap: 3rem;
+    background-color: #1D1D1D;
+    margin-top: 3rem;
+    border-radius: 6rem;
+    padding: 3.5rem;
+}
+
+.sMenu div{
+    background-color: #00E0FF;
+    width: 20rem;
+    border-radius: 5rem;
+    padding: 3rem;
+}
+
+.sMenu div p{
+    font-size: 3rem;
+    text-align: center;
+}
+
+
+.cjMenu div:hover{
+    cursor: pointer;
+}
+
+.sMenu div:hover{
+    cursor: pointer;
+}
+
+
+
+.creatGame{
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.nameMenu{
+    background-color: #1D1D1D;
+    margin-top: 3rem;
+    border-radius: 6rem;
+    padding: 3.5rem;
+    margin-top: 8rem;
+}
+
+.nameMenu form{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+#userName{
+    border-radius: 5rem;
+    font-size: 1.5rem;
+    padding: 3rem;
+    width: 20rem;
+}
+
+#submitName{
+    background-color: #00E0FF;
+    border-radius: 5rem;
+    font-size: 3rem;
+    padding: 3rem;
+}
+
+
+
+.creatGameMapPlacement{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cgmpContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mapTop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 23rem;
+}
+
+#mapPlacement { height: 50vw; width: 50vw;}
+
+.mapSize {
+    -webkit-appearance: none;
+    width: 36rem;
+    height: 1rem;
+    border-radius: 1rem;  
+    transform: rotate(270deg);
+    background: #ffffff;
+    outline: none;
+    margin-left: -13rem;
+}
+  
+.mapSize::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%; 
+    background: #bcbcbc;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #bcbcbc;
+    cursor: pointer;
+}
+
+.nextMenu{
+    background-color: #00E0FF;
+    width: 20rem;
+    border-radius: 5rem;
+    padding: 3rem;
+    margin-top: 3rem;
+}
+
+.nextMenu p{
+    font-size: 3rem;
+    text-align: center;
+}
+
+
+.creatGameSettings{
+    display: none;
+}
+
+.joinGame{
+    display: none;
+}
+
+.lobby{
+    display: none;
+}
+
+.game{
+    display: none;
+}
+
+.settings{
+    display: none;
+}

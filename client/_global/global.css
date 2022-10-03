@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+@import url('https://fonts.googleapis.com/css?family=Frijole');
+
+html{
+    font-family: 'Inter';
+    background: #262626;
+}
+
+body, p{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.title{
+    font-family: 'Frijole';
+    text-align: center;
+    font-size: 8rem;
+    color: white;
+}
