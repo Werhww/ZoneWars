@@ -1,42 +1,66 @@
-function handlePermission() {
-    navigator.permissions.query({ name: 'geolocation' }).then((result) => {
-      if (result.state === 'granted') {
-        report(result.state);
-        geoBtn.style.display = 'none';
-      } else if (result.state === 'prompt') {
-        report(result.state);
-        geoBtn.style.display = 'none';
-        navigator.geolocation.getCurrentPosition(revealPosition,positionDenied,geoSettings);
-      } else if (result.state === 'denied') {
-        report(result.state);
-        geoBtn.style.display = 'inline';
-      }
-      result.addEventListener('change', () => {
-        report(result.state);
-      });
-    });
+function GetPerms(){
+    const geolocationOptions = {
+        enableHighAccuracy: true,
+        maximumAge: 10000,
+        timeout: 5000,
+    }
+    return new Promise((resolve, reject) => {
+          
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+            () => {
+                resolve()
+            },
+            () => {
+                alert("U need to enable geolocation!")
+                reject()
+            },
+            geolocationOptions
+            )
+        } else {
+            reject()
+            console.log("Browser does not support the Geolocation API")
+        }
+    })
 }
-
-handlePermission()
-
 
 function getLocation() {
     return new Promise((resolve, reject) => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((postion)=>{resolve(postion.coords)});
+            navigator.geolocation.getCurrentPosition((postion)=>{resolve(postion.coords)}, ()=>{},{
+                enableHighAccuracy: true,
+                timeout: 7000,
+                maximumAge: 0
+            });
+
         } else {
             reject()
         }
     })
 }
 
+// Makes tile 1px larger to hide white line
+(function(){
+    var originalInitTile = L.GridLayer.prototype._initTile
+    L.GridLayer.include({
+        _initTile: function (tile) {
+            originalInitTile.call(this, tile);
+
+            var tileSize = this.getTileSize();
+
+            tile.style.width = tileSize.x + 1 + 'px';
+            tile.style.height = tileSize.y + 1 + 'px';
+        }
+    });
+})()
+
 
 async function init(){
-    const postion = await getLocation()
-    console.log(postion)
-    const mapPlacement = L.map('mapPlacement').setView([postion.latitude, postion.longitude], 13)
+   await GetPerms().catch(()=>{})
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png', {
+    const mapPlacement = L.map('mapPlacement').setView([55, 55], 13)
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png', {
         maxZoom: 19,
     }).addTo(mapPlacement)
 
@@ -50,13 +74,13 @@ async function init(){
     mapPlacement.addEventListener('mousemove', ()=>{
         circle.setLatLng(mapPlacement.getCenter())
     })
-
+    
     const mapsize = document.getElementById('mapSize')
 
     mapsize.oninput = function() {
         circle.setRadius(this.value)
     }
-
+    
 
     const gameMap = L.map('gameMap').setView([60.4, 5.3], 13);
 

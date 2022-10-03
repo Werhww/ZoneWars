@@ -38,13 +38,11 @@
         </div>
     </div>
 
-    <div class="creatGameMapPlacement">
-        <p class="title">New Game</p>
+    <div class="creatGameMapPlacement"> 
+        <div id="mapPlacement"></div>
+        <input type="range" class="mapSize" id="mapSize" min="10" max="1000" value="200">
         <div class="cgmpContent">
-            <div class="mapTop">
-                <div id="mapPlacement"></div>
-                <input type="range" class="mapSize" id="mapSize" min="10" max="1000" value="200">
-            </div>
+            <p class="title">New Game</p>
             <div class="nextMenu">
                 <p>Next</p>
             </div>
@@ -53,28 +51,27 @@
 
     <div class="creatGameSettings">
         <p class="title">New Game</p>
-        <div>
+        <form action="">
             <div>
                 <p>Hide Time</p>
                 <input type="range">
                 <p>0:20</p>
             </div>
-            <form action="">
+            <div>
                 <p>Zone Shrink</p>
                 <input type="checkbox">
+            </div>
+            <div>
                 <p>Shrink Speed</p>
                 <input type="radio" name="shrinkSpeed">
                 <input type="radio" name="shrinkSpeed">
                 <input type="radio" name="shrinkSpeed">
-            </form>
-            <form action="">
+            </div>
+            <div>
                 <p>Heartbeat</p>
-                <input type="checkbox">
-                <p>Frequency</p>
-                <input type="range">
-                <p>2:26</p>
-            </form>
-        </div>
+                <input type="checkbox"> 
+            </div>
+        </form>
     </div>
 
     <div class="joinGame">
