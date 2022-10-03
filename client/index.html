@@ -40,9 +40,9 @@
 
     <div class="creatGameMapPlacement"> 
         <div id="mapPlacement"></div>
-        <input type="range" class="mapSize" id="mapSize" min="10" max="1000" value="200">
         <div class="cgmpContent">
-            <p class="title">New Game</p>
+            <input type="range" class="mapSize" id="mapSize" min="10" max="1000" value="200">
+            <img class="posIcon" id="onPosIcon" src="_assets/positionIcon.svg" alt="" >
             <div class="nextMenu">
                 <p>Next</p>
             </div>
@@ -52,26 +52,40 @@
     <div class="creatGameSettings">
         <p class="title">New Game</p>
         <form action="">
-            <div>
+            <div class="htSet">
                 <p>Hide Time</p>
-                <input type="range">
+                <input class="htTime" type="range">
                 <p>0:20</p>
             </div>
-            <div>
-                <p>Zone Shrink</p>
-                <input type="checkbox">
+            <div class="zsSet">
+                <div class="zsSetCheckbox">
+                    <p>Zone Shrink</p>
+                    <input type="checkbox">
+                </div>
+                <div class="ssSet">
+                    <p class="ssText">Shrink Speed</p>
+                    <div class="ssSetSpeedbtn">
+                        <input type="radio" name="shrinkSpeed" id="speedSlow">
+                        <input type="radio" name="shrinkSpeed" id="speedMedium">
+                        <input type="radio" name="shrinkSpeed" id="speedFast">
+                    </div>
+                    <div class="ssSetSpeed">
+                        <p>slow</p>
+                        <p>medium</p>
+                        <p>fast</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p>Shrink Speed</p>
-                <input type="radio" name="shrinkSpeed">
-                <input type="radio" name="shrinkSpeed">
-                <input type="radio" name="shrinkSpeed">
-            </div>
-            <div>
+            <div class="hbSet">
                 <p>Heartbeat</p>
                 <input type="checkbox"> 
             </div>
+
+            <div class="cgsSubmit"> 
+                <input class="cgsSubmitbtn" type="submit" value="Start">
+            </div>
         </form>
+
     </div>
 
     <div class="joinGame">
