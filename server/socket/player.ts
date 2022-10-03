@@ -144,7 +144,8 @@ export class Player extends EventEmitter {
             time: new Date().getTime(),
 
             started: game.started,
-
+            StartedTime: game.StartTime,
+            
             radius: game.radius,
             center: game.center,
 
