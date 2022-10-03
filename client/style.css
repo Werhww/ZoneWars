@@ -181,6 +181,12 @@
 /* Game Settings Menu*/
 
 .creatGameSettings{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -192,15 +198,15 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #1D1D1D;
+    background-color: #090909;
+    border: rgb(45, 45, 45) solid 2px;
     border-radius: 2rem;
     padding: 2rem;
     gap: 3.5rem;
 }
 
 .creatGameSettings form p{
-    color: white;
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .htSet{
@@ -216,8 +222,8 @@
     width: 36rem;
     height: 1rem;
     border-radius: 1rem; 
-    border: black 1px solid; 
-    background: #ffffff;
+    border: rgb(45, 45, 45) 2px solid; 
+    background: #00000000;
     outline: none;
 }
   
@@ -227,7 +233,7 @@
     width: 2rem;
     height: 2rem;
     border-radius: 50%; 
-    background: #bcbcbc;
+    background: #0075ff;
     cursor: pointer;
 }
 
@@ -251,19 +257,45 @@
     gap: 1rem;
 }
 
+
+
 .ssText{
-    font-size: 2rem !important;
+
+    font-size: 3rem !important;
+
     text-align: center;
 }
 
 .ssSetSpeedbtn{
     display: flex;
-    gap: 7rem;
+    gap: 2rem;
+}
+
+.ssSetSpeedbtn div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .ssSetSpeedbtn input{
-    transform: scale(2);
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    opacity: 0;
 }
+
+.ssSetSpeedbtn input + .radio{
+    border: 2px solid rgb(45, 45, 45);
+    border-radius: 50%;
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+input[type="radio"]:checked + .radio {
+    background: #0075ff;
+}
+
 
 .ssSetSpeed{
     display: flex;
@@ -277,21 +309,60 @@
 
 .hbSet{
     display: flex;
-    gap: 3.8rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .hbSet input{
-    width: 3rem;
+    position: absolute;
+    margin-bottom: -5rem;
+    width: 4rem;
+    height: 4rem;
+    opacity: 0;
+}
+
+
+.hbSet input + .checkbox{
+    border: 2px solid rgb(45, 45, 45);
+    border-radius: 50%;
+    width: 2.3rem;
+    height: 2.3rem;
+}
+
+input:checked + .checkbox {
+    background: #0075ff;
+}
+
+
+.cgsSubmit {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .cgsSubmit input{
-    background-color: #00E0FF;
     border: none;
+    font-family: 'Frijole';
+    color: white;
+    background-color: #00000000;
     border-radius: 3rem;
-    font-size: 3rem;
-    padding: 1.5rem;
+    font-size: 2rem;
+    margin-top: 0.1;
+    padding: 0.8rem;
     padding-left: 3rem;
     padding-right: 3rem;
+}
+
+.cgsSubmit input.start {
+    color: white;
+    border: rgb(0, 255, 0) 2px solid;
+
+}
+
+.cgsSubmit input.back {
+    border: red 2px solid;
+
 }
 
 .cgsSubmit input:hover{
@@ -321,3 +392,18 @@
 .settings{
     display: none;
 }
+
+.none {
+
+}
+
+.slow {
+    color: rgb(0, 255, 0);
+}
+.medium {
+    color: rgb(255, 255, 0);
+}
+.fast {
+    color: red
+}
+

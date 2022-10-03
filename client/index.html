@@ -50,39 +50,60 @@
     </div>
 
     <div class="creatGameSettings">
-        <p class="title">New Game</p>
+
         <form action="">
             <div class="htSet">
-                <p>Hide Time</p>
-                <input class="htTime" type="range">
-                <p>0:20</p>
+                <div class="titlew">
+                    <p class="ssText">Hide Time</p>
+                </div>
+                <input id="htTime" class="htTime" type="range" value="300000" min="0" max="600000"   
+                oninput="showVal(this.value)"
+                onchange="showVal(this.value)">
+                <p id="hTime">00:00</p>
             </div>
             <div class="zsSet">
                 <div class="zsSetCheckbox">
-                    <p>Zone Shrink</p>
-                    <input type="checkbox">
                 </div>
                 <div class="ssSet">
-                    <p class="ssText">Shrink Speed</p>
-                    <div class="ssSetSpeedbtn">
-                        <input type="radio" name="shrinkSpeed" id="speedSlow">
-                        <input type="radio" name="shrinkSpeed" id="speedMedium">
-                        <input type="radio" name="shrinkSpeed" id="speedFast">
+                    <div class="titlew">
+                        <p class="ssText">Shrink Speed</p>
                     </div>
-                    <div class="ssSetSpeed">
-                        <p>slow</p>
-                        <p>medium</p>
-                        <p>fast</p>
+                    <div class="ssSetSpeedbtn">
+                        <div>
+                            <input type="radio" name="shrinkSpeed" id="speedNone">
+                            <span class="radio"></span>
+                            <p class="none">none</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="shrinkSpeed" id="speedSlow">
+                            <span class="radio"></span>
+                            <p class="slow">slow</p>
+                        </div>
+                        <div>   
+                            <input type="radio" name="shrinkSpeed" id="speedMedium" checked >
+                            <span class="radio"></span>
+                            <p class="medium">medium</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="shrinkSpeed" id="speedFast"> 
+                            <span class="radio"></span>
+                            <p class="fast">fast</p>
+                        </div>
+                                          
                     </div>
                 </div>
             </div>
             <div class="hbSet">
-                <p>Heartbeat</p>
-                <input type="checkbox"> 
+                <div class="titlew">
+                    <p class="ssText">Heartbeat</p>
+                </div>
+                <input type="checkbox" checked > 
+                <span class="checkbox"></span>
             </div>
 
             <div class="cgsSubmit"> 
-                <input class="cgsSubmitbtn" type="submit" value="Start">
+                <input class="back" type="submit" value="Back">
+                <input class="start" type="submit" value="Start">
             </div>
         </form>
 

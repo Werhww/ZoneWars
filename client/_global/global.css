@@ -2,18 +2,19 @@
 @import url('https://fonts.googleapis.com/css?family=Frijole');
 
 html{
-    font-family: 'Inter';
-    background: #262626;
+    font-family: 'Frijole';
+    background: #0c0c0c;
 }
 
 body, p{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    color: snow;
 }
 
 .title{
-    font-family: 'Frijole';
+
     text-align: center;
     font-size: 8rem;
     color: white;
