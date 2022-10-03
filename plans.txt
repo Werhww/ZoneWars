@@ -5,6 +5,11 @@ https://leafletjs.com/ (for å vise mappet på nettsiden)
 https://leafletjs.com/reference.html#circle (for å lage sirkel)
 
 
+Funksjon som viser en popup (message, error = true/false)
+Funkjon som viser en spiller på kartet (lat, lon, username, eliminated = true/false, seeker = true/false)
+Funkjon som piper eller vibrerer mobilen (freq)
+Funkjon som adder en spiller til lobbyen (username, host, seeker)
+
 Server(kong håkon):
 
 Requests {

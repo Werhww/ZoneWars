@@ -21,6 +21,8 @@ export class Game {
     InitRadius: number
     InitCenter: Vector2
 
+    StartTime: number = 0
+
     constructor(
         public host:Player, 
         public HostUsername:string,
@@ -40,7 +42,7 @@ export class Game {
         }, config.GameTickRate)
 
         this.ZoneLoop = setInterval(() => {
-            if (this.started && this.GameSettings.ZoneShrink){
+            if (this.started && this.GameSettings.ZoneShrink && !this.hiding){
                 this.ShrinkRadius(config.ZoneShrinkAmount)
             }
 
@@ -66,11 +68,13 @@ export class Game {
     }
 
     StartGame(){
+        this.StartTime = Time()
+
         this.started = true
         this.hiding = true
+
         setTimeout(() => {
             this.hiding = false
-            this.EmitGlobal("GameStart")
         }, this.GameSettings.HideTime)
     }
 
@@ -90,7 +94,9 @@ export class Game {
     }
 
     ResetGame(){
-        this.started = false    
+        this.started = false   
+        this.hiding = false 
+        this.StartTime = 0
         this.radius = this.InitRadius
         this.center = this.InitCenter
 
@@ -132,6 +138,7 @@ export class Game {
         this.players = this.players.filter((v) => {
             if (v == player){
                 if (message) v.EmitPopup(message)
+                player.emit("end")
 
                 v.game = undefined
                 return false
