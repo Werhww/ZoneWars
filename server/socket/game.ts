@@ -40,7 +40,7 @@ export class Game {
         }, config.GameTickRate)
 
         this.ZoneLoop = setInterval(() => {
-            if (this.started && this.GameSettings.ZoneShrink){
+            if (this.started && this.GameSettings.ZoneShrink && !this.hiding){
                 this.ShrinkRadius(config.ZoneShrinkAmount)
             }
 
@@ -68,9 +68,9 @@ export class Game {
     StartGame(){
         this.started = true
         this.hiding = true
+
         setTimeout(() => {
             this.hiding = false
-            this.EmitGlobal("GameStart")
         }, this.GameSettings.HideTime)
     }
 
@@ -132,6 +132,7 @@ export class Game {
         this.players = this.players.filter((v) => {
             if (v == player){
                 if (message) v.EmitPopup(message)
+                player.emit("end")
 
                 v.game = undefined
                 return false

@@ -1,4 +1,4 @@
-import { GlobalDistanceMeters, Time } from "./utils";
+import { GlobalDistanceMeters, Time, UUID } from "./utils";
 import { GameSettings, GID, Vector2 } from "./types";
 import config from "./config"
 
@@ -6,8 +6,9 @@ import { Game, games } from "./game";
 
 
 import { Socket } from "socket.io";
+import { EventEmitter } from "events";
 
-export class Player {
+export class Player extends EventEmitter {
     game?: Game
 
     username:string = "guest"
@@ -23,7 +24,9 @@ export class Player {
 
     PlayerLoop: NodeJS.Timer
 
-    constructor(public socket:Socket){
+    constructor(public socket:Socket) {
+        super()
+
         this.PlayerLoop = setInterval(() => {
             const game = this.GetGame()
             if (!game) return
@@ -37,10 +40,16 @@ export class Player {
             }
         }, config.PlayerTickRate)
 
-        socket.on("disconnect", () => {
-            this.ClearPlayer()
-        })
+        this.AddSocketListeners(socket)
+    }
 
+    ReplaceSocket(socket:Socket){
+        this.socket.removeAllListeners()
+        this.AddSocketListeners(socket)
+        this.socket = socket
+    }   
+
+    AddSocketListeners(socket:Socket){
         socket.on("HostGame", this.HostGame.bind(this))
         socket.on("StartGame", this.StartGame.bind(this))
         socket.on("EndGame", this.EndGame.bind(this))
@@ -69,6 +78,8 @@ export class Player {
             outsideZoneStartTime: this.outsideZoneStartTime,
             position: this.position ?? {lon: 0, lat:0},
             eliminated: this.eliminated,
+
+            host: this.IsGameHost()
         }
     }
 
@@ -205,8 +216,9 @@ export class Player {
     }
 
 
-
     HostGame(username:string, settings:GameSettings, center:Vector2, radius:number){
+
+        console.log("hist")
         if (radius > config.MaxZoneRadius) {
             this.EmitPopup(config.messages.GameZoneToLarge)
             return
@@ -245,6 +257,7 @@ export class Player {
 
         this.ResetPlayer()
 
+        this.socket.emit("GameJoin")
         game.players.push(this)
     }
 
