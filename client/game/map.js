@@ -90,9 +90,9 @@ export class LeafletMap {
         this.ct.remove()
     }
 
-    CenterMap(){
-        const position = getLocation()
-        this.map.setView(new L.LatLng(position.longitude, position.latitude), 8);
+    async CenterMap(){
+        console.log(this.position)
+        this.map.setView(new L.LatLng(this.position.latitude, this.position.longitude), 14);
     }
 
 
@@ -100,14 +100,16 @@ export class LeafletMap {
         
     }
 
-    async init(id){
+    async init(elem){
         await GetPerms().catch(()=>{})
+        this.position = await getLocation()
+        
+        setInterval(async () => {
+            this.position = await getLocation()
+        }, 3000)
 
-        setInterval(() => {
-            
-        }, 2000)
 
-        this.map = L.map(id).setView([55, 55], 13)
+        this.map = L.map(elem).setView([55, 55], 13)
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png', {
             maxZoom: 19,
