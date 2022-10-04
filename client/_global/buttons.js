@@ -9,9 +9,16 @@ const creatGameMenu = document.getElementById('creatGameMenu')
 const creatGameMapPlacement = document.getElementById('creatGameMapPlacement')
 const creatGameSettings = document.getElementById('creatGameSettings')
 
+const joinGameMenu = document.getElementById('joinGame')
+
 //Button
+const backToMainScreen = document.getElementById('backToMainScreen')
 const mapback = document.getElementById('mapBack')
 const mapnext = document.getElementById('mapNext')
+const settingback = document.getElementById('back')
+
+
+//Creat Game
 
 creatGamebtn.addEventListener('click', ()=>{
     mainScreen.style.display = 'none'
@@ -32,6 +39,11 @@ function fetchHostName(){
     return false
 }
 
+backToMainScreen.addEventListener('click', ()=>{
+    mainScreen.style.display = 'flex'
+    creatGameMenu.style.display = 'none'
+})
+
 mapback.addEventListener('click', ()=>{
     creatGameMenu.style.display = 'flex'
     creatGameMapPlacement.style.display = 'none'
@@ -44,15 +56,21 @@ mapnext.addEventListener('click', ()=>{
 
 })
 
-function gameback(){
+settingback.addEventListener('click', ()=>{
     creatGameSettings.style.display = 'none'
     creatGameMapPlacement.style.display = 'flex'
-
-    return false
-}
+})
 
 function gameStart(){
-    window.location.href = "./game";
+    window.location.href = "/client/game";
 
     return false
 }
+
+
+//Join Game
+
+joinGamebtn.addEventListener('click', ()=>{
+    mainScreen.style.display = 'none'
+    joinGameMenu.style.display = 'flex'
+})

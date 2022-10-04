@@ -32,11 +32,15 @@
     </div>
 
     <div class="creatGame" id="creatGameMenu">
-        <p class="title">New Game</p>
+        <div class="creatGameTitel">
+            <p class="title leftTitle">New</p>
+            <p class="title rightTitle">Game</p>
+        </div>
         <div class="nameMenu">
             <form action="" id="hostNameForm" onsubmit="return fetchHostName()">
                 <input type="text" id="hostName" placeholder="User name">
                 <input type="submit" id="submitName" value="Next">
+                <p class="backToMainScreen" id="backToMainScreen">Back</p>
             </form>
         </div>
     </div>
@@ -56,7 +60,7 @@
     </div>
 
     <div class="creatGameSettings" id="creatGameSettings">
-        <form action="" onsubmit="return gamestart()" method="post">
+        <form action="" onsubmit="return gameStart()" method="post">
             <div class="htSet">
                 <div class="titlew">
                     <p class="ssText">Hide Time</p>
@@ -107,26 +111,23 @@
             </div>
 
             <div class="cgsSubmit"> 
-                <input class="back" type="submit" onclick="gameback()" name="back" value="Back">
+                <p class="back" id="back">Back</p>
                 <input class="start" type="submit" value="Start">
             </div>
         </form>
 
     </div>
 
-    <div class="joinGame">
-        <p class="title">Join Game</p>
-        <div>
-            <form action="">
-                <input type="text">
-                <input type="text">
-                <input type="submit">
-            </form>
+    <div class="joinGame" id="joinGame">
+        <div class="joinGameTitel">
+            <p class="title joinGameTitelLeft">Join</p>
+            <p class="title joinGameTitelRight">Game</p>
         </div>
-    </div>
-
-    <div class="settings">
-        <p class="title">Settings</p>
+        <form action="" onsubmit="" class="joinGameData">
+            <input type="text" class="joinGametext" placeholder="User Name">
+            <input type="text" class="joinGametext" placeholder="Game ID">
+            <input type="submit" id="joinGameSubmit">
+        </form>
     </div>
 </body>
 </html>
