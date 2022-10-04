@@ -46,17 +46,17 @@
         <div class="cgmpContent">
             <input type="range" class="mapSize" id="mapSize" min="10" max="1000" value="100">
             <img class="posIcon" id="onPosIcon" src="_assets/positionIcon.svg" alt="" >
-            <div class="backMenu">
+            <div class="backMenu" id="mapBack">
                 <p>Back</p>
             </div>
-            <div class="nextMenu">
+            <div class="nextMenu" id="mapNext">
                 <p>Next</p>
             </div>
         </div>
     </div>
 
-    <div class="creatGameSettings">
-        <form action="">
+    <div class="creatGameSettings" id="creatGameSettings">
+        <form action="" onsubmit="return gamestart()" method="post">
             <div class="htSet">
                 <div class="titlew">
                     <p class="ssText">Hide Time</p>
@@ -107,7 +107,7 @@
             </div>
 
             <div class="cgsSubmit"> 
-                <input class="back" type="submit" value="Back">
+                <input class="back" type="submit" onclick="gameback()" name="back" value="Back">
                 <input class="start" type="submit" value="Start">
             </div>
         </form>
