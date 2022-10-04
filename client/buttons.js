@@ -62,39 +62,48 @@ settingback.addEventListener('click', ()=>{
 })
 
 function gameStart(){
-    console.log()
 
-    if(document.getElementById('speedSlow').checked == 'true'){
-        shrinkOn = 'true'
-        speedShrink = '1'
-    }
-    if(document.getElementById('speedMedium').checked == 'true'){
-        shrinkOn = 'true'
-        speedShrink = '2'
-    }
-    if(document.getElementById('speedFast').checked == 'true'){
-        shrinkOn = 'true'
-        speedShrink = '2'
-    }
+    function getShrink(){
 
+        if(document.getElementById('speedSlow').checked == true){
+            var shrinkOn = true
+            var speedShrink = 1
+            return {shrinkOn, speedShrink}
+        }else if(document.getElementById('speedMedium').checked == true){
+            var shrinkOn = true
+            var speedShrink = 2
+            return {shrinkOn, speedShrink}
+        }else if(document.getElementById('speedFast').checked == true){
+            var shrinkOn = true
+            var speedShrink = 3
+            return {shrinkOn, speedShrink}
+        } else{
+            var shrinkOn = false
+            return {shrinkOn, speedShrink:0}
+        }
+    }
+    console.log(getShrink())
+
+    var zone = getShrink()
 
     const gameData = {
         HostGame: document.forms['hostNameForm']['hostName'].value,
         
-        HideTime: document.forms['gameSettings']['htTime'].value,
-        ZoneShrink: shrinkOn,
-        ShrinkSpeed: speedShrink,
+        HideTime: Number(document.forms['gameSettings']['htTime'].value),
+        ZoneShrink: zone.shrinkOn,
+        ShrinkSpeed: Number(zone.speedShrink),
         HeartBeatSensor: document.getElementById('heartBeat').checked,
 
 
-        lon: 10,
-        lat: 10,
+        lon: Number(document.mapCenter.lng),
+        lat: Number(document.mapCenter.lat),
+        radius: Number(document.circleRadius),
     }
 
+    console.log(gameData)
 
    return false
 }
-
 
 //Join Game
 
@@ -107,4 +116,3 @@ backToMainScreen2.addEventListener('click', ()=>{
     mainScreen.style.display = 'flex'
     joinGameMenu.style.display = 'none'
 })
-

@@ -5,6 +5,7 @@ const size = document.getElementById("mapSize")
 
 const submitName = document.getElementById('submitName')
 const onPosIcon = document.getElementById("onPosIcon")
+const mapNext = document.getElementById('mapNext')
 
 submitName.addEventListener('click', ()=>{
     map.init("mapPlacement").then(async () => {
@@ -23,5 +24,10 @@ submitName.addEventListener('click', ()=>{
         size.onchange = function () {
             map.SetZoneRadius(this.value)
         }   
+
+        mapNext.onclick = ()=>{
+            document.mapCenter = map.map.getCenter()
+            document.circleRadius = map.ct.getRadius()
+        }
     })  
 })

@@ -100,11 +100,11 @@
 }
 
 .leftTitle{
-    filter: drop-shadow(10px 4px 2px red);
+    filter: drop-shadow(10px 4px 2px blue);
 }
 
 .rightTitle{
-    filter: drop-shadow(10px 4px 2px blue);
+    filter: drop-shadow(10px 4px 2px red);
 }
 
 .nameMenu{
