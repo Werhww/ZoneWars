@@ -6,7 +6,7 @@ const settingbtn = document.getElementById('settingbtn')
 // Menus
 const mainScreen = document.getElementById('mainScreen')
 const creatGameMenu = document.getElementById('creatGameMenu')
-const creatGameMapPlacement = document.getElementById('')
+const creatGameMapPlacement = document.getElementById('creatGameMapPlacement')
 
 creatGamebtn.addEventListener('click', ()=>{
     mainScreen.style.display = 'none'
@@ -20,6 +20,11 @@ function fetchHostName(){
         return false;
     }
     console.log(userName)
+    
+    creatGameMenu.style.display = 'none'
+    creatGameMapPlacement.style.display = 'flex'
+
+
     return false
 }
 
