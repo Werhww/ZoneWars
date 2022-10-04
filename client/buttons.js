@@ -1,7 +1,6 @@
 //Main Screen Buttons
 const creatGamebtn = document.getElementById('creatGamebtn')
 const joinGamebtn = document.getElementById('joinGamebtn')
-const settingbtn = document.getElementById('settingbtn')
 
 // Menus
 const mainScreen = document.getElementById('mainScreen')
@@ -12,7 +11,8 @@ const creatGameSettings = document.getElementById('creatGameSettings')
 const joinGameMenu = document.getElementById('joinGame')
 
 //Button
-const backToMainScreen = document.getElementById('backToMainScreen')
+const backToMainScreen1 = document.getElementById('backToMainScreen1')
+const backToMainScreen2 = document.getElementById('backToMainScreen2')
 const mapback = document.getElementById('mapBack')
 const mapnext = document.getElementById('mapNext')
 const settingback = document.getElementById('back')
@@ -39,7 +39,7 @@ function fetchHostName(){
     return false
 }
 
-backToMainScreen.addEventListener('click', ()=>{
+backToMainScreen1.addEventListener('click', ()=>{
     mainScreen.style.display = 'flex'
     creatGameMenu.style.display = 'none'
 })
@@ -62,9 +62,37 @@ settingback.addEventListener('click', ()=>{
 })
 
 function gameStart(){
-    window.location.href = "/client/game";
+    console.log()
 
-    return false
+    if(document.getElementById('speedSlow').checked == 'true'){
+        shrinkOn = 'true'
+        speedShrink = '1'
+    }
+    if(document.getElementById('speedMedium').checked == 'true'){
+        shrinkOn = 'true'
+        speedShrink = '2'
+    }
+    if(document.getElementById('speedFast').checked == 'true'){
+        shrinkOn = 'true'
+        speedShrink = '2'
+    }
+
+
+    const gameData = {
+        HostGame: document.forms['hostNameForm']['hostName'].value,
+        
+        HideTime: document.forms['gameSettings']['htTime'].value,
+        ZoneShrink: shrinkOn,
+        ShrinkSpeed: speedShrink,
+        HeartBeatSensor: document.getElementById('heartBeat').checked,
+
+
+        lon: 10,
+        lat: 10,
+    }
+
+
+   return false
 }
 
 
@@ -74,3 +102,9 @@ joinGamebtn.addEventListener('click', ()=>{
     mainScreen.style.display = 'none'
     joinGameMenu.style.display = 'flex'
 })
+
+backToMainScreen2.addEventListener('click', ()=>{
+    mainScreen.style.display = 'flex'
+    joinGameMenu.style.display = 'none'
+})
+

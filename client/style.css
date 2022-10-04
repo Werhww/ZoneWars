@@ -24,8 +24,9 @@
 }
 
 .cjMenu{
-    margin-top: 6rem;
+    margin-top: 2rem;
     display: flex;
+    flex-direction: column;
     gap: 3rem;
     border: 2px solid rgb(45, 45, 45);
     border-radius: 6rem;
@@ -107,10 +108,9 @@
 }
 
 .nameMenu{
-    margin-top: 3rem;
+    margin-top: 2rem;
     border-radius: 6rem;
     padding: 3.5rem;
-    margin-top: 8rem;
     border: 2px solid rgb(45, 45, 45);
 }
 
@@ -484,7 +484,7 @@ input:checked + .checkbox {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #090909;
+    background-color: #0c0c0c;
     border: rgb(45, 45, 45) solid 2px;
     border-radius: 2rem;
     padding: 2rem;
@@ -498,11 +498,12 @@ input:checked + .checkbox {
     text-align: center;
     border-radius: 5rem;
     border: 2px solid rgb(45, 45, 45);
+    transition: 0.5s;
 }
 
 .joinGametext{
     width: 25rem;
-    height: 3rem;
+    height: 4rem;
 }
 
 .joinGametext:hover{
@@ -512,13 +513,29 @@ input:checked + .checkbox {
 #joinGameSubmit{
     font-size: 3rem;
     padding: 2rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-left: 5.5rem;
+    padding-right: 5.5rem;
+    font-family: 'Frijole';
+    transition: 0.5s;
 }
 
 #joinGameSubmit:hover{
     border: 2px solid lightblue;
 }
 
+.backToMainScreen2{
+    font-family: 'Frijole';
+    border-radius: 5rem;
+    font-size: 3rem;
+    padding: 2rem;
+    width: 16rem;
+    transition: 0.5s;
+    border: 2px solid rgb(45, 45, 45);
+    background-color: #0c0c0c;
+    text-align: center;
+}
 
-
+.backToMainScreen2:hover{
+    cursor: pointer;
+    border: 2px solid lightblue;
+}

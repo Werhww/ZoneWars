@@ -13,7 +13,7 @@
 
      <link rel="stylesheet" href="style.css">
      <link rel="stylesheet" href="_global/global.css">
-     <script src="_global/buttons.js" defer></script>
+     <script src="buttons.js" defer></script>
      <script src="index.js" defer></script>
      <script src="./select.js" type="module" defer></script>
     <title>Zone Warz</title>
@@ -27,7 +27,6 @@
         <div class="cjMenu">
             <div class="creatGamebtn" id="creatGamebtn"> <p>Creat Game</p> </div>
             <div class="joinGamebtn" id="joinGamebtn"> <p>Join Game</p> </div>
-            <div class="settingsbtn" id="settingbtn"> <p>Settings</p> </div>
         </div>
     </div>
 
@@ -40,7 +39,7 @@
             <form action="" id="hostNameForm" onsubmit="return fetchHostName()">
                 <input type="text" id="hostName" placeholder="User name">
                 <input type="submit" id="submitName" value="Next">
-                <p class="backToMainScreen" id="backToMainScreen">Back</p>
+                <p class="backToMainScreen" id="backToMainScreen1">Back</p>
             </form>
         </div>
     </div>
@@ -60,7 +59,7 @@
     </div>
 
     <div class="creatGameSettings" id="creatGameSettings">
-        <form action="" onsubmit="return gameStart()" method="post">
+        <form action="" onsubmit="return gameStart()" method="post" id="gameSettings">
             <div class="htSet">
                 <div class="titlew">
                     <p class="ssText">Hide Time</p>
@@ -71,8 +70,6 @@
                 <p id="hTime">00:00</p>
             </div>
             <div class="zsSet">
-                <div class="zsSetCheckbox">
-                </div>
                 <div class="ssSet">
                     <div class="titlew">
                         <p class="ssText">Shrink Speed</p>
@@ -106,7 +103,7 @@
                 <div class="titlew">
                     <p class="ssText">Heartbeat</p>
                 </div>
-                <input type="checkbox" checked > 
+                <input type="checkbox" id="heartBeat" checked > 
                 <span class="checkbox"></span>
             </div>
 
@@ -126,7 +123,8 @@
         <form action="" onsubmit="" class="joinGameData">
             <input type="text" class="joinGametext" placeholder="User Name">
             <input type="text" class="joinGametext" placeholder="Game ID">
-            <input type="submit" id="joinGameSubmit">
+            <input type="submit" id="joinGameSubmit" value="next">
+            <p class="backToMainScreen2" id="backToMainScreen2">Back</p>
         </form>
     </div>
 </body>
