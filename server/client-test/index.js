@@ -1,4 +1,34 @@
+function GetPerms(){
+    const geolocationOptions = {
+        enableHighAccuracy: true,
+        maximumAge: 10000,
+        timeout: 5000,
+    }
+
+    return new Promise((resolve, reject) => {
+          
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+            () => {
+                resolve()
+            },
+            () => {
+                alert("U need to enable geolocation!")
+                reject()
+            },
+            geolocationOptions
+            )
+        } else {
+            reject()
+            console.log("Browser does not support the Geolocation API")
+        }
+    })
+}
+
+
 const socket = io()
+
+
 
 function ready(socket) {
     socket.on("GameJoin", (data) => {
