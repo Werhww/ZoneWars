@@ -10,6 +10,29 @@ Funkjon som viser en spiller på kartet (lat, lon, username, eliminated = true/f
 Funkjon som piper eller vibrerer mobilen (freq)
 Funkjon som adder en spiller til lobbyen (username, host, seeker)
 
+
+
+
+
+    document.getElementById("host").onclick = () => {
+        console.log("emit")
+        socket.emit("HostGame", "powerkuu",
+        {
+            HideTime: 10000,
+            ZoneShrink: true,
+            ShrinkSpeed: 1,
+            HeartBeatSensor: false
+        },
+        
+        {
+            lon: 10,
+            lat: 10
+        }, 20)
+    }
+
+
+
+
 Server(kong håkon):
 
 Requests {

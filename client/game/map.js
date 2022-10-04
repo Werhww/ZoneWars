@@ -81,6 +81,7 @@ export class LeafletMap {
     }
 
     CreateSetZone(position, radius){
+        console.log(position)
         this.ct = this.CreateZone(position, radius)
     }
 
@@ -92,26 +93,33 @@ export class LeafletMap {
         this.ct.remove()
     }
 
-    CenterMap(){
-        this.map.setView(this.position, 14);
+    CenterMap(zoom = undefined){
+        this.map.setView(this.position, zoom);
     }
 
 
-    AddPlayerMarker(){
-        
+    AddPlayerMarker(username, position, type){
+        L.marker(position, {icon: new L.DivIcon({
+            className: '',
+            html: `
+            <div class="marker ${type}">
+            <span>${username}</span>
+            <img src="/client/_assets/icons/circle.svg"/>
+            </div>`
+        })}).addTo(this.map)
     }
 
     async init(elem){
         await GetPerms().catch(()=>{})
         this.position = await getLocation()
         
-        /*
+        
         setInterval(async () => {
             this.position = await getLocation()
-        }, 3000)*/
+        }, 4000)
 
         console.log(this.position)
-        this.map = L.map(elem).setView([this.position.lat, this.position.lng], 13)
+        this.map = L.map(elem).setView([this.position.lat, this.position.lng], 15)
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png', {
             maxZoom: 19,

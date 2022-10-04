@@ -24,7 +24,7 @@ export function GlobalDistanceMeters(
 }
 
 export function UUID(simple:boolean):string {
-    if (simple) return Math.floor(Math.random() * 100000000).toString()
+    if (simple) return Math.floor(Math.random() * 100000000).toString().padStart(9, "0")
     else return uuidv4()
 }
 
