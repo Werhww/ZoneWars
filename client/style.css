@@ -92,6 +92,20 @@
     align-items: center;
 }
 
+.creatGameTitel{
+    margin-top: 4rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.leftTitle{
+    filter: drop-shadow(10px 4px 2px red);
+}
+
+.rightTitle{
+    filter: drop-shadow(10px 4px 2px blue);
+}
+
 .nameMenu{
     margin-top: 3rem;
     border-radius: 6rem;
@@ -105,7 +119,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 #hostName{
@@ -114,15 +128,16 @@
     color: white;
     text-align: center;
     border-radius: 4rem;
-    font-size: 3rem;
-    width: 25rem;
+    font-size: 2rem;
+    width: 20rem;
+    height: 5rem;
 }
 
 #submitName{
     font-family: 'Frijole';
     border-radius: 5rem;
-    font-size: 2rem;
-    padding: 3rem;
+    font-size: 3rem;
+    padding: 2rem;
     width: 20rem;
     transition: 0.5s;
     border: 2px solid rgb(45, 45, 45);
@@ -130,9 +145,26 @@
     color: white;
 }
 
+.backToMainScreen{
+    font-family: 'Frijole';
+    border-radius: 5rem;
+    font-size: 3rem;
+    padding: 2rem;
+    width: 16rem;
+    transition: 0.5s;
+    border: 2px solid rgb(45, 45, 45);
+    background-color: #0c0c0c;
+}
+
+.backToMainScreen:hover{
+    border: 2px solid lightblue;
+}
+
 #submitName:hover{
     border: 2px solid lightblue;
 }
+
+
 
 /* Map Placement Menu*/
 
@@ -386,7 +418,7 @@ input:checked + .checkbox {
     justify-content: space-between;
 }
 
-.cgsSubmit input{
+.cgsSubmit input, .back{
     border: none;
     font-family: 'Frijole';
     color: white;
@@ -405,29 +437,13 @@ input:checked + .checkbox {
 
 }
 
-.cgsSubmit input.back {
+.back{
     border: red 2px solid;
 
 }
 
-.cgsSubmit input:hover{
+.cgsSubmit input:hover, .back{
     cursor: pointer;
-}
-
-/*Join Game Menu*/
-
-.joinGame{
-    display: none;
-}
-
-/*Settings Menu*/
-
-.settings{
-    display: none;
-}
-
-.none {
-
 }
 
 .slow {
@@ -439,4 +455,70 @@ input:checked + .checkbox {
 .fast {
     color: red
 }
+
+/*Join Game Menu*/
+
+.joinGame{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.joinGameTitel{
+    display: flex;
+    gap: 3rem;
+}
+
+.joinGameTitelLeft{
+    filter: drop-shadow(10px 4px 2px blue);
+}
+
+.joinGameTitelRight{
+    filter: drop-shadow(10px 4px 2px red);
+}
+
+.joinGameData{
+    margin-top: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #090909;
+    border: rgb(45, 45, 45) solid 2px;
+    border-radius: 2rem;
+    padding: 2rem;
+    gap: 3.5rem;
+}
+
+.joinGameData input{
+    font-size: 2rem;
+    background-color:#0c0c0c;
+    color: snow;
+    text-align: center;
+    border-radius: 5rem;
+    border: 2px solid rgb(45, 45, 45);
+}
+
+.joinGametext{
+    width: 25rem;
+    height: 3rem;
+}
+
+.joinGametext:hover{
+    border: 2px solid lightblue;
+}
+
+#joinGameSubmit{
+    font-size: 3rem;
+    padding: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+#joinGameSubmit:hover{
+    border: 2px solid lightblue;
+}
+
+
 
