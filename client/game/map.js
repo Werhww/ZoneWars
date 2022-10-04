@@ -29,10 +29,10 @@ function GetPerms(){
 function getLocation() {
     return new Promise((resolve, reject) => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((postion)=>{resolve(postion.coords)}, ()=>{},{
+            navigator.geolocation.getCurrentPosition((position)=>{resolve(new L.LatLng(position.coords.latitude, position.coords.longitude))}, ()=>{},{
                 enableHighAccuracy: true,
-                timeout: 7000,
-                maximumAge: 0
+                timeout: 2000,
+                maximumAge: 1000
             });
 
         } else {
@@ -62,19 +62,21 @@ export class LeafletMap {
     }
 
     CreateZone(position, radius){
-        return L.circle([position.longitude, position.latitude], {
+        return L.circle([position.lng, position.lat], {
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5,
             radius: radius
-        }).addTo(mapPlacement)
+        }).addTo(this.map)
     }
 
     CreateCenterZone(radius){
-        this.ct = this.CreateCenterZone(radius)
-        
+        const pos = this.map.getCenter()
+        this.ct = this.CreateZone(pos, radius)
+
         this.map.addEventListener('move', ()=>{
-            this.ct.setLatLng(this.map.getCenter())
+            const pos = this.map.getCenter()
+            this.ct.setLatLng(pos)
         })
     }
 
@@ -90,9 +92,8 @@ export class LeafletMap {
         this.ct.remove()
     }
 
-    async CenterMap(){
-        console.log(this.position)
-        this.map.setView(new L.LatLng(this.position.latitude, this.position.longitude), 14);
+    CenterMap(){
+        this.map.setView(this.position, 14);
     }
 
 
@@ -104,12 +105,13 @@ export class LeafletMap {
         await GetPerms().catch(()=>{})
         this.position = await getLocation()
         
+        /*
         setInterval(async () => {
             this.position = await getLocation()
-        }, 3000)
+        }, 3000)*/
 
-
-        this.map = L.map(elem).setView([55, 55], 13)
+        console.log(this.position)
+        this.map = L.map(elem).setView([this.position.lat, this.position.lng], 13)
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png', {
             maxZoom: 19,
