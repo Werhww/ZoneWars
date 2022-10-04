@@ -3,7 +3,7 @@
 /*Start Menu*/
 
 .mainScreen{
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -181,6 +181,7 @@
 /* Game Settings Menu*/
 
 .creatGameSettings{
+    display: none !important;
     position: absolute;
     top: 50%;
     left: 50%;

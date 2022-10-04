@@ -1,3 +1,4 @@
+//Gets position permission
 function GetPerms(){
     const geolocationOptions = {
         enableHighAccuracy: true,
@@ -24,6 +25,7 @@ function GetPerms(){
     })
 }
 
+//Function with gets players latitude and longitude
 function getLocation() {
     return new Promise((resolve, reject) => {
         if (navigator.geolocation) {
