@@ -13,25 +13,29 @@
 
      <link rel="stylesheet" href="style.css">
      <link rel="stylesheet" href="_global/global.css">
+     <script src="_global/buttons.js" defer></script>
      <script src="index.js" defer></script>
      <script src="./map.js" defer></script>
     <title>Zone Warz</title>
 </head>
 <body>
-    <div class="mainScreen">
-        <P class="title">Zone Warz</P>
+    <div class="mainScreen" id="mainScreen">
+        <div class="ttMenu">
+            <P class="title zwTitelLeft">Zone</P>
+            <p class="title zwTitelRight">Warz</p>
+        </div>
         <div class="cjMenu">
-            <div> <p>Creat Game</p> </div>
-            <div> <p>Join Game</p> </div>
-            <div> <p>Settings</p> </div>
+            <div class="creatGamebtn" id="creatGamebtn"> <p>Creat Game</p> </div>
+            <div class="joinGamebtn" id="joinGamebtn"> <p>Join Game</p> </div>
+            <div class="settingsbtn" id="settingbtn"> <p>Settings</p> </div>
         </div>
     </div>
 
-    <div class="creatGame">
+    <div class="creatGame" id="creatGameMenu">
         <p class="title">New Game</p>
         <div class="nameMenu">
             <form action="">
-                <input type="text" id="userName">
+                <input type="text" id="userName" placeholder="User name">
                 <input type="submit" id="submitName" value="Next">
             </form>
         </div>
@@ -49,7 +53,6 @@
     </div>
 
     <div class="creatGameSettings">
-
         <form action="">
             <div class="htSet">
                 <div class="titlew">
@@ -117,16 +120,6 @@
                 <input type="submit">
             </form>
         </div>
-    </div>
-
-    <div class="lobby">
-        <P class="title">Lobby</P>
-        <div id="playerList"></div>
-    </div>
-
-    <div class="game">
-        <div id="gameMap"></div>
-        <p>Leave Game</p>
     </div>
 
     <div class="settings">

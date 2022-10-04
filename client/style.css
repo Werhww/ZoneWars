@@ -1,4 +1,4 @@
-#gameMap {height: 50rem; width: 100%;}
+@import url('https://fonts.googleapis.com/css?family=Frijole');
 
 /*Start Menu*/
 
@@ -9,20 +9,45 @@
     align-items: center;
 }
 
-.cjMenu{
+.ttMenu{
+    margin-top: 4rem;
     display: flex;
-    flex-direction: column;
+    gap: 2rem;
+}
+
+.zwTitelLeft{
+    filter: drop-shadow(10px 4px 2px blue);
+}
+
+.zwTitelRight{
+    filter: drop-shadow(10px 4px 2px red);
+}
+
+.cjMenu{
+    margin-top: 6rem;
+    display: flex;
     gap: 3rem;
-    background-color: #1D1D1D;
+    border: 2px solid rgb(45, 45, 45);
     border-radius: 6rem;
     padding: 3.5rem;
 }
 
 .cjMenu div{
-    background-color: #00E0FF;
     width: 20rem;
     border-radius: 5rem;
     padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.creatGamebtn, .joinGamebtn, .settingsbtn{
+    transition: 0.5s;
+    border: 2px solid rgb(45, 45, 45);
+}
+
+.creatGamebtn:hover, .joinGamebtn:hover, .settingsbtn:hover{
+    border: 2px solid lightblue;
 }
 
 .cjMenu div p{
@@ -32,7 +57,7 @@
 
 .sMenu{
     gap: 3rem;
-    background-color: #1D1D1D;
+    background-color: #0c0c0c;
     margin-top: 3rem;
     border-radius: 6rem;
     padding: 3.5rem;
@@ -68,31 +93,45 @@
 }
 
 .nameMenu{
-    background-color: #1D1D1D;
     margin-top: 3rem;
     border-radius: 6rem;
     padding: 3.5rem;
     margin-top: 8rem;
+    border: 2px solid rgb(45, 45, 45);
 }
 
 .nameMenu form{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 3rem;
 }
 
 #userName{
-    border-radius: 5rem;
-    font-size: 1.5rem;
-    padding: 3rem;
-    width: 20rem;
+    background-color: #0c0c0c;
+    border: 2px solid rgb(45, 45, 45);
+    color: white;
+    text-align: center;
+    border-radius: 4rem;
+    font-size: 3rem;
+    width: 25rem;
 }
 
 #submitName{
-    background-color: #00E0FF;
+    font-family: 'Frijole';
     border-radius: 5rem;
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 3rem;
+    width: 20rem;
+    transition: 0.5s;
+    border: 2px solid rgb(45, 45, 45);
+    background-color: #0c0c0c;
+    color: white;
+}
+
+#submitName:hover{
+    border: 2px solid lightblue;
 }
 
 /* Map Placement Menu*/
@@ -261,9 +300,7 @@
 
 
 .ssText{
-
     font-size: 3rem !important;
-
     text-align: center;
 }
 
@@ -373,18 +410,6 @@ input:checked + .checkbox {
 /*Join Game Menu*/
 
 .joinGame{
-    display: none;
-}
-
-/*Lobby Menu*/
-
-.lobby{
-    display: none;
-}
-
-/*Game Menu*/
-
-.game{
     display: none;
 }
 
