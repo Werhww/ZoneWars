@@ -34,14 +34,14 @@
     <div class="creatGame" id="creatGameMenu">
         <p class="title">New Game</p>
         <div class="nameMenu">
-            <form action="">
-                <input type="text" id="userName" placeholder="User name">
+            <form action="" id="hostNameForm" onsubmit="return fetchHostName()">
+                <input type="text" id="hostName" placeholder="User name">
                 <input type="submit" id="submitName" value="Next">
             </form>
         </div>
     </div>
 
-    <div class="creatGameMapPlacement"> 
+    <div class="creatGameMapPlacement" id="creatGameMapPlacement"> 
         <div id="mapPlacement"></div>
         <div class="cgmpContent">
             <input type="range" class="mapSize" id="mapSize" min="10" max="1000" value="200">

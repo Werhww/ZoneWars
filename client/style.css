@@ -3,7 +3,7 @@
 /*Start Menu*/
 
 .mainScreen{
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -108,7 +108,7 @@
     gap: 3rem;
 }
 
-#userName{
+#hostName{
     background-color: #0c0c0c;
     border: 2px solid rgb(45, 45, 45);
     color: white;
