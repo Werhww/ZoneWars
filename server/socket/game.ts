@@ -100,7 +100,7 @@ export class Game {
         this.StartTime = 0
         this.radius = this.InitRadius
         this.center = this.InitCenter
-
+        
         this.EmitGlobal("GameReset")
         for (var player of this.players){
             player.ResetPlayer()
