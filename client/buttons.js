@@ -147,9 +147,9 @@ backToMainScreen2.addEventListener('click', ()=>{
 })
 
 const joinGameSubmit = document.getElementById("joinGameSubmit")
-const unameInput = document.getAnimations("joinGametext")
-const GIDinput = document.getAnimations("GIDinputs")
+const unameInput = document.getElementById("joinGametext")
+const GIDinput = document.getElementById("GID")
 
-joinGameMenu.onclick = () => {
-    socket.emit("GameJoin")
+joinGameSubmit.onclick = () => {
+    socket.emit("GameJoin", GIDinput.value, unameInput.value)
 }
