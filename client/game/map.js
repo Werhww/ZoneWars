@@ -113,7 +113,6 @@ export class LeafletMap {
     }
 
     async init(elem){
-        console.log("s")
         await GetPerms().catch(()=>{})
 
         this.position = await getLocation()

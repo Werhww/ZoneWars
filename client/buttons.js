@@ -27,7 +27,6 @@ function ready(socket){
         document.popup(msg)
     })
     socket.on("GameData", (data) => {
-        console.log(data)
         window.location = "/client/game"
     })
 }
@@ -54,7 +53,6 @@ function fetchHostName(){
         alert("Name must be filled out");
         return false;
     }
-    console.log(userName)
     
     creatGameMenu.style.display = 'none'
     creatGameMapPlacement.style.display = 'flex'
@@ -105,7 +103,6 @@ function gameStart(){
             return {shrinkOn, speedShrink:0}
         }
     }
-    console.log(getShrink())
 
     var zone = getShrink()
 
