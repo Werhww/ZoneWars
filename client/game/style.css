@@ -93,16 +93,21 @@
     visibility: hidden;
 }
 
-.stopgame {
-    padding: 1rem 1.3rem 1rem 1.3rem;
-    border: solid 2px red;
-    border-radius: 40px;
-
+.bottom {
     position: absolute;
     left: 10px;
     bottom: 10px;
 
+    display: flex;
+    gap: 1rem;
+
     z-index: 20000000;
+}
+
+.stopgame {
+    padding: 1rem 1.3rem 1rem 1.3rem;
+    border: solid 2px red;
+    border-radius: 40px;
 }
 
 .stopgame:hover {
