@@ -41,12 +41,13 @@ export class Game {
             this.CheckRemoveSelf()
         }, config.GameTickRate)
 
+        
         this.ZoneLoop = setInterval(() => {
             if (this.started && this.GameSettings.ZoneShrink && !this.hiding){
                 this.ShrinkRadius(config.ZoneShrinkAmount)
             }
-
-        }, config.ZoneShrinkInterval[GameSettings.ShrinkSpeed])
+            
+        }, config.ZoneShrinkInterval[GameSettings.ShrinkSpeed-1])
 
         if(!games[GID]) games[GID] = this
 
@@ -155,6 +156,7 @@ export class Game {
     }
 
     ShrinkRadius(magnetude:number){
+        console.log("oiiii")
         this.radius -= magnetude
     }
 }

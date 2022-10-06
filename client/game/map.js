@@ -85,7 +85,6 @@ export class LeafletMap {
     }
 
     CreateSetZone(position, radius){
-        console.log(position)
         this.ct = this.CreateZone(position, radius)
     }
 
@@ -114,15 +113,16 @@ export class LeafletMap {
     }
 
     async init(elem){
+        console.log("s")
         await GetPerms().catch(()=>{})
+
         this.position = await getLocation()
-        
-        
+
+
         setInterval(async () => {
             this.position = await getLocation()
         }, 4000)
 
-        console.log(this.position)
         this.map = L.map(elem).setView([this.position.lat, this.position.lng], 15)
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png', {
@@ -130,5 +130,6 @@ export class LeafletMap {
         }).addTo(this.map)
 
         document.getElementsByClassName('leaflet-control-attribution' )[0].style.display = 'none';
+
     }
 }

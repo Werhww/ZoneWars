@@ -19,10 +19,12 @@ const settingback = document.getElementById('back')
 
 
 //Creat Game
-const socket = io("http://localhost:3000")
+const url = "http://10.0.0.9:3000"
+const socket = io(url)
 
 function ready(socket){
     socket.on("GameData", (data) => {
+        console.log(data)
         window.location = "/client/game"
     })
 }
@@ -151,5 +153,5 @@ const unameInput = document.getElementById("joinGametext")
 const GIDinput = document.getElementById("GID")
 
 joinGameSubmit.onclick = () => {
-    socket.emit("GameJoin", GIDinput.value, unameInput.value)
+    socket.emit("JoinGame", GIDinput.value, unameInput.value)
 }

@@ -58,7 +58,7 @@ export class Player extends EventEmitter {
         socket.on("SetSeeker", this.SetSeeker.bind(this))
         
         socket.on("JoinGame", (GID:GID, username:string) => {
-            this.JoinGame(GID, username)
+            this.JoinGame(username, GID)
         })
         socket.on("LeaveGame", this.LeaveGame.bind(this))
 
@@ -250,6 +250,7 @@ export class Player extends EventEmitter {
 
     JoinGame(username:string, GID:GID){
         const game = games[GID]
+    
         if (!game) {
             this.EmitPopup(config.messages.GameNotFoud)
             return
