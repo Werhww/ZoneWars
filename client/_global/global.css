@@ -16,7 +16,7 @@ body, p{
 .title{
 
     text-align: center;
-    font-size: 8rem;
+    font-size: 7rem;
     color: snow;
 }
 
@@ -78,4 +78,21 @@ body, p{
     top: 50%;
     left: 50%;
     background-color: rgba(0, 0, 0, 0.800);
+}
+
+@media only screen and (max-width: 800px) {
+    html{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    html{
+        font-size: 10px;
+    }
+
+    .title{
+        font-size: 5rem;
+    }
+    
 }
