@@ -80,10 +80,18 @@
 }
 
 .lobby .player {
+    color: #00ff00;
     margin-top: 2rem;
 }
 
+.lobby .player:hover {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 .lobby .player p{
+    color: unset;
     font-size: 1.4rem;
 }
 

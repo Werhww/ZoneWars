@@ -15,6 +15,11 @@ const stopGame = document.getElementById("stopgame")
 
 const url = "http://10.0.0.9:3000"
 
+function PlayBeep() {
+    var audio = new Audio('beep.mp3')
+    audio.play()
+}
+
 function GameStart(socket, map, init){
     map.CenterMap()
 
@@ -33,6 +38,28 @@ const LobbyPlayerMap = {}
 const GamePlayerMap = {}
 
 function GameRunning(data, socket, map){
+    if (data.closest){
+        if(data.closest.distance < 5){
+            PlayBeep()
+
+            setTimeout(() => {
+                PlayBeep()
+            }, 250)
+            setTimeout(() => {
+                PlayBeep()
+            }, 500)
+        }
+        else if(data.closest.distance < 10){
+            PlayBeep()
+            setTimeout(() => {
+                PlayBeep()
+            }, 250)
+        }
+        else if(data.closest.distance < 20){
+            PlayBeep()
+        }
+    }
+
     function AddNew(player){
         var type = player.username == data.self.username ? "self" : "friend"
         type = player.eliminated ? "seeker" : type  
@@ -41,6 +68,7 @@ function GameRunning(data, socket, map){
 
     function RemovePlayer(player){
         GamePlayerMap[player.username].marker.removeFrom(map)
+        delete GamePlayerMap[player.username]
     }
 
     const players = data.players
@@ -76,42 +104,65 @@ function GameLobby(data, socket){
 
     function RemovePlayer(player){
         document.getElementById(`PUUID-${player.username}`).remove()
-        delete LobbyPlayerMap[username]
+        delete LobbyPlayerMap[player.username]
     }
 
     const players = data.players
     players.push(data.self)
 
     for (var player of players){
-        if (!LobbyPlayerMap[player.username]){
+        var rplayer = LobbyPlayerMap[player.username]
+
+        if (!rplayer){
             AddNew(player)
             LobbyPlayerMap[player.username] = player
+        } else {
+            rplayer.seeker = player.seeker
         }
     }
 
     for (var username in LobbyPlayerMap){
+        const player = LobbyPlayerMap[username]
+        const elem = document.getElementById(`PUUID-${player.username}`)
+        elem.style.color = player.seeker ? "#ff0000" : "#00ff00"
+
+        if (data.self.host){
+            elem.onclick = () => {
+                socket.emit("SetSeeker", player.username, !player.seeker)
+            }    
+        }
+
         if (players.filter((item) => username == item.username).length < 1){
-            RemovePlayer(LobbyPlayerMap[username])
+            RemovePlayer(player)
         }
     }
 }
 
 
 function ready(socket, map, init) { 
-    socket.on("popup", (msg) => {
-        console.log(msg)
-        document.popup(msg)
-    })
+    const eliminate = (msg) => {
+        document.popup(msg, true)
+    }
+
+    if (init.self.eliminated){
+        eliminate({
+            message: "You are eliminated."
+        })
+    }
+
+    socket.on("popup", document.popup)
 
     socket.on("eliminated", () => {
-        window.location.href = "/client"
+        eliminate({
+            message: "You are eliminated."
+        })
+    })
+
+    socket.on("GameEnd", () => {
+        window.location.href = "/client/"
     })
 
     document.getElementById("id").innerText = init.GID
-
-    socket.on("GameEnd", () => {
-        window.location.href = "/client"
-    })
 
     setInterval(() => {
         socket.emit("UpdatePosition", {
@@ -151,7 +202,6 @@ function ready(socket, map, init) {
 
     var n = !init.started
     socket.on("GameData", (data) => {
-
         if (data.started == true && n == false){
             game.style.visibility = "visible"
             lobby.style.display = "none"

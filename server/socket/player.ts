@@ -86,7 +86,7 @@ export class Player extends EventEmitter {
 
     GetClosestPlayer(){
         const game = this.GetGame()
-        if (!game) return false
+        if (!game) return
         if (!this.position) return 
 
         var closest:Player|undefined = undefined
@@ -135,7 +135,7 @@ export class Player extends EventEmitter {
 
         const HiddenPlayers = Object.values(game.players).map(v => {
             if (v === this) return
-            if (this.seeker != v.seeker) return
+            if (game.started && this.seeker != v.seeker) return
             return v.GetSafeVersion()
 
         }).filter((v) => {if (v) return true})
@@ -208,13 +208,10 @@ export class Player extends EventEmitter {
         )  
 
         if (!this.eliminated && state){
-            this.EmitPopup("You are eliminated")
+            //this.EmitPopup("You are eliminated")
             // ! Temporary
+            this.socket.emit("eliminated")
 
-            setTimeout(() => {
-                this.LeaveGame()
-                this.emit("eliminated")
-            }, 5000)
         }
 
         this.eliminated = state
@@ -303,7 +300,7 @@ export class Player extends EventEmitter {
         const game = this.GetGame()
         if (!game || !this.IsGameHost()) return
         const player = game.GetPlayerByUsername(username)
-        if (!player || username !== this.username) return
+        if (!player) return
 
         player.seeker = state
     }
