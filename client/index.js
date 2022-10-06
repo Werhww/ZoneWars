@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 const h = document.getElementById("hTime")
 function showVal(val){
     if (val < 200000){

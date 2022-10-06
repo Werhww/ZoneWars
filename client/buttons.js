@@ -19,6 +19,24 @@ const settingback = document.getElementById('back')
 
 
 //Creat Game
+const socket = io("http://localhost:3000")
+
+function ready(socket){
+    socket.on("GameData", (data) => {
+        window.location = "/client/game"
+    })
+}
+
+socket.on('connect', () => {
+    const session = localStorage.getItem("session")
+    socket.emit("session", session)
+
+    socket.on("session", (session) => {
+        localStorage.setItem("session", session)
+
+        ready(socket)
+    })
+})
 
 creatGamebtn.addEventListener('click', ()=>{
     mainScreen.style.display = 'none'
@@ -100,7 +118,18 @@ function gameStart(){
         radius: Number(document.circleRadius),
     }
 
-    console.log(gameData)
+    socket.emit("HostGame", gameData.HostGame,
+    {
+        HideTime: gameData.HideTime,
+        ZoneShrink: gameData.ZoneShrink,
+        ShrinkSpeed: gameData.ShrinkSpeed,
+        HeartBeatSensor: gameData.HeartBeatSensor
+    },
+    
+    {
+        lon: gameData.lon,
+        lat: gameData.lat
+    }, gameData.radius)
 
    return false
 }
@@ -116,3 +145,11 @@ backToMainScreen2.addEventListener('click', ()=>{
     mainScreen.style.display = 'flex'
     joinGameMenu.style.display = 'none'
 })
+
+const joinGameSubmit = document.getElementById("joinGameSubmit")
+const unameInput = document.getAnimations("joinGametext")
+const GIDinput = document.getAnimations("GIDinputs")
+
+joinGameMenu.onclick = () => {
+    socket.emit("GameJoin")
+}

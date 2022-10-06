@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" defer></script>
+    
     <link rel="stylesheet" href="../_global/global.css">
     <link rel="stylesheet" href="style.css">
 
@@ -12,13 +15,28 @@
     <title>Game</title>
 </head>
 <body>
-    <div class="lobby">
-        <P class="title">Lobby</P>
-        <div id="playerList"></div>
+    <div class="lobby" id="lobby">
+        <div class="head">
+            <h3>Lobby</h3>
+
+            <div class="info">
+                <img src="https://no.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/basic_market/generator/dist/generator/assets/images/websiteQRCode_noFrame.png" alt="">
+                <p id="id"></p>
+            </div>
+
+            <div class="actions">
+                <p class="leave" id="leave">Leave</p>
+                <p class="start" id="start">Start</p>
+            </div>
+        </div>
+
+        <div id="playerList" class="playerList">
+        </div>
     </div>
 
-    <div class="game">
+    <div class="game" id="game">
         <div id="gameMap"></div>
+        <p id="stopgame" class="stopgame">Stop</p>
     </div>
 
     

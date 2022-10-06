@@ -65,7 +65,7 @@ export class LeafletMap {
         return L.circle([position.lng, position.lat], {
             color: 'red',
             fillColor: '#f03',
-            fillOpacity: 0.5,
+            fillOpacity: 0.05,
             radius: radius
         }).addTo(this.map)
     }

@@ -1,4 +1,6 @@
 import express from "express"
+import cors from "cors"
+
 import * as http from "http"
 import * as socket from "socket.io"
 
@@ -8,8 +10,14 @@ import { Player } from "./socket/player"
 import { UUID } from "./socket/utils"
 
 const app = express()
-const server = http.createServer(app);
-const io = new socket.Server(server);
+const server = http.createServer(app)
+const io = new socket.Server(server, {
+  cors: {
+    origin: "*",
+  }
+})
+
+app.use(cors())
 
 app.use(express.static(join(__dirname, "client-test")))
 

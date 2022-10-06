@@ -53,6 +53,7 @@ export class Player extends EventEmitter {
         socket.on("HostGame", this.HostGame.bind(this))
         socket.on("StartGame", this.StartGame.bind(this))
         socket.on("EndGame", this.EndGame.bind(this))
+        socket.on("ResetGame", this.ResetGame.bind(this))
         socket.on("KickPlayer", this.KickPlayer.bind(this))
         socket.on("SetSeeker", this.SetSeeker.bind(this))
         
@@ -238,6 +239,13 @@ export class Player extends EventEmitter {
         if (!game || !this.IsGameHost()) return
 
         game.EndGame()
+    }
+
+    ResetGame(){
+        const game = this.GetGame()
+        if (!game || !this.IsGameHost()) return
+
+        game.ResetGame()
     }
 
     JoinGame(username:string, GID:GID){
