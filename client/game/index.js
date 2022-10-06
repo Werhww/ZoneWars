@@ -2,41 +2,59 @@ import { LeafletMap } from "./map.js";
 
 const map = new LeafletMap()
 
+const leaveGame = document.getElementById("leave2")
+const playersLobby = document.getElementById("playerList")
+
+const startButton = document.getElementById("start")
+const leaveLobby = document.getElementById("leave")
+
+const lobby = document.getElementById("lobby")
+const game = document.getElementById("game")
+
+const stopGame = document.getElementById("stopgame")
+
+
 function GameStart(socket, map){
-    
+    map.CenterMap()
 }
 
-function ready(socket, map, init) {
-    const playersLobby = document.getElementById("playerList")
-    const startButton = document.getElementById("start")
-    const leaveGame = document.getElementById("leave")
+function GameEnd(socket, map){
 
-    const lobby = document.getElementById("lobby")
-    const game = document.getElementById("game")
+}
 
-    const stopGame = document.getElementById("stopgame")
+const playerMap = {}
 
-    document.getElementById("id").innerText = init.GID
-
-    const playerMap = {}
-
-    startButton.onclick = () => {
-        socket.emit("StartGame")
+function GameRunning(data, socket, map){
+    function AddNew(player){
+        const type = player.username == data.self.username ? "self" : "friend"
+        playerMap[player.username].marker =  map.AddPlayerMarker(player.username, map.ConvertPosition(player.position), type)
     }
 
-    stopGame.onclick = () => {
-        socket.emit("ResetGame")
+    function RemovePlayer(player){
+
     }
 
-    leaveGame.onclick = () => {
-        if (init.self.host){
-            socket.emit("EndGame")
+    const players = data.players
+    players.push(data.self)
+
+    for (var player of players){
+        if (!playerMap[player.username]){
+            AddNew(player)
+            playerMap[player.username] = player
+            continue
         }
-        socket.emit("LeaveGame")
-        console.log("jasja")
-        window.location.href = "/client/"
+
+        playerMap[player.username].marker.setLatLng(map.ConvertPosition(playerMap[player.username].position))
     }
 
+    for (var username in playerMap){
+        if (players.filter((item) => username == item.username).length < 1){
+            RemovePlayer(playerMap[username])
+        }
+    }
+}
+
+function GameLobby(data, socket){
     function AddNew(player){
         playersLobby.innerHTML += `<div class="player" id="${player.username}">
             <p>${player.username}</p>
@@ -47,39 +65,90 @@ function ready(socket, map, init) {
         playersLobby.getElementById(player.username).remove()
     }
 
+    const playerMap = {}
+
+    const players = data.players
+    players.push(data.self)
+
+    for (var player of players){
+        if (!playerMap[player.username]){
+            AddNew(player)
+            playerMap[player.username] = player
+        }
+    }
+
+    for (var username in playerMap){
+        if (players.filter((item) => username == item.username).length < 1){
+            RemovePlayer(playerMap[username])
+        }
+    }
+}
+
+
+function ready(socket, map, init) {
+    document.getElementById("id").innerText = init.GID
+
+    setInterval(() => {
+        socket.emit("UpdatePosition", {
+            lon: map.position.lng,
+            lat: map.position.lat
+        })
+    }, 5000)
+
+    startButton.onclick = () => {
+        socket.emit("StartGame")
+    }
+
+    stopGame.onclick = () => {
+        socket.emit("ResetGame")
+    }
+
+    leaveLobby.onclick = () => {
+        if (init.self.host){
+            socket.emit("EndGame")
+        }
+        socket.emit("LeaveGame")
+        window.location.href = "/client/"
+    }
+
+    leaveGame.onclick = () => {
+        socket.emit("LeaveGame")
+        window.location.href = "/client/"
+    }
+
+    if (init.self.host) {
+        leaveGame.style.display = "none"
+        stopGame.style.display = "flex"
+    } else {
+        stopGame.style.display = "none"
+        leaveGame.style.display = "flex"
+    } 
+
+    var n = !init.started
     socket.on("GameData", (data) => {
-        console.log(data)
-        const players = data.players
-        players.push(data.self)
+        if (data.started) {
+            GameRunning(data, socket, map)
+        } else {
+            GameLobby(data, socket)
+        }
 
-
-        if (data.started == true){
+        if (data.started == true && n == false){
             game.style.visibility = "visible"
             lobby.style.display = "none"
 
+            n = true
             GameStart(socket, map)
         }
-
-        if (data.started == false){
+        else if (data.started == false && n == true){
+            n = false
             lobby.style.display = "flex"
             game.style.visibility = "hidden"
+
+            GameEnd(socket, map)
         }
 
         if (data.self.host == true){
             startButton.style.display = "flex"
-        }
-
-        for (var player of players){
-            if (!playerMap[player.username]){
-                AddNew(player)
-                playerMap[player.username] = player
-            }
-        }
-
-        for (var username in playerMap){
-            if (players.filter((item) => username == item.username).length < 1){
-                RemovePlayer(playerMap[username])
-            }
         }
     })
 }

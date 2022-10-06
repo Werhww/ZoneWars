@@ -61,6 +61,10 @@ export class LeafletMap {
     constructor(){
     }
 
+    ConvertPosition(position){
+        return new L.LatLng(position.lat, position.lon)
+    }
+
     CreateZone(position, radius){
         return L.circle([position.lng, position.lat], {
             color: 'red',
@@ -99,7 +103,7 @@ export class LeafletMap {
 
 
     AddPlayerMarker(username, position, type){
-        L.marker(position, {icon: new L.DivIcon({
+        return L.marker(position, {icon: new L.DivIcon({
             className: '',
             html: `
             <div class="marker ${type}">
