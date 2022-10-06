@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"></script>
+    <script type="module" src="./index.js" defer></script>
     <title>Game</title>
 </head>
 <body>
@@ -42,7 +43,11 @@
         </div>
     </div>
 
-    
-    <script type="module" src="./index.js"></script>
+    <div class="popup" id="popup">
+        <p class="popup-titel">Message</p>
+        <img class="popup-exit" id="popup-exit" src="_assets/popup-x.svg" alt="">
+        <p class="popup-text" id="popup-text"></p>
+    </div>
+    <div class="popup-blur" id="popup-blur"></div>
 </body>
 </html>
