@@ -34,8 +34,8 @@ const GamePlayerMap = {}
 
 function GameRunning(data, socket, map){
     function AddNew(player){
-        const type = player.username == data.self.username ? "self" : "friend"
-
+        var type = player.username == data.self.username ? "self" : "friend"
+        type = player.eliminated ? "seeker" : type  
         GamePlayerMap[player.username].marker = map.AddPlayerMarker(player.username, map.ConvertPosition(player.position), type)
     }
 
@@ -97,7 +97,16 @@ function GameLobby(data, socket){
 }
 
 
-function ready(socket, map, init) {
+function ready(socket, map, init) { 
+    socket.on("popup", (msg) => {
+        console.log(msg)
+        document.popup(msg)
+    })
+
+    socket.on("eliminated", () => {
+        window.location.href = "/client"
+    })
+
     document.getElementById("id").innerText = init.GID
 
     socket.on("GameEnd", () => {
@@ -185,7 +194,7 @@ map.init("gameMap").then(() => {
         socket.on("session", (session) => {
             console.log("connect")
             localStorage.setItem("session", session)
-            
+
             socket.once("GameData", (data) => ready(socket, map, data))
         })
     })

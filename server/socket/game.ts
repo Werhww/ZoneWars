@@ -156,7 +156,6 @@ export class Game {
     }
 
     ShrinkRadius(magnetude:number){
-        console.log("oiiii")
         this.radius -= magnetude
     }
 }

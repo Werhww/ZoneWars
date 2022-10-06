@@ -34,7 +34,7 @@ body, p{
     gap: 1.5rem; 
     padding: 4rem;
     border-radius: 3em;
-    z-index: 100;
+    z-index: 120;
 
     background-color: #0c0c0c;
     border: rgb(45, 45, 45) solid 2px;
@@ -59,7 +59,7 @@ body, p{
     top: 25%;
     left: 92%;
 
-    z-index: 16;  
+    z-index: 118;  
 }
 
 .popup-exit:hover{
@@ -69,7 +69,7 @@ body, p{
 .popup-blur{
     display: none;
 
-    z-index: 99;
+    z-index: 119;
     height: 100vh;
     width: 100vw;
 

@@ -207,6 +207,16 @@ export class Player extends EventEmitter {
             > config.ZoneEliminationTime
         )  
 
+        if (!this.eliminated && state){
+            this.EmitPopup("You are eliminated")
+            // ! Temporary
+
+            setTimeout(() => {
+                this.LeaveGame()
+                this.emit("eliminated")
+            }, 5000)
+        }
+
         this.eliminated = state
     }
 
@@ -257,6 +267,10 @@ export class Player extends EventEmitter {
         }
         if (game.GetPlayerByUsername(username)) {
             this.EmitPopup(config.messages.UsernameTaken)
+            return
+        }
+        if (game.started){
+            this.EmitPopup(config.messages.GameInStarted)
             return
         }
         

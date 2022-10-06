@@ -20,12 +20,14 @@ const io = new socket.Server(server, {
 app.use(cors())
 
 app.use(express.static(join(__dirname, "client-test")))
-  
+
 const sessions:{
   [session:string]: Player
 } = {}
 
 io.on('connection', (socket) => {
+  socket.on("error", (err) => err)
+
   socket.on("session", (session?:string) => {
     var player:Player
 

@@ -23,6 +23,9 @@ const url = "http://10.0.0.9:3000"
 const socket = io(url)
 
 function ready(socket){
+    socket.on("popup", (msg) => {
+        document.popup(msg)
+    })
     socket.on("GameData", (data) => {
         console.log(data)
         window.location = "/client/game"

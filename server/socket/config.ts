@@ -27,6 +27,7 @@ export default {
         GameZoneToLarge: "Max zone radius is 1000M",
 
         GameEnded: "Game has ended. If there is any hiders left thay won.",
-        GameNotFoud: "Game not found."
+        GameNotFoud: "Game not found.",
+        GameInStarted: "Game is started."
     }
 }
