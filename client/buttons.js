@@ -19,7 +19,7 @@ const settingback = document.getElementById('back')
 
 
 //Creat Game
-const url = "http://server.zonewarz.com"
+const url = "https://server.zonewarz.com"
 const socket = io(url)
 
 function ready(socket){

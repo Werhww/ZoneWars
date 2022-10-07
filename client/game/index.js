@@ -22,7 +22,7 @@ setInterval(() => {
     }
 }, 1000)
 
-const url = "http://server.zonewarz.com"
+const url = "https://server.zonewarz.com"
 
 function PlayBeep() {
     var audio = new Audio('./beep.mp3')
@@ -32,7 +32,7 @@ function PlayBeep() {
 function GameStart(socket, map, init){
     map.CenterMap()
 
-    // ! What is  daFAKewakfaklnLKJFeklj
+    // ! What is this? Most likely a bug with leaflet!
     map.CreateSetZone(map.ConvertPosition({
         lat: init.center.lon,
         lon: init.center.lat

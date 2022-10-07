@@ -1,5 +1,5 @@
 export default {
-    ZoneEliminationTime: 10000, //30000
+    ZoneEliminationTime: 30000, //30000
     PositionTimeout: 60000,
     
     ZoneShrinkInterval: [
@@ -13,7 +13,7 @@ export default {
     MaxZoneRadius: 1000,
 
     // One Hour
-    MaxGameDuration: 3_600_000 * 1,
+    MaxGameDuration: 3_600_000 * 1.5,
 
     GameTickRate: 1000,
     PlayerTickRate: 1000,
