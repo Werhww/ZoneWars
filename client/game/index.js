@@ -1,4 +1,4 @@
-import { LeafletMap } from "./map.js";  
+import { LeafletMap, escape } from "./map.js";  
 
 const map = new LeafletMap()
 
@@ -12,6 +12,15 @@ const lobby = document.getElementById("lobby")
 const game = document.getElementById("game")
 
 const stopGame = document.getElementById("stopgame")
+
+const closename = document.getElementById("closename")
+
+var lastUpdate = new Date().getTime()
+setInterval(() => {
+    if (new Date().getTime() - lastUpdate > 10000){
+        window.location.href = "/"
+    }
+}, 1000)
 
 const url = "http://server.zonewarz.com"
 
@@ -38,8 +47,9 @@ const LobbyPlayerMap = {}
 const GamePlayerMap = {}
 
 function GameRunning(data, socket, map){
-    console.log(data.closest)
     if (data.closest){
+        closename.innerText = data.closest.player
+
         if(data.closest.distance < 5){
             PlayBeep()
 
@@ -68,7 +78,7 @@ function GameRunning(data, socket, map){
     }
 
     function RemovePlayer(player){
-        //GamePlayerMap[player.username].marker.removeFrom(map)
+        map.removeLayer(player.marker)
         delete GamePlayerMap[player.username]
     }
 
@@ -98,13 +108,13 @@ function GameRunning(data, socket, map){
 
 function GameLobby(data, socket){
     function AddNew(player){
-        playersLobby.innerHTML += `<div class="player" id="PUUID-${player.username}">
-            <p>${player.username}</p>
+        playersLobby.innerHTML += `<div class="player" id="PUUID-${escape(player.username)}">
+            <p>${escape(player.username)}</p>
         </div>`
     }
 
     function RemovePlayer(player){
-        document.getElementById(`PUUID-${player.username}`).remove()
+        document.getElementById(`PUUID-${escape(player.username)}`).remove()
         delete LobbyPlayerMap[player.username]
     }
 
@@ -124,7 +134,7 @@ function GameLobby(data, socket){
 
     for (var username in LobbyPlayerMap){
         const player = LobbyPlayerMap[username]
-        const elem = document.getElementById(`PUUID-${player.username}`)
+        const elem = document.getElementById(`PUUID-${escape(player.username)}`)
         elem.style.color = player.seeker ? "#ff0000" : "#00ff00"
 
         if (data.self.host){
@@ -203,6 +213,8 @@ function ready(socket, map, init) {
 
     var n = !init.started
     socket.on("GameData", (data) => {
+        lastUpdate = new Date().getTime()
+
         if (data.started == true && n == false){
             game.style.visibility = "visible"
             lobby.style.display = "none"
