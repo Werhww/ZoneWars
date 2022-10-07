@@ -25,7 +25,7 @@ setInterval(() => {
 const url = "https://server.zonewarz.com"
 
 function PlayBeep() {
-    var audio = new Audio('/_assets/sounds/beep.mp3')
+    var audio = new Audio('/assets/sounds/beep.mp3')
     audio.play()
 }
 
