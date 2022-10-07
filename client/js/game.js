@@ -48,7 +48,7 @@ const GamePlayerMap = {}
 
 function GameRunning(data, socket, map){
     if (data.closest){
-        closename.innerText = data.closest.player
+        //closename.innerText = data.closest.player
 
         if(data.closest.distance < 5){
             PlayBeep()
