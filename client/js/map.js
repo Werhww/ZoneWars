@@ -1,45 +1,37 @@
 //Gets position permission
-function GetPerms(){
-    const geolocationOptions = {
+const geolocationOptions = {
+    enableHighAccuracy: true,
+    maximumAge: 10000,
+    timeout: 5000,
+}
+
+//Function with gets players latitude and longitude
+function getLocation() {
+    const options = {
         enableHighAccuracy: true,
-        maximumAge: 10000,
-        timeout: 5000,
+        timeout: 10000,
+        maximumWait: 10000,     
+        maximumAge: 0,          
+        desiredAccuracy: 5,
     }
+
     return new Promise((resolve, reject) => {
-          
         if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(
-            () => {
-                resolve()
-            },
-            () => {
-                alert("U need to enable geolocation!")
-                reject()
-            },
-            geolocationOptions
-            )
+            geolocator.locate(options, function (err, location) {
+                if (err) return reject(err)
+                resolve({
+                    lat: location.coords.latitude,
+                    lng: location.coords.longitude
+                })
+            })
         } else {
-            reject()
+            reject("Browser does not support the Geolocation API")
             console.log("Browser does not support the Geolocation API")
         }
     })
 }
 
-//Function with gets players latitude and longitude
-function getLocation() {
-    return new Promise((resolve, reject) => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position)=>{resolve(new L.LatLng(position.coords.latitude, position.coords.longitude))}, ()=>{},{
-                enableHighAccuracy: true,
-                timeout: 2000,
-                maximumAge: 1000
-            });
 
-        } else {
-            reject()
-        }
-    })
-}
 
 export function escape(unsafe){
     return unsafe
@@ -124,13 +116,10 @@ export class LeafletMap {
     }
 
     async init(elem){
-        await GetPerms().catch(()=>{})
-
-        this.position = await getLocation()
-
+        this.position = await getLocation().catch(()=>{})
 
         setInterval(async () => {
-            this.position = await getLocation()
+            getLocation().then((position) => {this.position = position}).catch(console.error)
         }, 4000)
 
         this.map = L.map(elem).setView([this.position.lat, this.position.lng], 15)
