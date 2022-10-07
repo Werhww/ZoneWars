@@ -107,7 +107,7 @@ export class LeafletMap {
             html: `
             <div class="marker ${type}">
             <span>${username}</span>
-            <img src="/client/_assets/icons/circle.svg"/>
+            <img src="/_assets/icons/circle.svg"/>
             </div>`
         })}).addTo(this.map)
     }

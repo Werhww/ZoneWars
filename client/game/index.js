@@ -13,7 +13,7 @@ const game = document.getElementById("game")
 
 const stopGame = document.getElementById("stopgame")
 
-const url = "http://10.111.49.239:3000"
+const url = "http://server.zonewarz.com"
 
 function PlayBeep() {
     var audio = new Audio('./beep.mp3')
@@ -159,7 +159,7 @@ function ready(socket, map, init) {
     })
 
     socket.on("GameEnd", () => {
-        window.location.href = "/client/"
+        window.location.href = "/"
     })
 
     document.getElementById("id").innerText = init.GID
@@ -184,12 +184,12 @@ function ready(socket, map, init) {
             socket.emit("EndGame")
         }
         socket.emit("LeaveGame")
-        window.location.href = "/client/"
+        window.location.href = "/"
     }
 
     leaveGame.onclick = () => {
         socket.emit("LeaveGame")
-        window.location.href = "/client/"
+        window.location.href = "/"
     }
 
     if (init.self.host) {
