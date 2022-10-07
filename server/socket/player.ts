@@ -94,7 +94,7 @@ export class Player extends EventEmitter {
 
 
         for (var player of game.players){
-            if (player.seeker || !player.position) continue
+            if (player.seeker || !player.position || player.eliminated) continue
 
             const dis = GlobalDistanceMeters(
                 this.position.lat,

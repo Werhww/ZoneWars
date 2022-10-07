@@ -24,9 +24,9 @@ setInterval(() => {
 
 const url = "https://server.zonewarz.com"
 
+var audio = new Audio('/assets/sounds/beep.mp3')
 function PlayBeep() {
-    var audio = new Audio('/assets/sounds/beep.mp3')
-    audio.play()
+    audio.play().catch(()=>{})
 }
 
 function GameStart(socket, map, init){
@@ -37,11 +37,31 @@ function GameStart(socket, map, init){
         lat: init.center.lon,
         lon: init.center.lat
     }), init.radius)
+
+
+    function WaitUntilClick(ready){
+        document.popup({
+            message: "Click anywhere!"
+        })
+        document.onclick = () => {
+            ready()
+            document.onclick = () => {}
+        }
+    }
+
+    WaitUntilClick(()=>{
+        PlayBeep()
+    })
+    
 }
 
 function GameEnd(socket, map){
+    map.RemoveZone()
 
-}
+    for (var marker of document.getElementsByClassName("leaflet-marker-icon")){
+        marker.remove()
+    }
+}   
 
 const LobbyPlayerMap = {}
 const GamePlayerMap = {}
@@ -77,9 +97,10 @@ function GameRunning(data, socket, map){
         GamePlayerMap[player.username].marker = map.AddPlayerMarker(player.username, map.ConvertPosition(player.position), type)
     }
 
-    function RemovePlayer(player){
-        map.removeLayer(player.marker)
+    function RemovePlayer(player, elem){
+        console.log("hello")
         delete GamePlayerMap[player.username]
+        if (elem) elem.parentElement.remove()
     }
 
     const players = data.players
@@ -93,11 +114,20 @@ function GameRunning(data, socket, map){
         }
 
         GamePlayerMap[player.username].marker.setLatLng(map.ConvertPosition(player.position))
+        GamePlayerMap[player.username].eliminated = player.eliminated
     }
 
     for (var username in GamePlayerMap){
+        const marker = document.getElementById(`MUUID-${escape(username)}`)
+
         if (players.filter((item) => username == item.username).length < 1){
-            RemovePlayer(GamePlayerMap[username])
+            RemovePlayer(GamePlayerMap[username], marker)
+        }
+        
+        if (GamePlayerMap[username].eliminated) {
+            if (!marker || marker.classList.contains("seeker")) continue
+            marker.classList.remove("friend", "self")
+            marker.classList.add("seeker")
         }
     }
 
@@ -114,7 +144,6 @@ function GameLobby(data, socket){
     }
 
     function RemovePlayer(player){
-        document.getElementById(`PUUID-${escape(player.username)}`).remove()
         delete LobbyPlayerMap[player.username]
     }
 

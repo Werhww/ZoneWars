@@ -102,7 +102,9 @@ export class LeafletMap {
     }
 
     RemoveZone(){
+        if (this.ct)
         this.ct.remove()
+        this.ct = undefined
     }
 
     CenterMap(zoom = undefined){
@@ -114,7 +116,7 @@ export class LeafletMap {
         return L.marker(position, {icon: new L.DivIcon({
             className: '',
             html: `
-            <div class="marker ${type}">
+            <div class="marker ${type}" id="MUUID-${escape(username)}">
             <span>${escape(username)}</span>
             <img src="/assets/icons/circle.svg"/>
             </div>`
