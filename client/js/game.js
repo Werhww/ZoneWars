@@ -98,7 +98,7 @@ function GameRunning(data, socket, map){
     }
 
     function RemovePlayer(player, elem){
-        console.log("hello")
+
         delete GamePlayerMap[player.username]
         if (elem) elem.parentElement.remove()
     }
