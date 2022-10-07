@@ -3,9 +3,9 @@ export default {
     PositionTimeout: 60000,
     
     ZoneShrinkInterval: [
-        5000,
-        4000,
-        3000
+        2000,
+        1000,
+        500
     ],
 
     ZoneShrinkAmount: 0.1,

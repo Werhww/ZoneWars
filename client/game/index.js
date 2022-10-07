@@ -38,6 +38,7 @@ const LobbyPlayerMap = {}
 const GamePlayerMap = {}
 
 function GameRunning(data, socket, map){
+    console.log(data.closest)
     if (data.closest){
         if(data.closest.distance < 5){
             PlayBeep()

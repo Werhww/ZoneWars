@@ -113,7 +113,7 @@ export class Player extends EventEmitter {
         if (!closest || !distance) return
 
         return {
-            closest: closest.GetSafeVersion(),
+            closest: closest.username,
             distance
         }
     }
