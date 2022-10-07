@@ -113,7 +113,7 @@ export class Player extends EventEmitter {
         if (!closest || !distance) return
 
         return {
-            closest,
+            closest: closest.GetSafeVersion(),
             distance
         }
     }
@@ -140,7 +140,7 @@ export class Player extends EventEmitter {
 
         }).filter((v) => {if (v) return true})
 
-        this.socket.emit("GameData", {
+        const data = {
             GID: game.GID,
             time: new Date().getTime(),
 
@@ -159,7 +159,9 @@ export class Player extends EventEmitter {
             players: HiddenPlayers,
             host: game.HostUsername,
             self: this.GetSafeVersion()
-        })
+        }
+
+        this.socket.emit("GameData", data)
     }
 
     EmitPopup(message:string, error:boolean = false){

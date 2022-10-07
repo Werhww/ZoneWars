@@ -4,7 +4,7 @@ import cors from "cors"
 import * as http from "http"
 import * as socket from "socket.io"
 
-import {join} from "path"
+import { join } from "path"
 
 import { Player } from "./socket/player"
 import { UUID } from "./socket/utils"
@@ -18,7 +18,6 @@ const io = new socket.Server(server, {
 })
 
 app.use(cors())
-
 app.use(express.static(join(__dirname, "client-test")))
 
 const sessions:{
@@ -30,7 +29,7 @@ io.on('connection', (socket) => {
 
   socket.on("session", (session?:string) => {
     var player:Player
-
+    
     //! Retrive session from client
     if (!session || !sessions[session]) {
       session = UUID(false)

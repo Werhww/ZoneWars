@@ -13,10 +13,10 @@ const game = document.getElementById("game")
 
 const stopGame = document.getElementById("stopgame")
 
-const url = "http://10.0.0.9:3000"
+const url = "http://10.111.49.239:3000"
 
 function PlayBeep() {
-    var audio = new Audio('beep.mp3')
+    var audio = new Audio('./beep.mp3')
     audio.play()
 }
 
@@ -67,7 +67,7 @@ function GameRunning(data, socket, map){
     }
 
     function RemovePlayer(player){
-        GamePlayerMap[player.username].marker.removeFrom(map)
+        //GamePlayerMap[player.username].marker.removeFrom(map)
         delete GamePlayerMap[player.username]
     }
 

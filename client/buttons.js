@@ -19,7 +19,7 @@ const settingback = document.getElementById('back')
 
 
 //Creat Game
-const url = "http://10.0.0.9:3000"
+const url = "http://10.111.49.239:3000"
 const socket = io(url)
 
 function ready(socket){
