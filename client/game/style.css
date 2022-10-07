@@ -112,6 +112,18 @@
     z-index: 20000000;
 }
 
+.closename {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: rgb(255, 0, 0);
+}
+
 .stopgame {
     padding: 1rem 1.3rem 1rem 1.3rem;
     border: solid 2px red;

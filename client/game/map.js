@@ -41,6 +41,15 @@ function getLocation() {
     })
 }
 
+export function escape(unsafe){
+    return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;")
+}
+
 // Makes tile 1px larger to hide white line
 (function(){
     var originalInitTile = L.GridLayer.prototype._initTile
@@ -106,7 +115,7 @@ export class LeafletMap {
             className: '',
             html: `
             <div class="marker ${type}">
-            <span>${username}</span>
+            <span>${escape(username)}</span>
             <img src="/_assets/icons/circle.svg"/>
             </div>`
         })}).addTo(this.map)
