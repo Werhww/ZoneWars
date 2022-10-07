@@ -116,7 +116,7 @@ export class LeafletMap {
             html: `
             <div class="marker ${type}">
             <span>${escape(username)}</span>
-            <img src="/_assets/icons/circle.svg"/>
+            <img src="/assets/icons/circle.svg"/>
             </div>`
         })}).addTo(this.map)
     }
