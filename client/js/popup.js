@@ -20,7 +20,6 @@ function popup_message(message, cantclose = false){
     popup.style.display = 'flex'
     popup_blur.style.display = 'flex'
     popup_text.innerText = message.message
-    console.log("jajs12212", cantclose)
     if (cantclose){
         recreateNode(popup_exit)
         recreateNode(popup_blur)
