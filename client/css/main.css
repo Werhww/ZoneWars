@@ -131,6 +131,8 @@
     font-size: 2rem;
     width: 20rem;
     height: 5rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
 }
 
 #submitName{
