@@ -18,7 +18,10 @@ const io = new socket.Server(server, {
 })
 
 app.use(cors())
-app.use(express.static(join(__dirname, "client-test")))
+
+app.get("/", (req, res) => {
+  res.send("Gameserver for @.zonewarz.com, version 1.0.1.")
+})
 
 const sessions:{
   [session:string]: Player
@@ -29,7 +32,7 @@ io.on('connection', (socket) => {
 
   socket.on("session", (session?:string) => {
     var player:Player
-    
+
     //! Retrive session from client
     if (!session || !sessions[session]) {
       session = UUID(false)
