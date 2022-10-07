@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/_global/popup.js" defer></script>
+
+    <!-- Leaflet map imports -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"></script>
+    <!-- Leaflet map imports -->
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <!-- css -->
+
+    <!-- JavaScript -->
     <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" defer></script>
+    <script src="./js/select.js" type="module" defer></script>
+    <script src="./js/popup.js" defer></script> 
+    <script src="./js/buttons.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <!-- JavaScript -->
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"
-     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-     crossorigin=""/>
-     <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"
-     integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
-     crossorigin=""></script>
-
-     <link rel="stylesheet" href="/style.css">
-     <link rel="stylesheet" href="/_global/global.css">
-     <script src="/buttons.js" defer></script>
-     <script src="/index.js" defer></script>
-     <script src="/select.js" type="module" defer></script>
     <title>Zone Warz</title>
 </head>
 <body>
@@ -51,7 +55,7 @@
         <div id="mapPlacement"></div>
         <div class="cgmpContent">
             <input type="range" class="mapSize" id="mapSize" min="10" max="1000" value="100">
-            <img class="posIcon" id="onPosIcon" src="_assets/positionIcon.svg" alt="" >
+            <img class="posIcon" id="onPosIcon" src="_assets/icons/positionIcon.svg" alt="" >
             <div class="backMenu" id="mapBack">
                 <p>Back</p>
             </div>
@@ -133,7 +137,7 @@
 
     <div class="popup" id="popup">
         <p class="popup-titel">Message</p>
-        <img class="popup-exit" id="popup-exit" src="_assets/popup-x.svg" alt="">
+        <img class="popup-exit" id="popup-exit" src="./_assets/icons/popup-x.svg" alt="">
         <p class="popup-text" id="popup-text"></p>
     </div>
     <div class="popup-blur" id="popup-blur"></div>
