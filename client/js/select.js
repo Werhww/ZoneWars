@@ -1,4 +1,4 @@
-import { LeafletMap } from "/game/map.js"
+import { LeafletMap } from "./map.js"
 
 const map = new LeafletMap()
 const size = document.getElementById("mapSize")
