@@ -7,23 +7,18 @@ const geolocationOptions = {
 
 //Function with gets players latitude and longitude
 function getLocation() {
-    const options = {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumWait: 10000,     
-        maximumAge: 0,          
-        desiredAccuracy: 5,
-    }
-
     return new Promise((resolve, reject) => {
         if ("geolocation" in navigator) {
-            geolocator.locate(options, function (err, location) {
-                if (err) return reject(err)
+            navigator.geolocation.getCurrentPosition((location) => {
                 resolve({
                     lat: location.coords.latitude,
-                    lng: location.coords.longitude
+                    lng: location.coords.longitude,
+                    acc: location.coords.accuracy
                 })
-            })
+            }, (err) => {
+                reject(err)
+            },
+            geolocationOptions)
         } else {
             reject("Browser does not support the Geolocation API")
             console.log("Browser does not support the Geolocation API")
@@ -117,10 +112,25 @@ export class LeafletMap {
 
     async init(elem){
         this.position = await getLocation().catch(()=>{})
+        if (this.position.acc > 100) {
+            document.popup({
+                message: "Gps in not accurate. Try using a diffrent device!"
+            })
+        }
 
-        setInterval(async () => {
-            getLocation().then((position) => {this.position = position}).catch(console.error)
-        }, 4000)
+        navigator.geolocation.watchPosition(
+            (location) => {
+                this.position = {
+                    lat: location.coords.latitude,
+                    lng: location.coords.longitude
+                }
+            },
+            () => {
+                console.error("Location error!")
+            },
+            geolocationOptions
+        )
+
 
         this.map = L.map(elem).setView([this.position.lat, this.position.lng], 15)
 
