@@ -13,6 +13,8 @@ submitName.addEventListener('click', ()=>{
 
         map.CenterMap(14)
 
+        map.MarkSelf()
+
         onPosIcon.onclick = () => {
             map.CenterMap()
         }

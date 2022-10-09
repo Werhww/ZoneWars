@@ -57,6 +57,10 @@ export class LeafletMap {
     constructor(){
     }
 
+    MarkSelf(){
+        L.marker([this.position.lat, this.position.lng]).addTo(this.map)
+    }
+
     ConvertPosition(position){
         return new L.LatLng(position.lat, position.lon)
     }
