@@ -16,6 +16,8 @@ const stopGame = document.getElementById("stopgame")
 const closename = document.getElementById("closename")
 const qrcode = document.getElementById("qrcode")
 
+const suicide = document.getElementById("suicide")
+
 var lastUpdate = new Date().getTime()
 setInterval(() => {
     if (new Date().getTime() - lastUpdate > 10000){
@@ -201,6 +203,10 @@ function ready(socket, map, init) {
     const eliminate = (msg) => {
         document.popup(msg, true)
     }
+
+    suicide.addEventListener("click", () => {
+        socket.emit("EliminateSelf")
+    })    
 
     if (init.self.eliminated){
         eliminate({

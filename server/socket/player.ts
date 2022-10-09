@@ -63,6 +63,8 @@ export class Player extends EventEmitter {
         socket.on("LeaveGame", this.LeaveGame.bind(this))
 
         socket.on("UpdatePosition", this.UpdatePosition.bind(this))
+    
+        socket.on("EliminateSelf", this.EliminateSelf.bind(this))
     }
 
     GetGame(){
@@ -213,7 +215,6 @@ export class Player extends EventEmitter {
             //this.EmitPopup("You are eliminated")
             // ! Temporary
             this.socket.emit("eliminated")
-
         }
 
         this.eliminated = state
@@ -287,6 +288,13 @@ export class Player extends EventEmitter {
         if (!game) return
 
         game.RemovePlayer(this)
+    }
+
+    EliminateSelf(){
+        const game = this.GetGame()
+        if (!game || !game.started) return
+        this.eliminated = true
+        this.socket.emit("eliminated")
     }
 
     KickPlayer(username:string){

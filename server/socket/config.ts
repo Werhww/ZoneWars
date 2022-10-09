@@ -29,6 +29,5 @@ export default {
         GameEnded: "Game has ended. If there is any hiders left thay won.",
         GameNotFoud: "Game not found.",
         GameInStarted: "Game is started.",
-        suicide: "You have been eliminated."
     }
 }
