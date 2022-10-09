@@ -36,7 +36,7 @@
     color: black;
 }
 
-.head .info img {
+.head .info #qrcode {
     height: 5rem;
 }
 

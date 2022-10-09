@@ -252,6 +252,8 @@ function ready(socket, map, init) {
     if (init.self.host) {
         leaveGame.style.display = "none"
         stopGame.style.display = "flex"
+
+        leaveLobby.innerText = "end"
     } else {
         stopGame.style.display = "none"
         leaveGame.style.display = "flex"
