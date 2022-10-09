@@ -299,7 +299,7 @@ function ready(socket, map, init) {
 
 
 
-map.init("gameMap").then(() => {
+map.init("gameMap", false).then(() => {
     map.CenterMap()
 
     const socket = io(url)

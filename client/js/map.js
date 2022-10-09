@@ -114,12 +114,14 @@ export class LeafletMap {
         })}).addTo(this.map)
     }
 
-    async init(elem){
+    async init(elem, popup = true){
         this.position = await getLocation().catch(()=>{})
         if (this.position.acc > 100) {
-            document.popup({
-                message: "Gps in not accurate. Try using a diffrent device!"
-            })
+            if (popup){
+                document.popup({
+                    message: "Gps in not accurate. Try using a diffrent device!"
+                })
+            }
         }
 
         navigator.geolocation.watchPosition(
