@@ -98,7 +98,7 @@
 /*Game Menu*/
 
 .game{
-    visibility: visible;
+    visibility: hidden;
 }
 
 .bottom {
@@ -143,6 +143,8 @@
     transform: translate(-50%, 0);
     bottom: 0.625rem;
     left: 50%;
+
+    z-index: 20000000;
 }
 
 .suicide:hover {
