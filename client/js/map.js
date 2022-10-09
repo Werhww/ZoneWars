@@ -113,7 +113,7 @@ export class LeafletMap {
             </div>`
         })}).addTo(this.map)
     }
-
+    
     async init(elem, popup = true){
         this.position = await getLocation().catch(()=>{})
         if (this.position.acc > 100) {
