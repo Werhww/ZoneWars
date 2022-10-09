@@ -14,7 +14,6 @@ const game = document.getElementById("game")
 const stopGame = document.getElementById("stopgame")
 
 const closename = document.getElementById("closename")
-const qrcode = document.getElementById("qrcode")
 
 const suicide = document.getElementById("suicide")
 
@@ -68,14 +67,7 @@ function GameEnd(socket, map){
 
 
 function MakeQrcode(input) {
-    new QRCode(qrcode, {
-        text: input,
-        width: 180,
-        height: 180,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
-    })
+    new QRCode("qrcode", input)
 } 
 
 
