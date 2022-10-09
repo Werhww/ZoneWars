@@ -98,13 +98,13 @@
 /*Game Menu*/
 
 .game{
-    visibility: hidden;
+    visibility: visible;
 }
 
 .bottom {
     position: absolute;
-    left: 10px;
-    bottom: 10px;
+    left: 0.625rem;
+    bottom: 0.625rem;
 
     display: flex;
     gap: 1rem;
@@ -114,8 +114,8 @@
 
 .closename {
     position: absolute;
-    right: 10px;
-    bottom: 10px;
+    right: 0.625rem;
+    bottom: 0.625rem;
 
     text-align: center;
     display: flex;
@@ -127,10 +127,25 @@
 .stopgame {
     padding: 1rem 1.3rem 1rem 1.3rem;
     border: solid 2px red;
-    border-radius: 40px;
+    border-radius: 2.5rem;
 }
 
 .stopgame:hover {
+    cursor: pointer;
+}
+
+.suicide{
+    position: absolute;
+    padding: 1rem 1.3rem 1rem 1.3rem;
+    border: solid 2px red;
+    border-radius: 2.5rem;
+    text-align: center;
+    transform: translate(-50%, 0);
+    bottom: 0.625rem;
+    left: 50%;
+}
+
+.suicide:hover {
     cursor: pointer;
 }
 
