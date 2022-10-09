@@ -14,6 +14,7 @@ const game = document.getElementById("game")
 const stopGame = document.getElementById("stopgame")
 
 const closename = document.getElementById("closename")
+const qrcode = document.getElementById("qrcode")
 
 var lastUpdate = new Date().getTime()
 setInterval(() => {
@@ -62,6 +63,21 @@ function GameEnd(socket, map){
         marker.remove()
     }
 }   
+
+
+function MakeQrcode(input) {
+    new QRCode(qrcode, {
+        text: input,
+        width: 180,
+        height: 180,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    })
+} 
+
+
+
 
 const LobbyPlayerMap = {}
 const GamePlayerMap = {}
@@ -147,6 +163,8 @@ function GameLobby(data, socket){
         delete LobbyPlayerMap[player.username]
     }
 
+
+
     const players = data.players
     players.push(data.self)
 
@@ -201,8 +219,9 @@ function ready(socket, map, init) {
     socket.on("GameEnd", () => {
         window.location.href = "/"
     })
-
+    
     document.getElementById("id").innerText = init.GID
+    MakeQrcode(window.location.origin + `?join=${init.GID}`)
 
     setInterval(() => {
         socket.emit("UpdatePosition", {
