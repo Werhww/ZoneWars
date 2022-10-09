@@ -18,6 +18,12 @@ const mapnext = document.getElementById('mapNext')
 const settingback = document.getElementById('back')
 
 
+// Cool
+const joinGameSubmit = document.getElementById("joinGameSubmit")
+const unameInput = document.getElementById("joinGametext")
+const GIDinput = document.getElementById("GID")
+
+
 //Creat Game
 const url = "https://server.zonewarz.com"
 const socket = io(url)
@@ -60,6 +66,16 @@ function fetchHostName(){
     return false
 }
 
+const params = (new URL(location)).searchParams
+const join = params.get("join")
+
+if (join){
+    mainScreen.style.display = 'none'
+    joinGameMenu.style.display = 'flex'
+
+    GIDinput.value = join
+}
+
 backToMainScreen1.addEventListener('click', ()=>{
     mainScreen.style.display = 'flex'
     creatGameMenu.style.display = 'none'
@@ -68,13 +84,11 @@ backToMainScreen1.addEventListener('click', ()=>{
 mapback.addEventListener('click', ()=>{
     creatGameMenu.style.display = 'flex'
     creatGameMapPlacement.style.display = 'none'
-
 })
 
 mapnext.addEventListener('click', ()=>{
     creatGameMapPlacement.style.display = 'none'
     creatGameSettings.style.display = 'flex'
-
 })
 
 settingback.addEventListener('click', ()=>{
@@ -148,9 +162,6 @@ backToMainScreen2.addEventListener('click', ()=>{
     joinGameMenu.style.display = 'none'
 })
 
-const joinGameSubmit = document.getElementById("joinGameSubmit")
-const unameInput = document.getElementById("joinGametext")
-const GIDinput = document.getElementById("GID")
 
 joinGameSubmit.onclick = () => {
     socket.emit("JoinGame", GIDinput.value, unameInput.value)

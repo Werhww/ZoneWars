@@ -24,7 +24,6 @@ function popup_message(message, cantclose = false){
         recreateNode(popup_exit)
         recreateNode(popup_blur)
     } else {  
-        console.log("jajs")
         popup_exit.addEventListener('click', ()=>{
             popup.style.display = 'none'
             popup_blur.style.display = 'none'
