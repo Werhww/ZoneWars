@@ -47,7 +47,7 @@
     width: 100vw;
 }
 
-#map { 
+#host-map-placement { 
     height: 100vh; 
     width: 100vw;
     position: absolute;

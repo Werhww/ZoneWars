@@ -8,7 +8,7 @@ const onPosIcon = document.getElementById("onPosIcon")
 const host_map_back = document.getElementById('host-map-back')
 
 join_name.addEventListener('click', ()=>{
-    map.init("map").then(async () => {
+    map.init("host-map-placement").then(async () => {
         map.CreateCenterZone(100)
 
         map.CenterMap(14)
