@@ -181,6 +181,8 @@
 
 .HideTime-range {
     -webkit-appearance: none;
+    appearance: none;
+    
     width: 36rem;
     height: 1rem;
     border-radius: 1rem; 
