@@ -28,95 +28,83 @@
     <title>Zone Warz</title>
 </head>
 <body>
-    <div class="mainScreen" id="mainScreen">
-        <div class="ttMenu">
-            <P class="title zwTitelLeft">Zone</P>
-            <p class="title zwTitelRight">Warz</p>
+    <!-- Laning page -->
+    <div class="landing-page" id="landing-page">
+        <div class="title">
+            <P class="title-left">Zone</P>
+            <p class="title-right">Warz</p>
         </div>
-        <div class="cjMenu">
-            <div class="creatGamebtn" id="creatGamebtn"> <p>Create Game</p> </div>
-            <div class="joinGamebtn" id="joinGamebtn"> <p>Join Game</p> </div>
-        </div>
-    </div>
-
-    <div class="creatGame" id="creatGameMenu">
-        <div class="creatGameTitel">
-            <p class="title leftTitle">New</p>
-            <p class="title rightTitle">Game</p>
-        </div>
-        <div class="nameMenu">
-            <form action="" id="hostNameForm" onsubmit="return fetchHostName()">
-                <input type="text" id="hostName" placeholder="User name">
-                <input type="submit" id="submitName" value="Next">
-                <p class="backToMainScreen" id="backToMainScreen1">Back</p>
-            </form>
+        <div class="landing-buttons">
+            <div class="landing-button" id="landing-host"> <p>Host</p> </div>
+            <div class="landing-button" id="landing-join"> <p>Join</p> </div>
         </div>
     </div>
 
-    <div class="creatGameMapPlacement" id="creatGameMapPlacement"> 
-        <div id="mapPlacement"></div>
-        <div class="cgmpContent">
-            <input type="range" class="mapSize" id="mapSize" min="10" max="1000" value="100">
-            <img class="posIcon" id="onPosIcon" src="/assets/icons/positionIcon.svg" alt="" >
-            <div class="backMenu" id="mapBack">
-                <p>Back</p>
-            </div>
-            <div class="nextMenu" id="mapNext">
-                <p>Next</p>
-            </div>
+    <!-- Host first menu -->
+    <div class="menus" id="host-name">
+        <div class="title">
+            <p class="title-left">New</p>
+            <p class="title-right">Game</p>
+        </div>
+        <form class="forms" id="host-name-form" onsubmit="return fetchHostName()">
+            <input type="text" class="inputs" id="host-name" placeholder="User name">
+            <input type="submit" class="input-button" value="Next">
+            <p class="p-button" id="host-back">Back</p>
+        </form>
+    </div>
+
+    <!-- Host second menu -->
+    <div class="menus host-map" id="host-map"> 
+        <div id="map"></div> 
+        <div>
+            <input type="range" class="map-CircleRadius-range" id="map-CircleRadius-range" min="10" max="1000" value="100">
+            <img class="pos-icon" id="onPosIcon" src="/assets/icons/positionIcon.svg" alt="" >
+            <div class="host-map-back" id="host-map-back"> <p>Back</p> </div>
+            <div class="host-map-next" id="host-map-next"> <p>Next</p> </div>
         </div>
     </div>
 
-    <div class="creatGameSettings" id="creatGameSettings">
-        <form  onsubmit="return gameStart()" id="gameSettings">
-            <div class="htSet">
-                <div class="titlew">
-                    <p class="ssText">Hide Time</p>
-                </div>
-                <input id="htTime" class="htTime" type="range" value="300000" min="0" max="600000"   
+    <div class="host-GameSettings" id="host-GameSettings">
+        <form  onsubmit="return gameStart()" id="GameSettings">
+            <div class="host-HideTime">
+                <p class="host-settings-title">Hide Time</p>
+                <input class="HideTime-range" id="HideTime-range" type="range" value="300000" min="0" max="600000"   
                 oninput="showVal(this.value)"
                 onchange="showVal(this.value)">
-                <p id="hTime">00:00</p>
+                <p id="HideTime-text">00:00</p>
             </div>
-            <div class="zsSet">
-                <div class="ssSet">
-                    <div class="titlew">
-                        <p class="ssText">Shrink Speed</p>
+            <div class="host-ShrinkSpeed">
+                <p class="host-settings-title">Shrink Speed</p>
+                <div class="host-ShrinkSpeed-options">
+                    <div>
+                        <input type="radio" name="shrinkSpeed" id="speedNone">
+                        <span class="radio"></span>
+                        <p class="none">none</p>
                     </div>
-                    <div class="ssSetSpeedbtn">
-                        <div>
-                            <input type="radio" name="shrinkSpeed" id="speedNone">
-                            <span class="radio"></span>
-                            <p class="none">none</p>
-                        </div>
-                        <div>
-                            <input type="radio" name="shrinkSpeed" id="speedSlow">
-                            <span class="radio"></span>
-                            <p class="slow">slow</p>
-                        </div>
-                        <div>   
-                            <input type="radio" name="shrinkSpeed" id="speedMedium" checked >
-                            <span class="radio"></span>
-                            <p class="medium">medium</p>
-                        </div>
-                        <div>
-                            <input type="radio" name="shrinkSpeed" id="speedFast"> 
-                            <span class="radio"></span>
-                            <p class="fast">fast</p>
-                        </div>
-                                          
+                    <div>
+                        <input type="radio" name="shrinkSpeed" id="speedSlow">
+                        <span class="radio"></span>
+                        <p class="slow">slow</p>
                     </div>
+                    <div>   
+                        <input type="radio" name="shrinkSpeed" id="speedMedium" checked >
+                        <span class="radio"></span>
+                        <p class="medium">medium</p>
+                    </div>
+                    <div>
+                        <input type="radio" name="shrinkSpeed" id="speedFast"> 
+                        <span class="radio"></span>
+                        <p class="fast">fast</p>
+                    </div>                      
                 </div>
             </div>
-            <div class="hbSet">
-                <div class="titlew">
-                    <p class="ssText">Heartbeat</p>
-                </div>
+            <div class="host-heartbeat">
+                <p class="host-settings-title">Heartbeat</p>
                 <input type="checkbox" id="heartBeat" checked > 
                 <span class="checkbox"></span>
             </div>
 
-            <div class="cgsSubmit"> 
+            <div class="host-GameSettings-submit"> 
                 <p class="back" id="back">Back</p>
                 <input class="start" type="submit" value="Start">
             </div>
@@ -124,16 +112,16 @@
 
     </div>
 
-    <div class="joinGame" id="joinGame">
-        <div class="joinGameTitel">
-            <p class="title joinGameTitelLeft">Join</p>
-            <p class="title joinGameTitelRight">Game</p>
+    <div class="join-page" id="join">
+        <div class="title">
+            <p class="title-left">Join</p>
+            <p class="title-right">Game</p>
         </div>
-        <div class="joinGameData">
-            <input type="text" id="joinGametext" class="joinGametext" placeholder="User Name">
-            <input type="text" id="GID" class="joinGametext" placeholder="Game ID">
-            <input type="submit" id="joinGameSubmit" value="next">
-            <p class="backToMainScreen2" id="backToMainScreen2">Back</p>
+        <div class="forms">
+            <input type="text" class="inputs" id="join-name"  placeholder="User Name">
+            <input type="text" class="inputs" id="GID"  placeholder="Game ID">
+            <input type="submit" class="input-button" id="join-submit" value="next">
+            <p class="p-button" id="join-back">Back</p>
         </div>
     </div>
 

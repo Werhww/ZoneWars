@@ -1,26 +1,26 @@
 //Main Screen Buttons
-const creatGamebtn = document.getElementById('creatGamebtn')
-const joinGamebtn = document.getElementById('joinGamebtn')
+const landing_host = document.getElementById('landing-host')
+const landing_join = document.getElementById('landing-join')
 
 // Menus
-const mainScreen = document.getElementById('mainScreen')
-const creatGameMenu = document.getElementById('creatGameMenu')
-const creatGameMapPlacement = document.getElementById('creatGameMapPlacement')
-const creatGameSettings = document.getElementById('creatGameSettings')
+const landing_page = document.getElementById('landing-page')
+const host_name = document.getElementById('host-name')
+const host_map = document.getElementById('host-map')
+const host_GameSettings = document.getElementById('host-GameSettings')
 
-const joinGameMenu = document.getElementById('joinGame')
+const join_page = document.getElementById('join')
 
 //Button
-const backToMainScreen1 = document.getElementById('backToMainScreen1')
-const backToMainScreen2 = document.getElementById('backToMainScreen2')
-const mapback = document.getElementById('mapBack')
-const mapnext = document.getElementById('mapNext')
+const host_back = document.getElementById('host-back')
+const join_back = document.getElementById('join-back')
+const host_map_next = document.getElementById('host-map-next')
+const host_map_back = document.getElementById('host-map-back')
 const settingback = document.getElementById('back')
 
 
 // Cool
-const joinGameSubmit = document.getElementById("joinGameSubmit")
-const unameInput = document.getElementById("joinGametext")
+const join_submit = document.getElementById("join-submit")
+const unameInput = document.getElementById("join-name")
 const GIDinput = document.getElementById("GID")
 
 
@@ -48,20 +48,20 @@ socket.on('connect', () => {
     })
 })
 
-creatGamebtn.addEventListener('click', ()=>{
-    mainScreen.style.display = 'none'
-    creatGameMenu.style.display = 'flex'
+landing_host.addEventListener('click', ()=>{
+    landing_page.style.display = 'none'
+    host_name.style.display = 'flex'
 })
 
 function fetchHostName(){
-    const userName = document.forms['hostNameForm']['hostName'].value;
+    const userName = document.forms['host-name-form']['host-name'].value;
     if (userName == "" || userName.includes(" ")){
         alert("Name must be filled out");
         return false;
     }
     
-    creatGameMenu.style.display = 'none'
-    creatGameMapPlacement.style.display = 'flex'
+    host_name.style.display = 'none'
+    host_map.style.display = 'flex'
 
     return false
 }
@@ -70,30 +70,30 @@ const params = (new URL(location)).searchParams
 const join = params.get("join")
 
 if (join){
-    mainScreen.style.display = 'none'
-    joinGameMenu.style.display = 'flex'
+    landing_page.style.display = 'none'
+    join_page.style.display = 'flex'
 
     GIDinput.value = join
 }
 
-backToMainScreen1.addEventListener('click', ()=>{
-    mainScreen.style.display = 'flex'
-    creatGameMenu.style.display = 'none'
+host_back.addEventListener('click', ()=>{
+    landing_page.style.display = 'flex'
+    host_name.style.display = 'none'
 })
 
-mapback.addEventListener('click', ()=>{
-    creatGameMenu.style.display = 'flex'
-    creatGameMapPlacement.style.display = 'none'
+host_map_back.addEventListener('click', ()=>{
+    host_name.style.display = 'flex'
+    host_map.style.display = 'none'
 })
 
-mapnext.addEventListener('click', ()=>{
-    creatGameMapPlacement.style.display = 'none'
-    creatGameSettings.style.display = 'flex'
+host_map_next.addEventListener('click', ()=>{
+    host_map.style.display = 'none'
+    host_GameSettings.style.display = 'flex'
 })
 
 settingback.addEventListener('click', ()=>{
-    creatGameSettings.style.display = 'none'
-    creatGameMapPlacement.style.display = 'flex'
+    host_GameSettings.style.display = 'none'
+    host_map.style.display = 'flex'
 })
 
 function gameStart(){
@@ -121,9 +121,9 @@ function gameStart(){
     var zone = getShrink()
 
     const gameData = {
-        HostGame: document.forms['hostNameForm']['hostName'].value,
+        HostGame: document.forms['host-name-form']['host-name'].value,
         
-        HideTime: Number(document.forms['gameSettings']['htTime'].value),
+        HideTime: Number(document.forms['GameSettings']['HideTime-range'].value),
         ZoneShrink: zone.shrinkOn,
         ShrinkSpeed: Number(zone.speedShrink),
         HeartBeatSensor: document.getElementById('heartBeat').checked,
@@ -152,17 +152,17 @@ function gameStart(){
 
 //Join Game
 
-joinGamebtn.addEventListener('click', ()=>{
-    mainScreen.style.display = 'none'
-    joinGameMenu.style.display = 'flex'
+landing_join.addEventListener('click', ()=>{
+    landing_page.style.display = 'none'
+    join_page.style.display = 'flex'
 })
 
-backToMainScreen2.addEventListener('click', ()=>{
-    mainScreen.style.display = 'flex'
-    joinGameMenu.style.display = 'none'
+join_back.addEventListener('click', ()=>{
+    landing_page.style.display = 'flex'
+    join_page.style.display = 'none'
 })
 
 
-joinGameSubmit.onclick = () => {
-    socket.emit("JoinGame", GIDinput.value, unameInput.value)
+join_submit.onclick = () => {
+    socket.emit("join", GIDinput.value, unameInput.value)
 }

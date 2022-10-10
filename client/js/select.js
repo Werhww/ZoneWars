@@ -1,14 +1,14 @@
 import { LeafletMap } from "./map.js"
 
 const map = new LeafletMap()
-const size = document.getElementById("mapSize")
+const size = document.getElementById("map-CircleRadius-range")
 
-const submitName = document.getElementById('submitName')
+const submit_name = document.getElementById('submit-name')
 const onPosIcon = document.getElementById("onPosIcon")
-const mapNext = document.getElementById('mapNext')
+const host_map_back = document.getElementById('host-map-back')
 
-submitName.addEventListener('click', ()=>{
-    map.init("mapPlacement").then(async () => {
+submit_name.addEventListener('click', ()=>{
+    map.init("map").then(async () => {
         map.CreateCenterZone(100)
 
         map.CenterMap(14)
@@ -27,7 +27,7 @@ submitName.addEventListener('click', ()=>{
             map.SetZoneRadius(this.value)
         }   
 
-        mapNext.onclick = ()=>{
+        host_map_back.onclick = ()=>{
             document.mapCenter = map.map.getCenter()
             document.circleRadius = map.ct.getRadius()
         }
