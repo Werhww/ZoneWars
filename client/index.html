@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1000; user-scalable=0;" />
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/geolocator/2.1.5/geolocator.min.js"></script>
 
     <!-- Leaflet map imports -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"></script>
-    <!-- -->
+    <!-- Leaflet map imports -->
 
     <!-- css -->
     <link rel="stylesheet" href="/css/main.css">
@@ -48,7 +50,7 @@
         </div>
         <form class="forms" id="host-name-form" onsubmit="return fetchHostName()">
             <input type="text" class="inputs" id="host-name" placeholder="User name">
-            <input type="submit" class="input-button" value="Next">
+            <input class="input-button" type="submit"  value="Next">
             <p class="p-button" id="host-back">Back</p>
         </form>
     </div>

@@ -163,21 +163,61 @@ body, p{
 /* *popup */
 
 
+@media only screen and (max-width: 1000px) { 
 
+    html{
+        font-size: 16px;
+    }
 
-@media only screen and (max-width: 800px) {
+    .title{
+        margin: 8rem;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .title-left, .title-right{
+        font-size: 10rem;
+    }
+
+    .title-left{
+        padding-right: 15rem;
+        margin-bottom: -2rem;
+    }
+
+    .title-right{
+        padding-left: 15rem;
+        margin-top: -2rem;
+    }
+
+    .landing-button{
+        font-size: 4rem;
+    
+        padding: 5rem;
+        width: 35rem;
+        border-radius: 10rem;
+    }
+}
+
+@media only screen and (max-width: 900px) {
     html{
         font-size: 14px;
     }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 800px) {
+    html{
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 680px) {
     html{
         font-size: 10px;
     }
+}
 
-    .title{
-        font-size: 5rem;
+@media only screen and (max-width: 680px) {
+    html{
+        font-size: 10px;
     }
-    
 }
