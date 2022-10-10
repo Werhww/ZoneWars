@@ -19,7 +19,7 @@ const settingback = document.getElementById('back')
 
 
 // Cool
-const join_submit = document.getElementById("join-submit")
+const join_name = document.getElementById("join-name")
 const unameInput = document.getElementById("join-name")
 const GIDinput = document.getElementById("GID")
 
@@ -163,6 +163,6 @@ join_back.addEventListener('click', ()=>{
 })
 
 
-join_submit.onclick = () => {
+join_name.onclick = () => {
     socket.emit("join", GIDinput.value, unameInput.value)
 }
