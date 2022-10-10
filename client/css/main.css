@@ -115,6 +115,7 @@
 
 
 .map-CircleRadius-range {
+    -webkit-appearance: none;
     appearance: none;
     width: 36rem;
     height: 1rem;
