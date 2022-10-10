@@ -164,5 +164,5 @@ join_back.addEventListener('click', ()=>{
 
 
 join_submit.onclick = () => {
-    socket.emit("joinGame", GIDinput.value, unameInput.value)
+    socket.emit("JoinGame", GIDinput.value, unameInput.value)
 }
