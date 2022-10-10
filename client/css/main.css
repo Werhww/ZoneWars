@@ -47,7 +47,7 @@
     width: 100vw;
 }
 
-#host-map-placement { 
+#host-map-placer { 
     height: 100vh; 
     width: 100vw;
     position: absolute;
@@ -338,7 +338,7 @@ input:checked + .checkbox {
     border: 2px solid lightblue;
 }
 
-#join-submit{
+#join-submit {
     font-size: 3rem;
     padding: 2rem;
     padding-left: 5.5rem;
@@ -347,7 +347,7 @@ input:checked + .checkbox {
     transition: 0.5s;
 }
 
-#join-submit:hover{
+#join-submit:hover {
     border: 2px solid lightblue;
 }
 

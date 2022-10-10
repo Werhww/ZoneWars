@@ -1,25 +1,25 @@
 //Main Screen Buttons
-const landing_host = document.getElementById('landing-host')
-const landing_join = document.getElementById('landing-join')
+const landingHost = document.getElementById('landing-host')
+const landingJoin = document.getElementById('landing-join')
 
 // Menus
-const landing_page = document.getElementById('landing-page')
-const host_name = document.getElementById('host-name')
-const host_map = document.getElementById('host-map')
-const host_GameSettings = document.getElementById('host-GameSettings')
+const landingPage = document.getElementById('landing-page')
+const hostName = document.getElementById('host-name')
+const hostMap = document.getElementById('host-map')
+const hostGameSettings = document.getElementById('host-GameSettings')
 
-const join_page = document.getElementById('join')
+const joinPage = document.getElementById('join')
 
 //Button
-const host_back = document.getElementById('host-back')
-const join_back = document.getElementById('join-back')
-const host_map_next = document.getElementById('host-map-next')
-const host_map_back = document.getElementById('host-map-back')
-const settingback = document.getElementById('back')
+const hostBack = document.getElementById('host-back')
+const joinBack = document.getElementById('join-back')
+const hostMapNext = document.getElementById('host-map-next')
+const hostMapBack = document.getElementById('host-map-back')
+const settingBack = document.getElementById('back')
 
 
 // Cool
-const join_submit = document.getElementById("join-submit")
+const joinSubmit = document.getElementById("join-submit")
 const unameInput = document.getElementById("join-name")
 const GIDinput = document.getElementById("GID")
 
@@ -48,9 +48,9 @@ socket.on('connect', () => {
     })
 })
 
-landing_host.addEventListener('click', ()=>{
-    landing_page.style.display = 'none'
-    host_name.style.display = 'flex'
+landingHost.addEventListener('click', ()=>{
+    landingPage.style.display = 'none'
+    hostName.style.display = 'flex'
 })
 
 function fetchHostName(){
@@ -60,8 +60,8 @@ function fetchHostName(){
         return false;
     }
     
-    host_name.style.display = 'none'
-    host_map.style.display = 'flex'
+    hostName.style.display = 'none'
+    hostMap.style.display = 'flex'
 
     return false
 }
@@ -70,30 +70,30 @@ const params = (new URL(location)).searchParams
 const join = params.get("join")
 
 if (join){
-    landing_page.style.display = 'none'
-    join_page.style.display = 'flex'
+    landingPage.style.display = 'none'
+    joinPage.style.display = 'flex'
 
     GIDinput.value = join
 }
 
-host_back.addEventListener('click', ()=>{
-    landing_page.style.display = 'flex'
-    host_name.style.display = 'none'
+hostBack.addEventListener('click', ()=>{
+    landingPage.style.display = 'flex'
+    hostName.style.display = 'none'
 })
 
-host_map_back.addEventListener('click', ()=>{
-    host_name.style.display = 'flex'
-    host_map.style.display = 'none'
+hostMapBack.addEventListener('click', ()=>{
+    hostName.style.display = 'flex'
+    hostMap.style.display = 'none'
 })
 
-host_map_next.addEventListener('click', ()=>{
-    host_map.style.display = 'none'
-    host_GameSettings.style.display = 'flex'
+hostMapNext.addEventListener('click', ()=>{
+    hostMap.style.display = 'none'
+    hostGameSettings.style.display = 'flex'
 })
 
-settingback.addEventListener('click', ()=>{
-    host_GameSettings.style.display = 'none'
-    host_map.style.display = 'flex'
+settingBack.addEventListener('click', ()=>{
+    hostGameSettings.style.display = 'none'
+    hostMap.style.display = 'flex'
 })
 
 function gameStart(){
@@ -152,17 +152,17 @@ function gameStart(){
 
 //Join Game
 
-landing_join.addEventListener('click', ()=>{
-    landing_page.style.display = 'none'
-    join_page.style.display = 'flex'
+landingJoin.addEventListener('click', ()=>{
+    landingPage.style.display = 'none'
+    joinPage.style.display = 'flex'
 })
 
-join_back.addEventListener('click', ()=>{
-    landing_page.style.display = 'flex'
-    join_page.style.display = 'none'
+joinBack.addEventListener('click', ()=>{
+    landingPage.style.display = 'flex'
+    joinPage.style.display = 'none'
 })
 
 
-join_submit.onclick = () => {
+joinSubmit.onclick = () => {
     socket.emit("joinGame", GIDinput.value, unameInput.value)
 }

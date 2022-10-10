@@ -36,7 +36,7 @@
     color: black;
 }
 
-.head .info #qrcode {
+.head .info #qrcode img {
     height: 5rem;
 }
 
@@ -141,6 +141,7 @@
     border-radius: 2.5rem;
     text-align: center;
     transform: translate(-50%, 0);
+
     bottom: 0.625rem;
     left: 50%;
 

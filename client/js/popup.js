@@ -1,5 +1,5 @@
 const popup = document.getElementById('popup')
-const popup_text = document.getElementById('popup-text')
+const popupText = document.getElementById('popup-text')
 
 
 function recreateNode(el, withChildren) {
@@ -19,7 +19,7 @@ function popup_message(message, cantclose = false){
 
     popup.style.display = 'flex'
     popup_blur.style.display = 'flex'
-    popup_text.innerText = message.message
+    popupText.innerText = message.message
     if (cantclose){
         recreateNode(popup_exit)
         recreateNode(popup_blur)

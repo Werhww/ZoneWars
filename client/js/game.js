@@ -13,7 +13,7 @@ const game = document.getElementById("game")
 
 const stopGame = document.getElementById("stopgame")
 
-const closename = document.getElementById("closename")
+const closeName = document.getElementById("closename")
 
 const suicide = document.getElementById("suicide")
 
