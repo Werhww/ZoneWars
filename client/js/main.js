@@ -1,4 +1,4 @@
-const h = document.getElementById("hTime")
+const h = document.getElementById("HideTime-text")
 function showVal(val){
     if (val < 200000){
         h.style.color = "rgb(0,255,0)"

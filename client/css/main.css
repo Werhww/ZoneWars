@@ -1,29 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Frijole');
 
-/*Start Menu*/
+/* landing */
 
-.mainScreen{
+.landing-page{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.ttMenu{
-    margin-top: 4rem;
-    display: flex;
-    gap: 2rem;
-}
-
-.zwTitelLeft{
-    filter: drop-shadow(10px 4px 2px blue);
-}
-
-.zwTitelRight{
-    filter: drop-shadow(10px 4px 2px red);
-}
-
-.cjMenu{
+.landing-buttons{
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -33,170 +19,56 @@
     padding: 3.5rem;
 }
 
-.cjMenu div{
-    width: 20rem;
+.landing-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    font-size: 3rem;
+
+    border: 2px solid rgb(45, 45, 45);
     border-radius: 5rem;
     padding: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.creatGamebtn, .joinGamebtn, .settingsbtn{
-    transition: 0.5s;
-    border: 2px solid rgb(45, 45, 45);
-}
-
-.creatGamebtn:hover, .joinGamebtn:hover, .settingsbtn:hover{
-    border: 2px solid lightblue;
-}
-
-.cjMenu div p{
-    font-size: 3rem;
-    text-align: center;
-}
-
-.sMenu{
-    gap: 3rem;
-    background-color: #0c0c0c;
-    margin-top: 3rem;
-    border-radius: 6rem;
-    padding: 3.5rem;
-}
-
-.sMenu div{
-    background-color: #00E0FF;
     width: 20rem;
-    border-radius: 5rem;
-    padding: 3rem;
+    
+    transition: 0.5s; 
 }
 
-.sMenu div p{
-    font-size: 3rem;
-    text-align: center;
-}
-
-.cjMenu div:hover{
-    cursor: pointer;
-}
-
-.sMenu div:hover{
-    cursor: pointer;
-}
-
-/*Creat Game Menu*/
-
-.creatGame{
-    display: none;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-}
-
-.creatGameTitel{
-    margin-top: 4rem;
-    display: flex;
-    gap: 2rem;
-}
-
-.leftTitle{
-    filter: drop-shadow(10px 4px 2px blue);
-}
-
-.rightTitle{
-    filter: drop-shadow(10px 4px 2px red);
-}
-
-.nameMenu{
-    margin-top: 2rem;
-    border-radius: 6rem;
-    padding: 3.5rem;
-    border: 2px solid rgb(45, 45, 45);
-}
-
-.nameMenu form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-}
-
-#hostName{
-    background-color: #0c0c0c;
-    border: 2px solid rgb(45, 45, 45);
-    color: white;
-    text-align: center;
-    border-radius: 4rem;
-    font-size: 2rem;
-    width: 20rem;
-    height: 5rem;
-}
-
-#submitName{
-    font-family: 'Frijole';
-    border-radius: 5rem;
-    font-size: 3rem;
-    padding: 2rem;
-    width: 20rem;
-    transition: 0.5s;
-    border: 2px solid rgb(45, 45, 45);
-    background-color: #0c0c0c;
-    color: white;
-}
-
-.backToMainScreen{
-    font-family: 'Frijole';
-    border-radius: 5rem;
-    font-size: 3rem;
-    padding: 2rem;
-    width: 16rem;
-    transition: 0.5s;
-    border: 2px solid rgb(45, 45, 45);
-    background-color: #0c0c0c;
-}
-
-.backToMainScreen:hover{
-    border: 2px solid lightblue;
-}
-
-#submitName:hover{
+.landing-button:hover{
     border: 2px solid lightblue;
 }
 
 
+/* Map circle radius */
 
-/* Map Placement Menu*/
 
-.creatGameMapPlacement{
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+.host-map{
+    width: 100vw;
 }
 
-.cgmpContent{
-    z-index: 1;
+#map { 
+    height: 100vh; 
+    width: 100vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-
-.cgmpContent p{
-    color: black;
-}
-
-.posIcon{
+.pos-icon{
     filter: contrast(0);
     position: absolute;
     right: 0;
     bottom: 0;
     transform: translate(-50%, -50%);
+    z-index: 10000000;
 }
 
-.posIcon:hover{
+.pos-icon:hover{
     cursor: pointer;
 }
 
-.backMenu, .nextMenu{
+.host-map-back, .host-map-next{
     width: 10rem;
     border-radius: 5rem;
     padding: 1.5rem;
@@ -207,38 +79,30 @@
     transform: translate(-50%);
 }
 
-.backMenu{
-    border: 2px solid red;
-    left: 40%;
-}
-
-.nextMenu{
-    border: 2px solid green;
-    left:60%;
-}
-
-.backMenu:hover, .nextMenu:hover{
-    cursor: pointer;
-}
-
-.backMenu p, .nextMenu p{
+.host-map-back p, .host-map-next p{
     font-size: 2.5rem;
     text-align: center;
     align-items: center;
     color: white;
 }
 
-#mapPlacement { 
-    height: 100vh; 
-    width: 100vw;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.host-map-back:hover, .host-map-next:hover{
+    cursor: pointer;
 }
 
-.mapSize {
-    -webkit-appearance: none;
+.host-map-back{
+    border: 2px solid red;
+    left: 40%;
+}
+
+.host-map-next{
+    border: 2px solid green;
+    left:60%;
+}
+
+
+.map-CircleRadius-range {
+    appearance: none;
     width: 36rem;
     height: 1rem;
     border-radius: 1rem; 
@@ -248,7 +112,7 @@
     margin-top: 4rem;
 }
   
-.mapSize::-webkit-slider-thumb {
+.map-CircleRadius-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 2rem;
@@ -258,9 +122,10 @@
     cursor: pointer;
 }
 
+
 /* Game Settings Menu*/
 
-.creatGameSettings{
+.host-GameSettings{
     display: none;
     position: absolute;
     top: 50%;
@@ -272,7 +137,7 @@
     align-items: center;
 }
 
-.creatGameSettings form{
+.host-GameSettings form{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -284,11 +149,16 @@
     gap: 3.5rem;
 }
 
-.creatGameSettings form p{
+.host-GameSettings form p{
     font-size: 2rem;
 }
 
-.htSet{
+.host-settings-title{
+    font-size: 3rem !important;
+    text-align: center;
+}
+
+.host-HideTime{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -296,7 +166,7 @@
     gap: 1rem;
 }
 
-.htTime {
+.HideTime-range {
     -webkit-appearance: none;
     width: 36rem;
     height: 1rem;
@@ -306,7 +176,7 @@
     outline: none;
 }
   
-.htTime::-webkit-slider-thumb {
+.HideTime-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 2rem;
@@ -316,21 +186,7 @@
     cursor: pointer;
 }
 
-.zsSet{
-    display: flex;
-    flex-direction: column;
-}
-
-.zsSetCheckbox{
-    display: flex;
-    gap: 1.5rem;
-}
-
-.zsSetCheckbox input{
-    width: 3rem;
-}
-
-.ssSet{
+.host-ShrinkSpeed{
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -338,31 +194,26 @@
 
 
 
-.ssText{
-    font-size: 3rem !important;
-    text-align: center;
-}
-
-.ssSetSpeedbtn{
+.host-ShrinkSpeed-options{
     display: flex;
     gap: 2rem;
 }
 
-.ssSetSpeedbtn div{
+.host-ShrinkSpeed-options div{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
 }
 
-.ssSetSpeedbtn input{
+.host-ShrinkSpeed-options input{
     position: absolute;
     width: 2rem;
     height: 2rem;
     opacity: 0;
 }
 
-.ssSetSpeedbtn input + .radio{
+.host-ShrinkSpeed-options input + .radio{
     border: 2px solid rgb(45, 45, 45);
     border-radius: 50%;
     width: 1.4rem;
@@ -384,14 +235,14 @@ input[type="radio"]:checked + .radio {
 }
 
 
-.hbSet{
+.host-heartbeat{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.hbSet input{
+.host-heartbeat input{
     position: absolute;
     margin-bottom: -5rem;
     width: 4rem;
@@ -400,7 +251,7 @@ input[type="radio"]:checked + .radio {
 }
 
 
-.hbSet input + .checkbox{
+.host-heartbeat input + .checkbox{
     border: 2px solid rgb(45, 45, 45);
     border-radius: 50%;
     width: 2.3rem;
@@ -412,13 +263,13 @@ input:checked + .checkbox {
 }
 
 
-.cgsSubmit {
+.host-GameSettings-submit {
     width: 90%;
     display: flex;
     justify-content: space-between;
 }
 
-.cgsSubmit input, .back{
+.host-GameSettings-submit input, .back{
     border: none;
     font-family: 'Frijole';
     color: white;
@@ -431,7 +282,7 @@ input:checked + .checkbox {
     padding-right: 3rem;
 }
 
-.cgsSubmit input.start {
+.host-GameSettings-submit input.start {
     color: white;
     border: rgb(0, 255, 0) 2px solid;
 
@@ -442,7 +293,7 @@ input:checked + .checkbox {
 
 }
 
-.cgsSubmit input:hover, .back{
+.host-GameSettings-submit input:hover, .back{
     cursor: pointer;
 }
 
@@ -458,59 +309,23 @@ input:checked + .checkbox {
 
 /*Join Game Menu*/
 
-.joinGame{
+.join-page{
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.joinGameTitel{
-    display: flex;
-    gap: 3rem;
-}
-
-.joinGameTitelLeft{
-    filter: drop-shadow(10px 4px 2px blue);
-}
-
-.joinGameTitelRight{
-    filter: drop-shadow(10px 4px 2px red);
-}
-
-.joinGameData{
-    margin-top: 6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #0c0c0c;
-    border: rgb(45, 45, 45) solid 2px;
-    border-radius: 2rem;
-    padding: 2rem;
-    gap: 3.5rem;
-}
-
-.joinGameData input{
-    font-size: 2rem;
-    background-color:#0c0c0c;
-    color: snow;
-    text-align: center;
-    border-radius: 5rem;
-    border: 2px solid rgb(45, 45, 45);
-    transition: 0.5s;
-}
-
-.joinGametext{
+.join-name{
     width: 25rem;
     height: 4rem;
 }
 
-.joinGametext:hover{
+.join-name:hover{
     border: 2px solid lightblue;
 }
 
-#joinGameSubmit{
+#join-submit{
     font-size: 3rem;
     padding: 2rem;
     padding-left: 5.5rem;
@@ -519,11 +334,11 @@ input:checked + .checkbox {
     transition: 0.5s;
 }
 
-#joinGameSubmit:hover{
+#join-submit:hover{
     border: 2px solid lightblue;
 }
 
-.backToMainScreen2{
+.join-back{
     font-family: 'Frijole';
     border-radius: 5rem;
     font-size: 3rem;
@@ -535,7 +350,7 @@ input:checked + .checkbox {
     text-align: center;
 }
 
-.backToMainScreen2:hover{
+.join-back:hover{
     cursor: pointer;
     border: 2px solid lightblue;
 }
