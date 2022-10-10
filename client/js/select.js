@@ -5,7 +5,7 @@ const size = document.getElementById("map-CircleRadius-range")
 
 const join_submit = document.getElementById('join-submit')
 const onPosIcon = document.getElementById("onPosIcon")
-const host_map_back = document.getElementById('host-map-back')
+const host_map_next = document.getElementById('host-map-next')
 
 join_submit.addEventListener('click', ()=>{
     map.init("host-map-placer").then(async () => {
@@ -27,7 +27,7 @@ join_submit.addEventListener('click', ()=>{
             map.SetZoneRadius(this.value)
         }   
 
-        host_map_back.onclick = ()=>{
+        host_map_next.onclick = ()=>{
             document.mapCenter = map.map.getCenter()
             document.circleRadius = map.ct.getRadius()
         }
