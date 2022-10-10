@@ -113,6 +113,9 @@
     left:60%;
 }
 
+.host-map-content{
+    z-index: 1;
+}
 
 .map-CircleRadius-range {
     -webkit-appearance: none;
