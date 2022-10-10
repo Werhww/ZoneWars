@@ -3,11 +3,11 @@ import { LeafletMap } from "./map.js"
 const map = new LeafletMap()
 const size = document.getElementById("map-CircleRadius-range")
 
-const join_name = document.getElementById('join-name')
+const join_submit = document.getElementById('join-submit')
 const onPosIcon = document.getElementById("onPosIcon")
 const host_map_back = document.getElementById('host-map-back')
 
-join_name.addEventListener('click', ()=>{
+join_submit.addEventListener('click', ()=>{
     map.init("host-map-placer").then(async () => {
         map.CreateCenterZone(100)
 
