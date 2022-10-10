@@ -7,8 +7,7 @@ const hostNext = document.getElementById('host-next')
 const onPosIcon = document.getElementById("onPosIcon")
 const hostMapNext = document.getElementById('host-map-next')
 
-hostNext.addEventListener('click', ()=>{
-
+hostNext.addEventListener('click', () => {
     map.init("host-map-placer").then(async () => {
         map.CreateCenterZone(100)
 
