@@ -107,6 +107,27 @@ body, p{
 /* * --- global buttons --- */
 
 
+/* * footer */
+footer{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+}
+
+footer p, footer a{
+    font-size: 1rem;
+    font-family: 'inter';
+    color: snow;
+}
+/* footer */
+
+
+
 /* * global popup */
 .popup{
     font-family: 'inter';
