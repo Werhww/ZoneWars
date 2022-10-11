@@ -182,6 +182,8 @@ body, p{
         font-size: 16px;
     }
 
+    /* phone title changes */
+
     .title{
         margin: 8rem;
         flex-direction: column;
@@ -202,6 +204,7 @@ body, p{
         margin-top: -2rem;
     }
 
+
     .landing-button{
         font-size: 4rem;
     
@@ -209,6 +212,106 @@ body, p{
         width: 35rem;
         border-radius: 10rem;
     }
+    /* --- phone title changes --- */
+
+    /* Global button changes */
+    .inputs{
+        font-size: 4rem;
+
+        width: 42rem;
+        height: 10rem;
+        border-radius: 10rem;
+    }
+
+    .input-button{
+        font-size: 4rem;
+
+        padding: 5rem;
+        width: 44rem;
+        border-radius: 10rem;
+    }
+    
+    .p-button{
+        font-size: 4rem;
+
+        padding: 5rem;
+        width: 35rem;
+        border-radius: 10rem;
+    }
+    /* --- Global button changes --- */
+
+
+    /* Map changes */
+    .pos-icon{
+        width: 84px;
+    }
+
+    .host-map-back, .host-map-next{
+        font-size: 4rem;
+
+        padding: 3rem;
+        width: 12rem;
+        border-radius: 10rem;
+    }
+
+    .host-map-back p, .host-map-next p{
+        font-size: 3rem;
+    }
+
+    .map-CircleRadius-range {
+        width: 48rem;
+        height: 2rem;
+    }
+      
+    .map-CircleRadius-range::-webkit-slider-thumb {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    /* Game Settings changes */
+    .host-GameSettings form{
+        padding: 4rem;
+        gap: 5rem;
+    }
+
+    .host-GameSettings form p{
+        font-size: 3rem;
+    }
+
+    .host-settings-titles{
+        font-size: 4rem !important;
+    }
+
+    .HideTime-range {
+        height: 1.5rem;
+    }
+      
+    .HideTime-range::-webkit-slider-thumb {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .host-ShrinkSpeed-options input + .radio{
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+    
+    .host-heartbeat input + .checkbox{
+        width: 3.5rem;
+        height: 3.5rem;
+
+        margin-top: 1rem;
+    }
+
+    .host-GameSettings-submit input, .back{
+        font-size: 3rem;
+
+        padding: 1.6rem;
+        padding-left: 4rem;
+        padding-right: 4rem;
+        border-radius: 6rem;
+    }
+
 }
 
 @media only screen and (max-width: 900px) {

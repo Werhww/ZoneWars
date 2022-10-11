@@ -71,14 +71,14 @@
     <div class="host-GameSettings" id="host-GameSettings">
         <form  onsubmit="return gameStart()" id="GameSettings">
             <div class="host-HideTime">
-                <p class="host-settings-title">Hide Time</p>
+                <p class="host-settings-titles">Hide Time</p>
                 <input class="HideTime-range" id="HideTime-range" type="range" value="300000" min="0" max="600000"   
                 oninput="showVal(this.value)"
                 onchange="showVal(this.value)">
                 <p id="HideTime-text">00:00</p>
             </div>
             <div class="host-ShrinkSpeed">
-                <p class="host-settings-title">Shrink Speed</p>
+                <p class="host-settings-titles">Shrink Speed</p>
                 <div class="host-ShrinkSpeed-options">
                     <div>
                         <input type="radio" name="shrinkSpeed" id="speedNone">
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="host-heartbeat">
-                <p class="host-settings-title">Heartbeat</p>
+                <p class="host-settings-titles">Heartbeat</p>
                 <input type="checkbox" id="heartBeat" checked > 
                 <span class="checkbox"></span>
             </div>

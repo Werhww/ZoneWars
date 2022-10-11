@@ -170,7 +170,7 @@
     font-size: 2rem;
 }
 
-.host-settings-title{
+.host-settings-titles{
     font-size: 3rem !important;
     text-align: center;
 }
@@ -242,17 +242,6 @@
 input[type="radio"]:checked + .radio {
     background: #0075ff;
 }
-
-
-.ssSetSpeed{
-    display: flex;
-    gap: 5rem;
-}
-
-.ssSetSpeed p{
-    font-size: 1rem !important;
-}
-
 
 .host-heartbeat{
     display: flex;
@@ -341,19 +330,6 @@ input:checked + .checkbox {
 }
 
 .join-name:hover{
-    border: 2px solid lightblue;
-}
-
-#join-submit {
-    font-size: 3rem;
-    padding: 2rem;
-    padding-left: 5.5rem;
-    padding-right: 5.5rem;
-    font-family: 'Frijole';
-    transition: 0.5s;
-}
-
-#join-submit:hover {
     border: 2px solid lightblue;
 }
 
