@@ -55,8 +55,10 @@ body, p{
     color: snow;
     
 }
-/* *title */
+/* title */
 
+
+/* global inputs */
 .inputs{
     background-color: #0c0c0c;
     border: 2px solid rgb(45, 45, 45);
@@ -67,7 +69,12 @@ body, p{
     width: 20rem;
     height: 5rem;
 }
+/* --- global inputs --- */
 
+
+/* * global buttons */
+
+/* form <input> buttons */
 .input-button{
     font-family: 'Frijole';
     border-radius: 5rem;
@@ -80,6 +87,7 @@ body, p{
     color: white;
 }
 
+/* form <p> buttons */
 .p-button{
     font-family: 'Frijole';
     border-radius: 5rem;
@@ -96,9 +104,10 @@ body, p{
 .input-button:hover, .p-button:hover{
     border: 2px solid lightblue;
 }
+/* * --- global buttons --- */
 
 
-/* *popup */
+/* * global popup */
 .popup{
     font-family: 'inter';
 
@@ -160,9 +169,13 @@ body, p{
     left: 50%;
     background-color: rgba(0, 0, 0, 0.800);
 }
-/* *popup */
+/* * --- popup --- */
 
 
+
+/* media query */
+
+/* media query for phone */
 @media only screen and (max-width: 1000px) { 
 
     html{
