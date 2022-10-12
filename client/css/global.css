@@ -55,9 +55,14 @@ body, p {
     color: snow;
     
 }
-/* *title */
+/* title */
 
 .inputs {
+=======
+
+/* global inputs */
+.inputs{
+>>>>>>> 5dca9c0af76ee13ebb589623da78acd2004aa0d6
     background-color: #0c0c0c;
     border: 2px solid rgb(45, 45, 45);
     color: white;
@@ -67,11 +72,19 @@ body, p {
     width: 20rem;
     height: 5rem;
 }
+/* --- global inputs --- */
 
 .input-button {
     appearance: none;
     -webkit-appearance: non;
 
+=======
+
+/* * global buttons */
+
+/* form <input> buttons */
+.input-button{
+>>>>>>> 5dca9c0af76ee13ebb589623da78acd2004aa0d6
     font-family: 'Frijole';
     border-radius: 5rem;
     font-size: 3rem;
@@ -85,7 +98,8 @@ body, p {
     color: white;
 }
 
-.p-button {
+/* form <p> buttons */
+.p-button{
     font-family: 'Frijole';
     border-radius: 5rem;
     font-size: 3rem;
@@ -103,10 +117,32 @@ body, p {
 .input-button:hover, .p-button:hover {
     border: 2px solid lightblue;
 }
+/* * --- global buttons --- */
 
 
-/* *popup */
-.popup {
+/* * footer */
+footer{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+}
+
+footer p, footer a{
+    font-size: 1rem;
+    font-family: 'inter';
+    color: snow;
+}
+/* footer */
+
+
+
+/* * global popup */
+.popup{
     font-family: 'inter';
 
     position: absolute;
@@ -167,14 +203,20 @@ body, p {
     left: 50%;
     background-color: rgba(0, 0, 0, 0.800);
 }
-/* *popup */
+/* * --- popup --- */
 
 
+
+/* media query */
+
+/* media query for phone */
 @media only screen and (max-width: 1000px) { 
 
     html{
         font-size: 16px;
     }
+
+    /* phone title changes */
 
     .title{
         margin: 8rem;
@@ -196,6 +238,7 @@ body, p {
         margin-top: -2rem;
     }
 
+
     .landing-button{
         font-size: 4rem;
     
@@ -203,6 +246,106 @@ body, p {
         width: 35rem;
         border-radius: 10rem;
     }
+    /* --- phone title changes --- */
+
+    /* Global button changes */
+    .inputs{
+        font-size: 4rem;
+
+        width: 42rem;
+        height: 10rem;
+        border-radius: 10rem;
+    }
+
+    .input-button{
+        font-size: 4rem;
+
+        padding: 5rem;
+        width: 44rem;
+        border-radius: 10rem;
+    }
+    
+    .p-button{
+        font-size: 4rem;
+
+        padding: 5rem;
+        width: 35rem;
+        border-radius: 10rem;
+    }
+    /* --- Global button changes --- */
+
+
+    /* Map changes */
+    .pos-icon{
+        width: 84px;
+    }
+
+    .host-map-back, .host-map-next{
+        font-size: 4rem;
+
+        padding: 3rem;
+        width: 12rem;
+        border-radius: 10rem;
+    }
+
+    .host-map-back p, .host-map-next p{
+        font-size: 3rem;
+    }
+
+    .map-CircleRadius-range {
+        width: 48rem;
+        height: 2rem;
+    }
+      
+    .map-CircleRadius-range::-webkit-slider-thumb {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    /* Game Settings changes */
+    .host-GameSettings form{
+        padding: 4rem;
+        gap: 5rem;
+    }
+
+    .host-GameSettings form p{
+        font-size: 3rem;
+    }
+
+    .host-settings-titles{
+        font-size: 4rem !important;
+    }
+
+    .HideTime-range {
+        height: 1.5rem;
+    }
+      
+    .HideTime-range::-webkit-slider-thumb {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .host-ShrinkSpeed-options input + .radio{
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+    
+    .host-heartbeat input + .checkbox{
+        width: 3.5rem;
+        height: 3.5rem;
+
+        margin-top: 1rem;
+    }
+
+    .host-GameSettings-submit input, .back{
+        font-size: 3rem;
+
+        padding: 1.6rem;
+        padding-left: 4rem;
+        padding-right: 4rem;
+        border-radius: 6rem;
+    }
+
 }
 
 @media only screen and (max-width: 900px) {
