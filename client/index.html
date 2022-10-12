@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <!-- Host first menu -->
+    <!-- Host name page -->
     <div class="menus" id="host-name">
         <div class="title">
             <p class="title-left">New</p>
@@ -54,7 +54,7 @@
         </form>
     </div>
 
-    <!-- Host second menu -->
+    <!-- Map radius placement page -->
     <div class="menus host-map" id="host-map"> 
         <div id="host-map-placer"></div> 
         <div class="host-map-content">
@@ -67,17 +67,18 @@
         </div>
     </div>
 
+    <!-- Game settings page -->
     <div class="host-GameSettings" id="host-GameSettings">
         <form  onsubmit="return gameStart()" id="GameSettings">
             <div class="host-HideTime">
-                <p class="host-settings-title">Hide Time</p>
+                <p class="host-settings-titles">Hide Time</p>
                 <input class="HideTime-range" id="HideTime-range" type="range" value="300000" min="0" max="600000"   
                 oninput="showVal(this.value)"
                 onchange="showVal(this.value)">
                 <p id="HideTime-text">00:00</p>
             </div>
             <div class="host-ShrinkSpeed">
-                <p class="host-settings-title">Shrink Speed</p>
+                <p class="host-settings-titles">Shrink Speed</p>
                 <div class="host-ShrinkSpeed-options">
                     <div>
                         <input type="radio" name="shrinkSpeed" id="speedNone">
@@ -102,7 +103,7 @@
                 </div>
             </div>
             <div class="host-heartbeat">
-                <p class="host-settings-title">Heartbeat</p>
+                <p class="host-settings-titles">Heartbeat</p>
                 <input type="checkbox" id="heartBeat" checked > 
                 <span class="checkbox"></span>
             </div>
@@ -115,6 +116,7 @@
 
     </div>
 
+    <!-- Join game page-->
     <div class="join-page" id="join">
         <div class="title">
             <p class="title-left">Join</p>
@@ -128,6 +130,13 @@
         </div>
     </div>
 
+    <!-- footer -->
+    <footer id="footer">
+        <p>mail:</p>
+        <a href="mailto: post@zonewarz.com">post@zonewarz.com</a>
+    </footer>
+
+    <!-- Popup || Used several places -->
     <div class="popup" id="popup">
         <p class="popup-titel">Message</p>
         <img class="popup-exit" id="popup-exit" src="/assets/icons/popup-x.svg" alt="">

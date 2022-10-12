@@ -10,6 +10,8 @@ const hostGameSettings = document.getElementById('host-GameSettings')
 
 const joinPage = document.getElementById('join')
 
+const footer = document.getElementById('footer')
+
 //Button
 const hostBack = document.getElementById('host-back')
 const joinBack = document.getElementById('join-back')
@@ -62,6 +64,8 @@ function fetchHostName(){
     
     hostName.style.display = 'none'
     hostMap.style.display = 'flex'
+    
+    footer.style.display = 'none'
 
     return false
 }
@@ -84,6 +88,8 @@ hostBack.addEventListener('click', ()=>{
 hostMapBack.addEventListener('click', ()=>{
     hostName.style.display = 'flex'
     hostMap.style.display = 'none'
+
+    footer.style.display = 'flex'
 })
 
 hostMapNext.addEventListener('click', ()=>{
