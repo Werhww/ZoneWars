@@ -68,6 +68,7 @@ body, p{
     font-size: 2rem;
     width: 20rem;
     height: 5rem;
+    font-family: 'Frijole';
 }
 /* --- global inputs --- */
 
@@ -76,10 +77,15 @@ body, p{
 
 /* form <input> buttons */
 .input-button{
+    appearance: none;
+    -webkit-appearance: none;
+
     font-family: 'Frijole';
     border-radius: 5rem;
     font-size: 3rem;
     padding: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     width: 21rem;
     transition: 0.5s;
     border: 2px solid rgb(45, 45, 45);
@@ -93,6 +99,8 @@ body, p{
     border-radius: 5rem;
     font-size: 3rem;
     padding: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     width: 17rem;
     text-align: center;
     transition: 0.5s;
@@ -205,38 +213,37 @@ footer p, footer a{
 
     /* phone title changes */
 
-    .title{
+    .title {
         margin: 8rem;
         flex-direction: column;
         gap: 0;
     }
 
-    .title-left, .title-right{
+    .title-left, .title-right {
         font-size: 10rem;
     }
 
-    .title-left{
+    .title-left {
         padding-right: 15rem;
         margin-bottom: -2rem;
     }
 
-    .title-right{
+    .title-right {
         padding-left: 15rem;
         margin-top: -2rem;
     }
 
 
-    .landing-button{
+    .landing-button {
         font-size: 4rem;
     
-        padding: 5rem;
         width: 35rem;
         border-radius: 10rem;
     }
     /* --- phone title changes --- */
 
     /* Global button changes */
-    .inputs{
+    .inputs {
         font-size: 4rem;
 
         width: 42rem;
@@ -244,7 +251,7 @@ footer p, footer a{
         border-radius: 10rem;
     }
 
-    .input-button{
+    .input-button {
         font-size: 4rem;
 
         padding: 5rem;
@@ -252,7 +259,7 @@ footer p, footer a{
         border-radius: 10rem;
     }
     
-    .p-button{
+    .p-button {
         font-size: 4rem;
 
         padding: 5rem;
@@ -263,11 +270,11 @@ footer p, footer a{
 
 
     /* Map changes */
-    .pos-icon{
+    .pos-icon {
         width: 84px;
     }
 
-    .host-map-back, .host-map-next{
+    .host-map-back, .host-map-next {
         font-size: 4rem;
 
         padding: 3rem;
@@ -275,7 +282,7 @@ footer p, footer a{
         border-radius: 10rem;
     }
 
-    .host-map-back p, .host-map-next p{
+    .host-map-back p, .host-map-next p {
         font-size: 3rem;
     }
 
@@ -290,16 +297,16 @@ footer p, footer a{
     }
 
     /* Game Settings changes */
-    .host-GameSettings form{
+    .host-GameSettings form {
         padding: 4rem;
         gap: 5rem;
     }
 
-    .host-GameSettings form p{
+    .host-GameSettings form p {
         font-size: 3rem;
     }
 
-    .host-settings-titles{
+    .host-settings-titles {
         font-size: 4rem !important;
     }
 
@@ -312,19 +319,19 @@ footer p, footer a{
         height: 3rem;
     }
 
-    .host-ShrinkSpeed-options input + .radio{
+    .host-ShrinkSpeed-options input + .radio {
         width: 2.8rem;
         height: 2.8rem;
     }
     
-    .host-heartbeat input + .checkbox{
+    .host-heartbeat input + .checkbox {
         width: 3.5rem;
         height: 3.5rem;
 
         margin-top: 1rem;
     }
 
-    .host-GameSettings-submit input, .back{
+    .host-GameSettings-submit input, .back {
         font-size: 3rem;
 
         padding: 1.6rem;
@@ -342,25 +349,25 @@ footer p, footer a{
 }
 
 @media only screen and (max-width: 800px) {
-    html{
+    html {
         font-size: 12px;
     }
 }
 
 @media only screen and (max-width: 680px) {
-    html{
+    html {
         font-size: 10px;
     }
 }
 
 @media only screen and (max-width: 680px) {
-    html{
+    html {
         font-size: 10px;
     }
 }
 
 @media only screen and (max-width: 530px) {
-    html{
+    html {
         font-size: 8px;
     }
 }

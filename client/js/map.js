@@ -54,27 +54,27 @@ export function escape(unsafe){
 
 
 export class LeafletMap {
-    constructor(){
+    constructor() {
     }
 
-    MarkSelf(){
-        L.marker([this.position.lat, this.position.lng]).addTo(this.map)
+    MarkSelf() {
+        this.AddPlayerMarker("", new L.LatLng(this.position.lat, this.position.lng), "self")
     }
 
-    ConvertPosition(position){
+    ConvertPosition(position) {
         return new L.LatLng(position.lat, position.lon)
     }
 
-    CreateZone(position, radius){
+    CreateZone(position, radius) {
         return L.circle([position.lng, position.lat], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.05,
+            color: 'blue',
+            fillColor: 'blue',
+            fillOpacity: 0.025,
             radius: radius
         }).addTo(this.map)
     }
 
-    CreateCenterZone(radius){
+    CreateCenterZone(radius) {
         const pos = this.map.getCenter()
         this.ct = this.CreateZone(pos, radius)
 
@@ -84,26 +84,26 @@ export class LeafletMap {
         })
     }
 
-    CreateSetZone(position, radius){
+    CreateSetZone(position, radius) {
         this.ct = this.CreateZone(position, radius)
     }
 
-    SetZoneRadius(radius){
+    SetZoneRadius(radius) {
         this.ct.setRadius(radius)
     }
 
-    RemoveZone(){
+    RemoveZone() {
         if (this.ct)
         this.ct.remove()
         this.ct = undefined
     }
 
-    CenterMap(zoom = undefined){
+    CenterMap(zoom = undefined) {
         this.map.setView(this.position, zoom);
     }
 
 
-    AddPlayerMarker(username, position, type){
+    AddPlayerMarker(username, position, type) {
         return L.marker(position, {icon: new L.DivIcon({
             className: '',
             html: `
@@ -114,7 +114,7 @@ export class LeafletMap {
         })}).addTo(this.map)
     }
     
-    async init(elem, popup = true){
+    async init(elem, popup = true) {
         this.position = await getLocation().catch(()=>{})
         if (this.position.acc > 100) {
             if (popup){
@@ -146,5 +146,16 @@ export class LeafletMap {
 
         document.getElementsByClassName('leaflet-control-attribution' )[0].style.display = 'none';
 
+        var originalInitTile = L.GridLayer.prototype._initTile
+        L.GridLayer.include({
+            _initTile: function (tile) {
+                originalInitTile.call(this, tile);
+
+                var tileSize = this.getTileSize();
+
+                tile.style.width = tileSize.x + 2 + 'px';
+                tile.style.height = tileSize.y + 2 + 'px';
+            }
+        })
     }
 }
