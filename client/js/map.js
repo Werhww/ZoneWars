@@ -67,9 +67,9 @@ export class LeafletMap {
 
     CreateZone(position, radius){
         return L.circle([position.lng, position.lat], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.05,
+            color: 'blue',
+            fillColor: 'blue',
+            fillOpacity: 0.04,
             radius: radius
         }).addTo(this.map)
     }
@@ -146,5 +146,16 @@ export class LeafletMap {
 
         document.getElementsByClassName('leaflet-control-attribution' )[0].style.display = 'none';
 
+        var originalInitTile = L.GridLayer.prototype._initTile
+        L.GridLayer.include({
+            _initTile: function (tile) {
+                originalInitTile.call(this, tile)
+    
+                var tileSize = this.getTileSize()
+    
+                tile.style.width = tileSize.x + 2 + 'px';
+                tile.style.height = tileSize.y + 2 + 'px';
+            }
+        })
     }
 }
