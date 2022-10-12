@@ -1,26 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Inter');
 @import url('https://fonts.googleapis.com/css?family=Frijole');
 
-html {
+html{
     font-family: 'Frijole';
     background: #0c0c0c;
 }
 
-body, p {
+body, p{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     color: snow;
 }
 
-.menus {
+.menus{
     display: none;
     flex-direction: column;
     text-align: center;
     align-items: center;
 }
 
-.forms {
+.forms{
     margin-top: 2rem;
     border-radius: 6rem;
     padding: 3.5rem;
@@ -35,20 +35,20 @@ body, p {
 }
 
 /* *title */
-.title {
+.title{
     margin-top: 4rem;
     display: flex;
     gap: 2rem;
 }
 
-.title-left {
+.title-left{
     filter: drop-shadow(10px 4px 2px blue);
     text-align: center;
     font-size: 7rem;
     color: snow;
 }
 
-.title-right {
+.title-right{
     filter: drop-shadow(10px 4px 2px red);
     text-align: center;
     font-size: 7rem;
@@ -57,12 +57,9 @@ body, p {
 }
 /* title */
 
-.inputs {
-=======
 
 /* global inputs */
 .inputs{
->>>>>>> 5dca9c0af76ee13ebb589623da78acd2004aa0d6
     background-color: #0c0c0c;
     border: 2px solid rgb(45, 45, 45);
     color: white;
@@ -74,23 +71,15 @@ body, p {
 }
 /* --- global inputs --- */
 
-.input-button {
-    appearance: none;
-    -webkit-appearance: non;
-
-=======
 
 /* * global buttons */
 
 /* form <input> buttons */
 .input-button{
->>>>>>> 5dca9c0af76ee13ebb589623da78acd2004aa0d6
     font-family: 'Frijole';
     border-radius: 5rem;
     font-size: 3rem;
     padding: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     width: 21rem;
     transition: 0.5s;
     border: 2px solid rgb(45, 45, 45);
@@ -105,8 +94,6 @@ body, p {
     font-size: 3rem;
     padding: 2rem;
     width: 17rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     text-align: center;
     transition: 0.5s;
     border: 2px solid rgb(45, 45, 45);
@@ -114,7 +101,7 @@ body, p {
     color: white;
 }
 
-.input-button:hover, .p-button:hover {
+.input-button:hover, .p-button:hover{
     border: 2px solid lightblue;
 }
 /* * --- global buttons --- */
@@ -164,18 +151,18 @@ footer p, footer a{
     z-index: 1000;
 }
 
-.popup-titel {
+.popup-titel{
     text-align: center;
     font-size: 1.5rem;
 }
 
-.popup-text {
+.popup-text{
     text-align: center;
     width: 30rem;
     transition: 1s;
 }
 
-.popup-exit {
+.popup-exit{
     position: absolute;
     filter: contrast(0);
 
@@ -186,11 +173,11 @@ footer p, footer a{
     z-index: 118;  
 }
 
-.popup-exit:hover {
+.popup-exit:hover{
     cursor: pointer;
 }
 
-.popup-blur {
+.popup-blur{
     display: none;
 
     z-index: 999;

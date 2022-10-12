@@ -104,12 +104,12 @@
 }
 
 .host-map-back{
-    border: 2px solid black;
+    border: 2px solid red;
     left: 40%;
 }
 
 .host-map-next{
-    border: 2px solid black;
+    border: 2px solid green;
     left:60%;
 }
 
