@@ -67,8 +67,8 @@ export class LeafletMap {
 
     CreateZone(position, radius) {
         return L.circle([position.lng, position.lat], {
-            color: 'blue',
-            fillColor: 'blue',
+            color: 'red',
+            fillColor: 'red',
             fillOpacity: 0.025,
             radius: radius
         }).addTo(this.map)

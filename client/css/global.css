@@ -371,3 +371,34 @@ footer p, footer a{
         font-size: 8px;
     }
 }
+
+.marker.friend img {
+    filter: invert(51%) sepia(94%) saturate(935%) hue-rotate(78deg) brightness(109%) contrast(129%);
+}
+
+.marker.seeker img {
+    filter: invert(16%) sepia(98%) saturate(7437%) hue-rotate(360deg) brightness(108%) contrast(107%);
+}
+
+.marker.self img {
+    filter: invert(7%) sepia(100%) saturate(7450%) hue-rotate(247deg) brightness(107%) contrast(138%);
+}
+
+.marker {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.marker span {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #ffffff;
+}
+
+.marker img {
+    height: 1.8rem;
+}

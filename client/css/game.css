@@ -153,23 +153,7 @@
 }
 
 .marker {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 1;
-    margin-top: -2.25rem;
-}
-
-.marker span {
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    color: #ffffff;
-}
-
-.marker img {
-    height: 1.8rem;
+    margin-top: -1.1rem !important;
 }
 
 #gameMap {height: 100vh; width: 100vw;}
