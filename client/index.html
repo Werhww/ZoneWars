@@ -37,7 +37,8 @@
         </div>
         <div class="landing-buttons">
             <div class="landing-button" id="landing-host"> <p>Host</p> </div>
-            <div class="landing-button" id="landing-join"> <p>Join</p> </div>
+            <div class="landing-button spacer" id="landing-join"> <p>Join</p> </div>
+            <div class="landing-button" id="landing-tutorial" onclick="lightbox_open()"> <p>Tutorial</p> </div>
         </div>
     </div>
 
@@ -129,10 +130,29 @@
             <p class="p-button" id="join-back">Back</p>
         </div>
     </div>
+    
+    <!-- Tutorial page-->
+    <div>
+        <div id="light">
+            <a class="boxclose" id="boxclose" onclick="lightbox_close()">
+                <img src="./assets/icons/popup-x.svg" alt="">
+            </a>
+
+            <!--controls?-->
+            <video id="video" loop>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+          
+        <div id="fade" onClick="lightbox_close()"></div>
+    </div>
 
     <!-- footer -->
     <footer id="footer">
-        <a href="mailto: post@zonewarz.com">post@zonewarz.com</a>
+        <a href="mailto:post@zonewarz.com">Contact</a>
+        <p>-</p>
+        <a href="https://ko-fi.com/zonewarz">Support</a>
     </footer>
 
     <!-- Popup || Used several places -->

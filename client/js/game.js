@@ -1,4 +1,4 @@
-import { LeafletMap, escape } from "./map.js";  
+import { LeafletMap, escape } from "./map.js"  
 
 const map = new LeafletMap()
 

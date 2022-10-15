@@ -2,7 +2,7 @@
 const landingHost = document.getElementById('landing-host')
 const landingJoin = document.getElementById('landing-join')
 
-// Menus
+//Menus
 const landingPage = document.getElementById('landing-page')
 const hostName = document.getElementById('host-name')
 const hostMap = document.getElementById('host-map')
@@ -20,7 +20,7 @@ const hostMapBack = document.getElementById('host-map-back')
 const settingBack = document.getElementById('back')
 
 
-// Cool
+//Join game
 const joinSubmit = document.getElementById("join-submit")
 const unameInput = document.getElementById("join-name")
 const GIDinput = document.getElementById("GID")
@@ -56,10 +56,10 @@ landingHost.addEventListener('click', ()=>{
 })
 
 function fetchHostName(){
-    const userName = document.forms['host-name-form']['host-name'].value;
+    const userName = document.forms['host-name-form']['host-name'].value
     if (userName == "" || userName.includes(" ")){
-        alert("Name must be filled out");
-        return false;
+        alert("Name must be filled out")
+        return false
     }
     
     hostName.style.display = 'none'
@@ -171,4 +171,29 @@ joinBack.addEventListener('click', ()=>{
 
 joinSubmit.onclick = () => {
     socket.emit("JoinGame", GIDinput.value, unameInput.value)
+}
+
+//Tutorial
+window.document.onkeydown = function(e) {
+    if (!e) {
+        e = event
+    }
+    if (e.keyCode == 27) {
+        lightbox_close()
+    }
+}
+
+function lightbox_open() {
+    var lightBoxVideo = document.getElementById("video")
+    window.scrollTo(0, 0)
+    document.getElementById('light').style.display = 'block'
+    document.getElementById('fade').style.display = 'block'
+    lightBoxVideo.play()
+}
+  
+function lightbox_close() {
+    var lightBoxVideo = document.getElementById("video")
+    document.getElementById('light').style.display = 'none'
+    document.getElementById('fade').style.display = 'none'
+    lightBoxVideo.pause()
 }

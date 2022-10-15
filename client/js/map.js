@@ -30,11 +30,11 @@ function getLocation() {
 
 export function escape(unsafe){
     return unsafe
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;")
+    .replace(/&/g, "&amp")
+    .replace(/</g, "&lt")
+    .replace(/>/g, "&gt")
+    .replace(/"/g, "&quot")
+    .replace(/'/g, "&#039")
 }
 
 // Makes tile 1px larger to hide white line
@@ -42,14 +42,14 @@ export function escape(unsafe){
     var originalInitTile = L.GridLayer.prototype._initTile
     L.GridLayer.include({
         _initTile: function (tile) {
-            originalInitTile.call(this, tile);
+            originalInitTile.call(this, tile)
 
-            var tileSize = this.getTileSize();
+            var tileSize = this.getTileSize()
 
-            tile.style.width = tileSize.x + 1 + 'px';
-            tile.style.height = tileSize.y + 1 + 'px';
+            tile.style.width = tileSize.x + 1 + 'px'
+            tile.style.height = tileSize.y + 1 + 'px'
         }
-    });
+    })
 })()
 
 
@@ -99,7 +99,7 @@ export class LeafletMap {
     }
 
     CenterMap(zoom = undefined) {
-        this.map.setView(this.position, zoom);
+        this.map.setView(this.position, zoom)
     }
 
 
@@ -144,17 +144,17 @@ export class LeafletMap {
             maxZoom: 19,
         }).addTo(this.map)
 
-        document.getElementsByClassName('leaflet-control-attribution' )[0].style.display = 'none';
+        document.getElementsByClassName('leaflet-control-attribution' )[0].style.display = 'none'
 
         var originalInitTile = L.GridLayer.prototype._initTile
         L.GridLayer.include({
             _initTile: function (tile) {
-                originalInitTile.call(this, tile);
+                originalInitTile.call(this, tile)
 
-                var tileSize = this.getTileSize();
+                var tileSize = this.getTileSize()
 
-                tile.style.width = tileSize.x + 2 + 'px';
-                tile.style.height = tileSize.y + 2 + 'px';
+                tile.style.width = tileSize.x + 2 + 'px'
+                tile.style.height = tileSize.y + 2 + 'px'
             }
         })
     }
