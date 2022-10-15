@@ -88,8 +88,7 @@ export class Player extends EventEmitter {
 
     GetClosestPlayer(){
         const game = this.GetGame()
-        if (!game) return
-        if (!this.position) return 
+        if (!game || !this.position || !this.seeker) return
 
         var closest:Player|undefined = undefined
         var distance:number|undefined = undefined
