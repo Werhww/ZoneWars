@@ -406,7 +406,7 @@ input:checked + .checkbox {
 }
 
 #video {
-    width: 50rem;
+    width: 40rem;
 }
 
 #fade:hover ~ #boxclose {
