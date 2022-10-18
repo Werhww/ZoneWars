@@ -25,7 +25,7 @@ const joinSubmit = document.getElementById("join-submit")
 const unameInput = document.getElementById("join-name")
 const GIDinput = document.getElementById("GID")
 
-const lightBoxVideo = document.getElementById("video")
+const tutorialVideo = document.getElementById("video")
 
 //Creat Game
 const url = "https://server.zonewarz.com"
@@ -175,26 +175,26 @@ joinSubmit.onclick = () => {
 }
 
 //Tutorial
-lightBoxVideo.addEventListener('ended', () => {
-    lightbox_close()
+tutorialVideo.addEventListener('ended', () => {
+    close()
 }, false)
 
 
 window.document.onkeydown = (event) => {
     if (event.keyCode == 27) {
-        lightbox_close()
+        close()
     }
 }
 
-function lightbox_open() {
+function open() {
     window.scrollTo(0, 0)
     document.getElementById('light').style.display = 'block'
     document.getElementById('fade').style.display = 'block'
-    lightBoxVideo.play()
+    tutorialVideo.play()
 }
   
-function lightbox_close() {
+function close() {
     document.getElementById('light').style.display = 'none'
     document.getElementById('fade').style.display = 'none'
-    lightBoxVideo.pause()
+    tutorialVideo.pause()
 }

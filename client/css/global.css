@@ -404,3 +404,27 @@ footer p, footer a{
 .marker img {
     height: 1.8rem;
 }
+
+*::-webkit-media-controls-panel {
+
+    display: none!important;
+  
+    -webkit-appearance: none;
+  
+}
+
+*::--webkit-media-controls-play-button {
+
+    display: none!important;
+
+    -webkit-appearance: none;
+
+}
+
+*::-webkit-media-controls-start-playback-button {
+
+    display: none!important;
+
+    -webkit-appearance: none;
+
+}
