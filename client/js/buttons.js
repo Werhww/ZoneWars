@@ -198,3 +198,10 @@ function vclose() {
     document.getElementById('fade').style.display = 'none'
     tutorialVideo.pause()
 }
+let isIOS = (/iPad|iPhone|iPod/.test(navigator.platform) ||
+(navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
+!window.MSStream
+
+if (isIOS){
+    document.getElementById("boxclose").style.display = "none"
+}
