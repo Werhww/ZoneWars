@@ -37,7 +37,7 @@
         <div class="landing-buttons">
             <div class="landing-button" id="landing-host"> <p>Host</p> </div>
             <div class="landing-button spacer" id="landing-join"> <p>Join</p> </div>
-            <div class="landing-button" id="landing-tutorial" onclick="open()"> <p>Tutorial</p> </div>
+            <div class="landing-button" id="landing-tutorial" onclick="vopen()"> <p>Tutorial</p> </div>
         </div>
     </div>
 
@@ -133,18 +133,18 @@
     <!-- Tutorial page-->
     <div>
         <div id="light">
-            <a class="boxclose" id="boxclose" onclick="close()">
+            <a class="boxclose" id="boxclose" onclick="vclose()">
                 <img src="./assets/icons/popup-x.svg" alt="">
             </a>
 
             <!--controls?-->
-            <video id="video" controls="false" playsinline>
+            <video id="video" controls playsinline>
                 <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
           
-        <div id="fade" onclick="close()"></div>
+        <div id="fade" onclick="vclose()"></div>
     </div>
 
     <!-- footer -->

@@ -176,24 +176,24 @@ joinSubmit.onclick = () => {
 
 //Tutorial
 tutorialVideo.addEventListener('ended', () => {
-    close()
+    vclose()
 }, false)
 
 
 window.document.onkeydown = (event) => {
     if (event.keyCode == 27) {
-        close()
+        vclose()
     }
 }
 
-function open() {
+function vopen() {
     window.scrollTo(0, 0)
     document.getElementById('light').style.display = 'block'
     document.getElementById('fade').style.display = 'block'
     tutorialVideo.play()
 }
   
-function close() {
+function vclose() {
     document.getElementById('light').style.display = 'none'
     document.getElementById('fade').style.display = 'none'
     tutorialVideo.pause()
