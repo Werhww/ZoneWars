@@ -37,7 +37,7 @@
         <div class="landing-buttons">
             <div class="landing-button" id="landing-host"> <p>Host</p> </div>
             <div class="landing-button spacer" id="landing-join"> <p>Join</p> </div>
-            <div class="landing-button" id="landing-tutorial" onclick="lightbox_open()"> <p>Tutorial</p> </div>
+            <div class="landing-button" id="landing-tutorial" onclick="open()"> <p>Tutorial</p> </div>
         </div>
     </div>
 
@@ -133,7 +133,7 @@
     <!-- Tutorial page-->
     <div>
         <div id="light">
-            <a class="boxclose" id="boxclose" onclick="lightbox_close()">
+            <a class="boxclose" id="boxclose" onclick="close()">
                 <img src="./assets/icons/popup-x.svg" alt="">
             </a>
 
@@ -144,7 +144,7 @@
             </video>
         </div>
           
-        <div id="fade" onClick="lightbox_close()"></div>
+        <div id="fade" onclick="close()"></div>
     </div>
 
     <!-- footer -->
