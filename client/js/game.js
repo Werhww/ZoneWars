@@ -17,6 +17,12 @@ const closeName = document.getElementById("closename")
 
 const suicide = document.getElementById("suicide")
 
+const timer = document.getElementById("timer-time")
+const timerText = document.getElementById("timer-text")
+const timerParent = document.getElementById("timer")
+
+var interval
+
 var lastUpdate = new Date().getTime()
 setInterval(() => {
     if (new Date().getTime() - lastUpdate > 10000){
@@ -32,9 +38,16 @@ function PlayBeep() {
 }
 
 function GameStart(socket, map, init){
+    const playerRole = init.self.seeker
     map.CenterMap()
 
-    // ! What is this? Most likely a bug with leaflet!
+    if(playerRole ){
+        suicide.style.display='none'
+    } else{
+        suicide.style.display='flex'
+    }
+
+    // ! What is this? Most likely a bug with leaflet<!
     map.CreateSetZone(map.ConvertPosition({
         lat: init.center.lon,
         lon: init.center.lat
@@ -55,9 +68,54 @@ function GameStart(socket, map, init){
         PlayBeep()
     })
     
+    function timerStart(){
+        timerParent.style.display = 'flex'
+        timer.classList.remove( 'slow','medium', 'fast')
+        timer.classList.add('slow')
+        var time = init.settings.HideTime
+        
+        const tickRate = 1000
+
+        if(playerRole == true){
+            timerText.innerHTML = "Dont move. You are a Seeker"
+            timerText.style.color = 'red'
+        } else {
+            timerText.innerHTML = "Go and hide!!"
+            timerText.style.color = 'white'
+        }
+
+        var i = Math.floor(time/1000)
+        const ii = Math.floor(time/1000)
+        
+        interval = setInterval(()=>{
+            const min = Math.floor(i/60)
+            const sec = Math.floor(i - (min*60))
+            if(i <= 0){
+                clearInterval(interval)
+                timerParent.style.display = 'none'
+                return
+            }
+
+            if(i <  (ii - (ii/3) ) && timer.classList.contains('slow')){
+                timer.classList.remove('slow')
+                timer.classList.add('medium')
+            } else if(i <  (ii - ((ii/3)*2)) && timer.classList.contains('medium')){
+                timer.classList.remove('medium')
+                timer.classList.add('fast')
+            }
+        
+            timer.innerHTML = (`${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`)
+
+            i -= 1
+            timerParent.style.display = 'flex'
+        },tickRate)
+    }
+
+    timerStart()
 }
 
 function GameEnd(socket, map){
+    if(interval)clearInterval(interval)
     map.RemoveZone()
 
     for (var marker of document.getElementsByClassName("leaflet-marker-icon")){
@@ -226,7 +284,7 @@ function ready(socket, map, init) {
             lon: map.position.lng,
             lat: map.position.lat
         })
-    }, 5000)
+    }, 2000)
 
     startButton.onclick = () => {
         socket.emit("StartGame")

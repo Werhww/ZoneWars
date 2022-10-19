@@ -310,16 +310,6 @@ input:checked + .checkbox {
     cursor: pointer;
 }
 
-.slow {
-    color: rgb(0, 255, 0);
-}
-.medium {
-    color: rgb(255, 255, 0);
-}
-.fast {
-    color: red
-}
-
 /*Join Game Menu*/
 
 .join-page{
