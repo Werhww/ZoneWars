@@ -156,7 +156,7 @@ footer p, footer a{
     background-color: #0c0c0c;
     border: rgb(45, 45, 45) solid 2px;
 
-    z-index: 1000;
+    z-index: 1000000000;
 }
 
 .popup-titel{
@@ -439,4 +439,14 @@ video::slotted::-webkit-media-controls-container{
 
 :host::shadow::-webkit-media-controls-container{
     display: none!important;
+}
+
+.slow {
+    color: rgb(0, 255, 0);
+}
+.medium {
+    color: rgb(255, 255, 0);
+}
+.fast {
+    color: red
 }
