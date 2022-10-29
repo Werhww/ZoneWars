@@ -256,16 +256,16 @@ footer p, footer a{
     .input-button {
         font-size: 4rem;
 
-        padding: 5rem;
-        width: 44rem;
+        padding: 3rem;
+        width: 42rem;
         border-radius: 10rem;
     }
     
     .p-button {
         font-size: 4rem;
 
-        padding: 5rem;
-        width: 35rem;
+        padding: 3rem;
+        width: 36rem;
         border-radius: 10rem;
     }
     /* --- Global button changes --- */
@@ -273,7 +273,9 @@ footer p, footer a{
 
     /* Map changes */
     .pos-icon {
-        width: 5rem;
+        bottom: 6rem;
+        right: 3rem;
+        width: 7rem;
     }
 
     .host-map-back, .host-map-next {
