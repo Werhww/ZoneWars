@@ -60,6 +60,13 @@
     border-radius: 40px;
 }
 
+.leave, .start {
+    width: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .head .actions .start {
     display: none;
@@ -125,9 +132,11 @@
 }
 
 .stopgame {
-    padding: 1rem 1.3rem 1rem 1.3rem;
+    padding: 1.3rem 2.6rem 1.3rem 2.6rem;
     border: solid 2px red;
+    font-size: 1.3rem;
     border-radius: 2.5rem;
+    background-color: black;
 }
 
 .stopgame:hover {
@@ -136,11 +145,13 @@
 
 .suicide{
     position: absolute;
-    padding: 1rem 1.3rem 1rem 1.3rem;
+    font-size: 1.3rem;
+    padding: 1.3rem 2.6rem 1.3rem 2.6rem;
     border: solid 2px red;
     border-radius: 2.5rem;
     text-align: center;
     transform: translate(-50%, 0);
+    background-color: black;
 
     bottom: 0.625rem;
     left: 50%;

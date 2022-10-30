@@ -81,10 +81,10 @@ function GameStart(socket, map, init){
         const tickRate = 1000
 
         if(playerRole == true){
-            timerText.innerHTML = "Dont move. You are a Seeker"
+            timerText.innerHTML = "Seeker, dont move!"
             timerText.style.color = 'red'
         } else {
-            timerText.innerHTML = "Go and hide!!"
+            timerText.innerHTML = "Hider, hide!"
             timerText.style.color = 'white'
         }
 

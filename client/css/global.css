@@ -13,6 +13,10 @@ body, p{
     color: snow;
 }
 
+.leaflet-control-zoom {
+    display: none !important;
+}
+
 .menus{
     display: none;
     flex-direction: column;
@@ -213,16 +217,23 @@ footer p, footer a{
         font-size: 16px;
     }
 
-    /* phone title changes */
+}
 
-    .title {
-        margin: 8rem;
-        flex-direction: column;
-        gap: 0;
+@media only screen and (max-width: 900px) {
+    html{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    html {
+        font-size: 13px;
     }
 
-    .title-left, .title-right {
-        font-size: 10rem;
+    .title {
+        margin: 5rem;
+        flex-direction: column;
+        gap: 0;
     }
 
     .title-left {
@@ -235,144 +246,78 @@ footer p, footer a{
         margin-top: -2rem;
     }
 
-
-    .landing-button {
-        font-size: 4rem;
-    
-        width: 35rem;
-        border-radius: 10rem;
-    }
-    /* --- phone title changes --- */
-
-    /* Global button changes */
-    .inputs {
-        font-size: 4rem;
-
-        width: 42rem;
-        height: 10rem;
-        border-radius: 10rem;
+    .title-right {
+        font-size: 10rem;
     }
 
-    .input-button {
-        font-size: 4rem;
-
-        padding: 3rem;
-        width: 42rem;
-        border-radius: 10rem;
-    }
-    
-    .p-button {
-        font-size: 4rem;
-
-        padding: 3rem;
-        width: 36rem;
-        border-radius: 10rem;
-    }
-    /* --- Global button changes --- */
-
-
-    /* Map changes */
-    .pos-icon {
-        bottom: 6rem;
-        right: 3rem;
-        width: 7rem;
-    }
-
-    .host-map-back, .host-map-next {
-        font-size: 4rem;
-
-        padding: 3rem;
-        width: 12rem;
-        border-radius: 10rem;
-    }
-
-    .host-map-back p, .host-map-next p {
-        font-size: 3rem;
-    }
-
-    .map-CircleRadius-range {
-        width: 48rem;
-        height: 2rem;
-    }
-      
-    .map-CircleRadius-range::-webkit-slider-thumb {
-        width: 4rem;
-        height: 4rem;
-    }
-
-    /* Game Settings changes */
-    .host-GameSettings form {
-        padding: 4rem;
-        gap: 5rem;
-    }
-
-    .host-GameSettings form p {
-        font-size: 3rem;
-    }
-
-    .host-settings-titles {
-        font-size: 4rem !important;
-    }
-
-    .HideTime-range {
-        height: 1.5rem;
-    }
-      
-    .HideTime-range::-webkit-slider-thumb {
-        width: 3rem;
-        height: 3rem;
-    }
-
-    .host-ShrinkSpeed-options input + .radio {
-        width: 2.8rem;
-        height: 2.8rem;
-    }
-    
-    .host-heartbeat input + .checkbox {
-        width: 3.5rem;
-        height: 3.5rem;
-
-        margin-top: 1rem;
-    }
-
-    .host-GameSettings-submit input, .back {
-        font-size: 3rem;
-
-        padding: 1.6rem;
-        padding-left: 4rem;
-        padding-right: 4rem;
-        border-radius: 6rem;
-    }
-
-}
-
-@media only screen and (max-width: 900px) {
-    html{
-        font-size: 14px;
+    .title-left {
+        font-size: 10rem;
     }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 680px) {
     html {
         font-size: 12px;
     }
-}
 
-@media only screen and (max-width: 680px) {
-    html {
-        font-size: 10px;
+    .title-right {
+        font-size: 9rem;
+    }
+
+    .title-left {
+        font-size: 9rem;
     }
 }
 
 @media only screen and (max-width: 680px) {
     html {
-        font-size: 10px;
+        font-size: 11px;
+    }
+
+    .title-right {
+        font-size: 7rem;
+    }
+
+    .title-left {
+        font-size: 7rem;
+    }
+
+    .head .info #qrcode img {
+        width: 10rem;
+        height: 10rem !important;
     }
 }
 
 @media only screen and (max-width: 530px) {
     html {
-        font-size: 7px;
+        font-size: 10px;
+    }
+
+    .map-CircleRadius-range {
+        width: 32rem;
+        height: 2rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .pos-icon {
+        bottom: 7rem;
+        left: 50%;
+        right: 50%;
+        transform: translateX(-50%);
+    }
+
+    .title-right {
+        font-size: 5rem;
+    }
+
+    .title-left {
+        font-size: 5rem;
+    }
+
+    .host-GameSettings form {
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
     }
 }
 
