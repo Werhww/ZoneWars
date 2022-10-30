@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <!-- Website meta description -->
+    <meta name="description" content="Hide and seek with extra fectures and shrinking zone">
+    <meta name="keywords" content="Zone,Warz,Wars,ZoneWarz,ZoneWars,Hide,Seek,HideSeek,">
+    <meta name="theme-color" content="#0c0c0c" />
+    <!-- Website meta description -->
+
     <!-- Leaflet map imports -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.2/leaflet.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.2/leaflet.min.js"></script>
     <!-- Leaflet map imports -->
 
     <!-- css -->
@@ -29,13 +35,13 @@
     <!-- Laning page -->
     <div class="landing-page" id="landing-page">
         <div class="title">
-            <P class="title-left">Zone</P>
+            <p class="title-left">Zone</p>
             <p class="title-right">Warz</p>
         </div>
         <div class="landing-buttons">
             <div class="landing-button" id="landing-host"> <p>Host</p> </div>
             <div class="landing-button spacer" id="landing-join"> <p>Join</p> </div>
-            <div class="landing-button" id="landing-tutorial" onclick="lightbox_open()"> <p>Tutorial</p> </div>
+            <div class="landing-button" id="landing-tutorial" onclick="vopen()"> <p>Tutorial</p> </div>
         </div>
     </div>
 
@@ -131,18 +137,18 @@
     <!-- Tutorial page-->
     <div>
         <div id="light">
-            <a class="boxclose" id="boxclose" onclick="lightbox_close()">
+            <div class="boxclose" id="boxclose" onclick="vclose()">
                 <img src="./assets/icons/popup-x.svg" alt="">
-            </a>
+            </div>
 
             <!--controls?-->
-            <video id="video">
+            <video id="video" controls playsinline controls= "false">
                 <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
           
-        <div id="fade" onClick="lightbox_close()"></div>
+        <div id="fade" onclick="vclose()"></div>
     </div>
 
     <!-- footer -->

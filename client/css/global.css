@@ -156,7 +156,7 @@ footer p, footer a{
     background-color: #0c0c0c;
     border: rgb(45, 45, 45) solid 2px;
 
-    z-index: 1000;
+    z-index: 1000000000;
 }
 
 .popup-titel{
@@ -256,16 +256,16 @@ footer p, footer a{
     .input-button {
         font-size: 4rem;
 
-        padding: 5rem;
-        width: 44rem;
+        padding: 3rem;
+        width: 42rem;
         border-radius: 10rem;
     }
     
     .p-button {
         font-size: 4rem;
 
-        padding: 5rem;
-        width: 35rem;
+        padding: 3rem;
+        width: 36rem;
         border-radius: 10rem;
     }
     /* --- Global button changes --- */
@@ -273,7 +273,9 @@ footer p, footer a{
 
     /* Map changes */
     .pos-icon {
-        width: 84px;
+        bottom: 6rem;
+        right: 3rem;
+        width: 7rem;
     }
 
     .host-map-back, .host-map-next {
@@ -370,7 +372,7 @@ footer p, footer a{
 
 @media only screen and (max-width: 530px) {
     html {
-        font-size: 8px;
+        font-size: 7px;
     }
 }
 
@@ -403,4 +405,50 @@ footer p, footer a{
 
 .marker img {
     height: 1.8rem;
+}
+
+video::-webkit-media-controls {
+    display:none !important;
+}
+
+*::-webkit-media-controls-panel {
+    display: none!important;
+    -webkit-appearance: none;
+  }
+  
+/* Old shadow dom for play button */
+
+*::-webkit-media-controls-play-button {
+display: none!important;
+-webkit-appearance: none;
+}
+
+/* New shadow dom for play button */
+
+/* This one works! */
+
+*::-webkit-media-controls-start-playback-button {
+display: none!important;
+-webkit-appearance: none;
+}
+
+video::slotted::-webkit-media-controls-container{
+    display:none !important;
+    visibility: hidden!important;
+    opacity: 0 !important;
+   -webkit-appearance: none !important;
+}
+
+:host::shadow::-webkit-media-controls-container{
+    display: none!important;
+}
+
+.slow {
+    color: rgb(0, 255, 0);
+}
+.medium {
+    color: rgb(255, 255, 0);
+}
+.fast {
+    color: red
 }
