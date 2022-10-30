@@ -67,12 +67,16 @@ function GameStart(socket, map, init){
     WaitUntilClick(()=>{
         PlayBeep()
     })
-    
+    console.log(init)
     function timerStart(){
         timerParent.style.display = 'flex'
         timer.classList.remove( 'slow','medium', 'fast')
         timer.classList.add('slow')
-        var time = init.settings.HideTime
+        var time = init.settings.HideTime - (init.time - init.StartedTime)
+        if (time < 0) {
+            timerParent.style.display = 'none'
+            return
+        }
         
         const tickRate = 1000
 
