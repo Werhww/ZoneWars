@@ -67,7 +67,7 @@ function GameStart(socket, map, init){
     WaitUntilClick(()=>{
         PlayBeep()
     })
-    console.log(init)
+
     function timerStart(){
         timerParent.style.display = 'flex'
         timer.classList.remove( 'slow','medium', 'fast')
@@ -353,9 +353,7 @@ function ready(socket, map, init) {
 }
 
 
-
-
-map.init("gameMap", false).then(() => {
+function mapReady() {
     map.CenterMap()
 
     const socket = io(url)
@@ -365,10 +363,12 @@ map.init("gameMap", false).then(() => {
         socket.emit("session", session)
 
         socket.on("session", (session) => {
-            console.log("connect")
             localStorage.setItem("session", session)
-
             socket.once("GameData", (data) => ready(socket, map, data))
         })
     })
-})
+}
+
+map.init("gameMap", false).then(() => mapReady).catch(() => mapReady)
+
+

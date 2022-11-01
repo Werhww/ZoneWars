@@ -115,8 +115,14 @@ export class LeafletMap {
     }
     
     async init(elem, popup = true) {
+        if (document._map) {
+            this.map = document._map.map
+            this.ct = document._map.ct
+            throw new Error("Map already initialized")
+        }
+        
         this.position = await getLocation().catch(()=>{})
-        if (this.position.acc > 100) {
+        if (this.position.acc > 60) {
             if (popup){
                 document.popup({
                     message: "Gps in not accurate. Try using a diffrent device!"
@@ -157,5 +163,8 @@ export class LeafletMap {
                 tile.style.height = tileSize.y + 2 + 'px'
             }
         })
+
+        document._map = this
+        return true
     }
 }

@@ -70,8 +70,8 @@ function fetchHostName(){
     hostMap.style.display = 'flex'
     
     footer.style.display = 'none'
-
-    return false
+    
+    return true
 }
 
 const params = (new URL(location)).searchParams

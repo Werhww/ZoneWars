@@ -8,6 +8,7 @@ const onPosIcon = document.getElementById("onPosIcon")
 const hostMapNext = document.getElementById('host-map-next')
 
 hostNext.addEventListener('click', () => {
+    if (!fetchHostName()) return
     map.init("host-map-placer").then(async () => {
         map.CreateCenterZone(100)
 
@@ -31,5 +32,5 @@ hostNext.addEventListener('click', () => {
             document.mapCenter = map.map.getCenter()
             document.circleRadius = map.ct.getRadius()
         }
-    })  
+    }).catch(() => {})
 })
