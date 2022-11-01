@@ -58,9 +58,12 @@ landingHost.addEventListener('click', ()=>{
 
 function fetchHostName(){
     const userName = document.forms['host-name-form']['host-name'].value
-    if (userName == "" || userName.includes(" ")){
+    if (userName == ""){
         alert("Name must be filled out")
-        return false
+        return false 
+    } else if (userName.includes(" ")){
+        alert("Name cannot have spaces")
+        return false 
     }
     
     hostName.style.display = 'none'
@@ -171,6 +174,13 @@ joinBack.addEventListener('click', ()=>{
 
 
 joinSubmit.onclick = () => {
+    if (unameInput.value == ""){
+        alert("Name must be filled out")
+        return false 
+    } else if (unameInput.value.includes(" ")){
+        alert("Name cannot have spaces")
+        return false 
+    }
     socket.emit("JoinGame", GIDinput.value, unameInput.value)
 }
 
