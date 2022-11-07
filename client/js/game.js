@@ -369,6 +369,6 @@ function mapReady() {
     })
 }
 
-map.init("gameMap", false).then(() => mapReady).catch(() => mapReady)
+map.init("gameMap", false).then(() => mapReady()).catch(() => mapReady())
 
 
