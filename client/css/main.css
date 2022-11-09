@@ -383,7 +383,7 @@ input:checked + .checkbox {
   
 #boxclose {
     cursor: pointer;
-
+    filter: invert(1);
     border-radius: 3px;
     background: #00000000;
     font-size: 31px;
@@ -398,7 +398,7 @@ input:checked + .checkbox {
 }
 
 #video {
-    width: 48rem;
+    width: calc(100vw - 2rem);
 }
 
 #fade:hover ~ #boxclose {
